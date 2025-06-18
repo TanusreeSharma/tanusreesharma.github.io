@@ -1,323 +1,362 @@
 <!DOCTYPE html>
-<!--
-    Plain-Academic by Vasilios Mavroudis
-    Released under the Simplified BSD License/FreeBSD (2-clause) License.
-    https://github.com/mavroudisv/plain-academic
--->
-
 <html lang="en">
 <head>
-	<title>Tanusree Sharma</title> 
-  <link rel="shortcut icon" type="image/jpg" href="img/icons/cs-icon-small.png"/>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tanusree Sharma</title>
+  <link rel="shortcut icon" type="image/jpg" href="img/icons/cs-icon-small.png"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css2?family=Georgia&family=Oswald:wght@700&family=Philosopher&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body style="font-family: Georgia, serif; font-size: 1.5em; margin-bottom: 40px">
-
-
-<!-- Navigation -->
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	  <div class="container">
-		<div class="navbar-header">
-		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-		</div>
-
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		  <ul class="nav navbar-nav">
-				  <li><a href="">Home</a></li>
-				  <li><a href="publications.html">Publications</a></li> 
-				  <!-- <li><a href="#projects">Projects</a></li> -->
-				  <!-- <li><a href="projects.html">Project</a></li> -->
-				  <li><a href="services.html">Service</a></li>
-				  <li><a href="joinus.html">Join Us</a></li>
-<!-- 				  <li><a href="files/Tanusree_CV.pdf" target="_blank">CV</a></li>  -->
-				  <li><a href="gpsresearchlab.html">GPSLab</a></li>
-				
-			  	  <!-- <li><a href="services">Services</a></li>  -->
-		  </ul>
-		</div>
-	  </div>
-	</nav>
+  <style>
+	body {
+	  font-family: 'Georgia', serif;
+	  font-size: 13px;
+	  line-height: 1.3; /* Tighter line spacing */
+	  padding-bottom: 40px;
+	  background-color: #fff;
+	  color: #222;
+	  -webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;
+	}
   
-  <!-- Page Content -->
+	a {
+	  font-family: 'Georgia', serif;
+	  text-decoration: none;
+	  color: #00274C;
+	}
+  
+	a:hover {
+	  text-decoration: underline;
+	}
+  
+	@media (min-width: 1200px) {
+	  .container {
+		width: 1300px;
+	  }
+	}
+  
+	.navbar-inverse {
+	  background-color: #00274C;
+	  border-color: #00274C;
+	}
+  
+	.navbar-inverse .navbar-nav > li > a,
+	.navbar-inverse .navbar-brand {
+	  color: white;
+	}
+  
+	.left-sidebar {
+	  background-color: #fff;
+	  padding: 20px;
+	  border-right: 1px solid #ddd;
+	  width: 240px;
+	}
+  
+	.profile-img {
+  width: 100%;
+  max-width: 200px; /* increased from 160px */
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+  
+	.contact-info,
+	.contact-links a,
+	.class-list,
+	.service-list {
+	  font-size: 13px;
+	  line-height: 1.4;
+	}
+  
+	.contact-info {
+	  margin-bottom: 20px;
+	}
+  
+	.contact-links a {
+	  display: block;
+	  margin-bottom: 5px;
+	}
+  
+	.class-list, .service-list {
+	  margin-top: 20px;
+	}
+  
+	.class-list strong, .service-list strong {
+	  font-family: 'Philosopher', sans-serif;
+	  font-size: 16px;
+	  margin-bottom: 10px;
+	  display: block;
+	}
+  
+	.main-content {
+	  padding: 30px 20px;
+	}
+  
+	.section-title {
+	  font-family: 'Philosopher', sans-serif;
+	  font-size: 18px;
+	  margin-top: 30px;
+	  border-bottom: 2px solid #00274C;
+	  padding-bottom: 5px;
+	}
+  
+	.publication-title {
+	  font-weight: bold;
+	  font-size: 12px;
+	}
+  
+	.main-content ul li {
+	  font-size: 14px;
+	  margin-bottom: 8px;
+	  line-height: 1.4;
+	}
+  
+	.title {
+	  font-size: 24px;
+	  font-family: 'Philosopher', sans-serif;
+	}
+  
+	.col-md-3 ul {
+	  font-size: 13px;
+	  line-height: 1.4;
+	}
+  </style>
+</head>
+<body>
 
-    <div class="container" style="margin-top: 80px">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Tanusree Sharma</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <!-- <li><a href="#">Home</a></li> -->
+        <!-- <li><a href="#publications">Publications</a></li> -->
+        <!-- <li><a href="services.html">Service</a></li> -->
+     
+        <li><a href="gpsresearchlab.html">GPSLab</a></li>
+		<li><a href="joinus.html">Join Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-        <div class="row">
+<div class="container" style="margin-top: 80px">
+  <div class="row">
+    <div class="col-md-3 left-sidebar">
+		<img src="img/tanusree1.jpeg" class="profile-img" alt="Tanusree Sharma">
 
-            <!-- Entries Column -->
-            <div class="col-md-8">
-                
-                <!-- Main Image -->
-                <div class="col-md-5">
-                <img class="img-responsive" src="img/2.png" <br>
-			<strong> Tanusree Sharma </strong> <br>
-                 tanusree.sharma[at]psu[dot]edu  <br>
-	
-       <a href=/files/Tanusree_CV.pdf>Curriculum Vitae</a>
-        <br>
-<!-- <div class="col-md-4" style="margin-top:1%"> -->
-	<a href="https://scholar.google.com/citations?hl=en&user=U_iQbMIAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" class="fa fa-graduation-cap"> Google Scholar</a>
-	<a href="https://x.com/Tanusree_Sharma" target="_blank" class="fa fa-twitter"> X(Twitter)</a>
-	<a href="https://www.linkedin.com/in/tanusree-sharma-743697130/" target="_blank" class="fa fa-linkedin"> LinkedIn</a>
+		<div class="contact-info">
+		  <strong>Tanusree Sharma</strong><br>
+		  Assistant Professor<br>
+		  <br>
+		  Office: Westgate Building<br>
+      University Park<br>
+		  Room 388<br>
+      University Park, PA 16802<br>
 
-<!-- 
-  </div> -->
-<!-- 
-				<ul id="links">
-					<a href="https://github.com/tapjdey"><i class="fa fa-github fa-2x" aria-hidden="true" style="color:black"></i></a></li>
-					<a href="https://www.linkedin.com/in/tapajit-dey"><i class="fa fa-linkedin fa-2x" aria-hidden="true" style="color:black"></i></a></li>
-					<a href="https://www.twitter.com/DeyTapajit"><i class="fa fa-twitter fa-2x" aria-hidden="true" style="color:black"></i></a></li>
-					<a href="https://stackoverflow.com/users/1613640/tapajit-dey"><i class="fa fa-stack-overflow fa-2x" aria-hidden="true" style="color:black"></i></a></li>
-				  </ul> -->
-			</div>
-                
-                
-                <div class="col-md-7" style="text-align:justify; ">                
-					<p> I am an Assistant Professor in the <a href="https://ist.psu.edu/">College of Information Sciences and Technology</a> at <a href="https://www.psu.edu/">Pennsylvania State University</a>.<br />
-						<!-- I received my Ph.D. in the Informatics Department, University of Illinois at Urbana Champaign.  -->
-						Before joining Penn State, I earned my Ph.D. at the <a href="https://illinois.edu/">University of Illinois at Urbana Champaign</a>.
-						<!-- I'm very fortunate to be advised by <a  href="https://yangwang.ischool.illinois.edu/">Dr. Yang Wang</a> at the University
-						of Illinois at Urbana Champaign. I have also worked at Google, Cisco, Max Planck Institute as intern and visiting scholars.
-					</p> -->
-            
-	
-                	<!-- <h3 style="font-family: Philosopher, sans-serif;">Research Interest</h3> -->
-					<p><strong>Research Interests:</strong> 
-<!-- 						<p><strong>Research Interests:</strong>  -->
-						My research direction is at the intersection of Security, AI, and HCI to address question: How can we design secure systems that improve the quality of human interaction and human data authenticity in digital ecosystems? 
-<!-- 						My research focuses on (i) identifying people’s privacy and security concerns, decision-making, and behaviors in emerging applications; (2) developing methods and tools to engage diverse stakeholders at scale in co-designing privacy, security, and governance solutions; (3) creating and benchmarking representative datasets while ensuring data owner privacy.
-
-						I employ qualitative and quantitative methods, including surveys, interviews, iterative design, experiments, server log analysis, and internet measurement studies. Additionally, I design, build, and evaluate prototypes through lab and field experiments.
-						 -->
-			
-						 
-<br>
-<strong>A few directions of interest include:</strong><br>
-- Secure systems design to verify human interaction and data authenticity in AI/ML pipeline. <br>
-- Privacy and security solutions for contextually situated communities <br>
-- Usable security and privacy for Web3/DeFi<br>
-- Human-in-the-loop [deliberative] governance for LLMs</p>
-					<!-- <p> I often collaborate with social and political science and legal scholars, apply my experience from Google and Cisco, and offer my expertise to policymakers, industry professionals, and NGOs.</p> -->
-				   <!-- <p> If you are interested in joining our group, or if you are seeking any form of advising or collaboration, please read this page <a href = "">. </p> -->
-			    <p style="color:red"> <strong>Prospective Students:</strong> I’m looking for PhD students, interns to join my group. If you are interested in working with me, please review <a href = "https://tanusreesharma.github.io/joinus.html">"Interested to Join Us" </a> page first and send me an email with your CV. </p>
-					 <!-- If you are seeking any form of advising or collaboration, I would be happy to chat more. </p>  -->
-			</div>  
-	
-            </div> 
-
-         
-       
-            
-			<div class="col-md-8"></div>
-			<h3 style="font-family: Philosopher, sans-serif;">Recent News</h3>
-
-			
-				<ul style="font-size: 14px;">
-					
-					<li><b>[Jun 10, 2025]</b> Giving a Talk at <a href="https://www.usenix.org/conference/pepr25/presentation/sharma" target="_blank"> Usenix PEPR 2025 on Personhood Credential</a></li>
-					<li><b>[May 30, 2025]</b> Received <a href="https://research.google/programs-and-events/research-scholar-program/" target="_blank"> Google Research Scholar Grant 2025 </a></li>
-					<li><b>[Mar, 2025]</b> One paper Accepted to <a href="https://compass.acm.org/" target="_blank">ACM COMPASS</a></li>
-					<li><b>[Jan, 2025]</b> One paper Accepted to <a href="https://cvpr.thecvf.com/" target="_blank">IEEE CVF</a></li>
-					<li><b>[Jan, 2025]</b> One paper Accepted to <a href="https://petsymposium.org/2025/" target="_blank">PETs2025</a></li>
-					<li><b>[Dec, 2024]</b> Two papers Accepted to <a href="https://sp2025.ieee-security.org/" target="_blank">IEEE S&P 2025</a></li>
-					<li><b>[Dec, 2024]</b> One paper Accepted to <a href="https://www.ndss-symposium.org/ndss2025/" target="_blank">NDSS 2025</a></li>
-					<li><b>[Oct 14, 2024]</b> I have received College of IST Seed Grant as PI <a href="https://ist.psu.edu/research/administration/find-funding" target="_blank">on Human Aspect in Digital Identity Solutions</a></li>
-					<li><b>[Aug 12, 2024]</b> I have received John Karat Usable Privacy and Security Award at <a href="https://x.com/Tanusree_Sharma/status/1823140462699463008" target="_blank">SOUPS and Usenix 2024</a></li>
-					<li><b>[Aug 11, 2024]</b> I am attending <a href="https://www.usenix.org/conference/usenixsecurity24" target="_blank">SOUPS and Usenix 2024</a></li>
-					<li><b>[Aug 6, 2024]</b> I am giving a talk at <a href="https://rdi.berkeley.edu/events/decentralizationaisummit24" target="_blank">Future of Decentralization and AI, hosted by Berkeley RDI</a></li>
-					<li><b>[July, 2024]</b> I am serving as <a href="https://cscw.acm.org/2025/" target="_blank">CSCW 2025 Program Committee as an Associate Chair</a></li>
-					<li><b>[June 10, 2024]</b> I am giving a talk at <a href="https://www.initc3.org/events/2024-06-10-ic3-blockchain-camp-2024" target="_blank">IC3 Blockchain Camp at Cornell Tech</a></li>
-<!-- 					<li><b>[April, 2024]</b> I am serving as a <a href="https://www.usenix.org/conference/soups2024/mentoring-program" target="_blank">Mentoring Junior Co-chair at SOUPS 2024</a></li>
-					<li><b>[May, 2024]</b> I am serving as <a href="https://chi2024.acm.org/subcommittees/selecting-a-subcommittee/" target="_blank">CHI 2024 Chair Assistant at Privacy and Security Track</a></li> -->
-				</ul>
+		  Email: tanusree.sharma@psu.edu
 		</div>
-            
+		
+		<div style="margin-top: 10px;">
+			<a href="https://scholar.google.com/citations?hl=en&user=U_iQbMIAAAAJ" class="fa fa-graduation-cap" target="_blank"> Google Scholar</a>
+			<a href="https://x.com/Tanusree_Sharma" class="fa fa-twitter" target="_blank"> X (Twitter)</a>
+			<a href="https://www.linkedin.com/in/tanusree-sharma-743697130/" class="fa fa-linkedin" target="_blank"> LinkedIn</a>
+		  </div>
+      <!-- <div class="contact-links">
+        <a href="https://scholar.google.com/citations?hl=en&user=U_iQbMIAAAAJ" class="fa fa-graduation-cap" target="_blank"> Google Scholar</a>
+        <a href="https://x.com/Tanusree_Sharma" class="fa fa-twitter" target="_blank"> X (Twitter)</a>
+        <a href="https://www.linkedin.com/in/tanusree-sharma-743697130/" class="fa fa-linkedin" target="_blank"> LinkedIn</a>
+      </div> -->
+      <div class="class-list">
+        <strong>Class</strong>
+       Fall 2024: IST 597: Usable Security in Blockchain<br>
+       <br>
+       Spring 2025: CYBER 342: Cybersecurity Incident Handling<br>
+      
+      </div>
+      <div class="service-list">
+        <strong>Services</strong>
+        <u>Technical Program Committee</u><br>
+        [SBC 2025] 2025 Science of Blockchain Conference<br>
+        [USEC 2025] 2025 USEC, NDSS Symposium 2025<br>
+        [ACM CCS] 2025 ACM CCS<br>
+        [CHI 2025] 2025 Conference on Human Factors in Computing Systems<br>
+        [CSCW 2025] 2025 ACM Conference on Computer-Supported Cooperative Work and Social Computing<br>
+        [SOUPS 2024] 2024 Symposium on Usable Privacy and Security, Co-chair Mentoring<br>
+        [CHI 2024, 2023] CHI Chair Assistant for Security and Privacy subcommittees<br>
+        [WIPS 2021-2023] Workshop on Inclusive Privacy and Security<br><br>
+        <u>Conference & Journal Reviewer</u><br>
+        [ACM CSS] 2025<br>
+        [ACM CHI] 2021–2025<br>
+        [ACM DIS] 2022–2024<br>
+        [TOCHI] 2023<br>
+        [ACM CSCW] 2021–2024<br>
+        [ACM IMWUT] 2022<br>
+        [ACM MobileHCI] 2020<br>
+        [ACM COMPASS] 2021–2022<br>
+        [IEEE Transactions] 2022–2023<br>
+        [Oakland] 2023
+      </div>
+    </div>
 
-            
-            
-            <!-- Highlights -->
-            <!-- <div class="col-md-8"></div>
-            	<h2 style="font-family: Philosopher, sans-serif;">News</h2>
+    <div class="col-md-6 main-content">
+      <!-- <div class="title">Tanusree Sharma</div> -->
+      <p>I am an Assistant Professor in the <a href="https://ist.psu.edu/">College of Information Sciences and Technology</a> at <a href="https://www.psu.edu/">Pennsylvania State University</a>. Before joining Penn State, I earned my Ph.D. at the <a href="https://illinois.edu/">University of Illinois at Urbana Champaign</a>.</p>
 
-            	<ul>
-			<li><b>[Aug 12, 2024]</b> I have received John Karat Usable Privacy and Security Award at <a href="https://x.com/Tanusree_Sharma/status/1823140462699463008" target="_blank">SOUPS and Usenix 2024</a></li>	
-			<li><b>[Aug 11, 2024]</b> I am attending <a href="https://www.usenix.org/conference/usenixsecurity24" target="_blank">SOUPS and Usenix 2024</a></li>	
-			<li><b>[Aug 6, 2024]</b> I am giving a talk at Summit on Responsible Decentralized Intelligence <a href="https://rdi.berkeley.edu/events/decentralizationaisummit24" target="_blank">Future of Decentralization and AI, hosted by Berkeley RDI</a> </li>
-			<li><b>[July, 2024]</b> I am serving as <a href="https://cscw.acm.org/2025/" target="_blank">CSCW 2025 Program Committee as an Associate Chair</a></li>
-			<li><b>[June 10, 2024]</b> I am giving a talk at <a href="https://www.initc3.org/events/2024-06-10-ic3-blockchain-camp-2024" target="_blank"> IC3 Blockchain Camp at Cornell Tech </a></li>
-			<li><b>[April, 2024]</b> I am serving as a <a href="https://www.usenix.org/conference/soups2024/mentoring-program" target="_blank">Metoring Junior Co-chair at SOUPS 2024</a></li>
-			<li><b>[May, 2024]</b> I am serving as <a href="https://chi2024.acm.org/subcommittees/selecting-a-subcommittee/" target="_blank"> CHI 2024 chair Assistant at Privacy and Security Track</a></li>
-			
-            	</ul>
+      <p><strong>Research Interests:</strong> My research direction is at the intersection of Security, AI, and HCI to address the question: How can we design secure systems that improve the quality of human interaction and human data authenticity in digital ecosystems?</p>
+      <ul>
+        <li>Secure systems design to verify human interaction and data authenticity in AI/ML pipeline</li>
+        <li>Privacy and security solutions for contextually situated communities</li>
+        <li>Usable security and privacy for Web3/DeFi</li>
+        <li>Human-in-the-loop [deliberative] governance for LLMs</li>
+      </ul>
 
-            </div> -->
-            <!-- Publications -->
-            <div class="col-md-8">    
-                <h2 id="publications" style="font-family: Philosopher, sans-serif;">Publications</h2>
-                
-                <!-- <strong>Published</strong><br/> -->
-               
-				<div class="p1 w-richtext">
-					<h4><strong>Selected Publication:</strong><a href="https://scholar.google.com/citations?hl=en&user=U_iQbMIAAAAJ&view_op=list_works&sortby=pubdate">[Google Scholar]</a> </h4>
-				<ul class="list-unstyled">
-					<li><span class="publication-title">BIV-Priv-Seg: Locating Private Content in Images Taken by People With Visual Impairments</span><br>
-						Yu-Yun Tseng, <strong>Tanusree Sharma</strong>, Lotus Zhang, Abigale Stangl, Leah Findlater, Yang Wang, Danna Gurari <br> 
-				   To appear in 
-				  <a href="https://wacv2025.thecvf.com/"> IEEE/CVF Winter Conference on Applications of Computer Vision 2025 </a><br>
-					   <a href="https://arxiv.org/pdf/2407.18243">[preprint]</a>
-			   </li> <br>
-	  
-	  <li><span class="publication-title">Exploring Parent-Child Perspectives on Safety in Generative AI: Concerns, Mitigation Strategies, and Design Implications</span><br>
-						Yaman Yu, <strong>Tanusree Sharma</strong>, Melinda Hu, Justin Wang, Yang Wang <br> 
-				   To appear in the 
-				  <a href="https://sp2025.ieee-security.org/"> IEEE Symposium on Security and Privacy (S&P2025)</a><br>
-					   <a href="https://arxiv.org/abs/2406.10461">[preprint]</a>
-			   </li> <br>
+      <p style="color:red;"><strong>Prospective Students:</strong> I’m looking for PhD students and interns to join my group. Please review the <a href="https://tanusreesharma.github.io/joinus.html">Interested to Join Us</a> page and email me your CV.</p>
 
-		   <li><span class="publication-title"> Exploring User Perceptions of Security Auditing in the Web3 Ecosystem </span><br>
-					  Molly Huang, Rui Jiang, <strong>Tanusree Sharma</strong>, Kanye Ye Wang <br>
-						To appear in <a href="https://www.ndss-symposium.org/ndss2025/">NDSS 2025 </a><br>
-						[to appear] <a href="https://eprint.iacr.org/2024/1501">[preprint]</a>
-			   </li> <br>
-		   <li><span class="publication-title"> Security Perceptions of Users in Stablecoins: Advantages and Risks within the Cryptocurrency Ecosystem </span><br>
-					  Yongqi Guan, Yaman Yu, <strong>Tanusree Sharma</strong>, Z.Huang, K.Qin, Yang Wang, Kanye Ye Wang <br>
-						To appear in the 
-				  <a href="https://sp2025.ieee-security.org/"> IEEE Symposium on Security and Privacy (S&P2025)</a><br>
-			   <a href="https://eprint.iacr.org/2024/1538">[preprint]</a>
-			   </li> <br>
-<li><span class="publication-title">Privacy Perceptions and Behaviors Towards Targeted Advertising on Social Media: A
-Cross-Country Study</span><br>
-						Smirity Kaushik, <strong>Tanusree Sharma</strong>, Yaman Yu, Amna F. Ali, Bart Knijnenburg, Yang Wang, Yixin
-Zou <br> 
-				   To appear in 
-				  <a href="https://petsymposium.org/cfp25.php"> Proceedings on Privacy Enhancing Technologies (PoPETs) 2025  </a><br>
-					   <a href="">[preprint TBD]</a>
-			   </li> <br>
-
-
-				     
-
-				   
-				  <li><span class="publication-title">"I’m not convinced that they don’t collect more than is necessary": User-Controlled Data Minimization Design in Search Engines</span><br>
-									  <strong>Tanusree Sharma</strong>, Lin Kyi, Yang Wang, Asia J. Biega<br>
-									  (<strong>Usenix Security 2024</strong>) 33rd Usenix Security Symposium<br>
-									  [to appear] <a href="https://tanusreesharma.github.io/img/Tanusree_UsenixSecurity2024_Data_Minimization.pdf">[preprint]</a>
-							 </li> <br>
-				  <li><span class="publication-title">“I Can’t Believe It’s Not Custodial!”: Usable Trustless Decentralized Key Management.</span><br>
+      <div id="publications" class="section-title">Selected Publications</div>
+      <ul class="list-unstyled">
+        <li><span class="publication-title">BIV-Priv-Seg: Locating Private Content in Images Taken by People With Visual Impairments</span><br>
+          Yu-Yun Tseng, <strong>Tanusree Sharma</strong>, Lotus Zhang, Abigale Stangl, Leah Findlater, Yang Wang, Danna Gurari<br>
+          To appear in <em>IEEE/CVF Winter Conference on Applications of Computer Vision 2025</em><br>
+          <a href="https://arxiv.org/pdf/2407.18243">[preprint]</a>
+        </li>
+        <li><span class="publication-title">Exploring Parent-Child Perspectives on Safety in Generative AI: Concerns, Mitigation Strategies, and Design Implications</span><br>
+          Yaman Yu, <strong>Tanusree Sharma</strong>, Melinda Hu, Justin Wang, Yang Wang<br>
+          To appear in <em>IEEE Symposium on Security and Privacy (S&P 2025)</em><br>
+          <a href="https://arxiv.org/abs/2406.10461">[preprint]</a>
+        </li>
+        <li><span class="publication-title">Exploring User Perceptions of Security Auditing in the Web3 Ecosystem</span><br>
+          Molly Huang, Rui Jiang, <strong>Tanusree Sharma</strong>, Kanye Ye Wang<br>
+          To appear in <em>NDSS 2025</em><br>
+          <a href="https://eprint.iacr.org/2024/1501">[preprint]</a>
+        </li>
+        <li><span class="publication-title">Security Perceptions of Users in Stablecoins: Advantages and Risks within the Cryptocurrency Ecosystem</span><br>
+          Yongqi Guan, Yaman Yu, <strong>Tanusree Sharma</strong>, Z.Huang, K.Qin, Yang Wang, Kanye Ye Wang<br>
+          To appear in <em>IEEE Symposium on Security and Privacy (S&P 2025)</em><br>
+          <a href="https://eprint.iacr.org/2024/1538">[preprint]</a>
+        </li>
+        <li><span class="publication-title">Privacy Perceptions and Behaviors Towards Targeted Advertising on Social Media: A Cross-Country Study</span><br>
+          Smirity Kaushik, <strong>Tanusree Sharma</strong>, Yaman Yu, Amna F. Ali, Bart Knijnenburg, Yang Wang, Yixin Zou<br>
+          To appear in <em>PoPETs 2025</em><br>
+          <a href="#">[preprint TBD]</a>
+        </li>
+        <li><span class="publication-title">I'm not convinced that they don’t collect more than is necessary: User-Controlled Data Minimization Design in Search Engines</span><br>
+          <strong>Tanusree Sharma</strong>, Lin Kyi, Yang Wang, Asia J. Biega<br>
+          <em>Usenix Security 2024</em><br>
+          <a href="https://tanusreesharma.github.io/img/Tanusree_UsenixSecurity2024_Data_Minimization.pdf">[preprint]</a>
+        </li>
+        <li><span class="publication-title">“I Can’t Believe It’s Not Custodial!”: Usable Trustless Decentralized Key Management.</span><br>
 					<strong>Tanusree Sharma</strong>, Vivek Nair, Henry Wang, Yang Wang, Dawn Song <br>
 									  (<strong>CHI 2024</strong>) The ACM CHI Conference on Human Factors in Computing Systems<br>
 									  [to appear] <a href="https://tanusreesharma.github.io/img/Tanusree_MFKDF_CHI2024.pdf">[preprint]</a>
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title">Unpacking How Decentralized Autonomous Organizations (DAOs) Work in Practice.</span><br>
 					<strong>Tanusree Sharma</strong>, Yujin Kwon, Kornrapat Pongmala, Henry Wang, Andrew Miller, Dawn Song, Yang Wang <br>
 					(<strong>IEEE ICBC 2024</strong>) IEEE International Conference on Blockchain and Cryptocurrency<br>
 					[to appear] <a href="https://arxiv.org/abs/2304.09822">[preprint]</a>
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title">Designing Accessible Obfuscation Support for Blind People’s Visual Privacy</span><br>
 					Lotus Zhang, Abigale Stangl, <strong>Tanusree Sharma</strong>, Yu-Yun Tseng, Inan Xu, Danna Gurari, Yang Wang, Leah Findlater<br>
 					(<strong>CHI 2024</strong>) The ACM CHI Conference on Human Factors in Computing Systems<br>
 					[to appear] 
-							 </li> <br>
+							 </li> 
 
 				  <li><span class="publication-title"> Don't put all your eggs in one basket": Understanding Crypto Users' Perceptions and Practices Towards Multi-Wallet Usage</span><br>
 							Yaman Yu, <strong>Tanusree Sharma</strong>, Sauvik Das, Yang Wang<br>
 							(<strong>CHI 2024</strong>) The ACM CHI Conference on Human Factors in Computing Systems<br>
 									  <a href="https://sauvikdas.com/papers/52/serve">[Preprint]</a>
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title">Understanding User-Perceived Security Risks and Mitigation Strategies in the Web3 Ecosystem</span><br>
 					Jianing Si, <strong>Tanusree Sharma</strong>, Ye Wang <br>
 					(<strong>CHI 2024</strong>) The ACM CHI Conference on Human Factors in Computing Systems<br>
 									  <a href="https://eprint.iacr.org/2024/271">[Preprint]</a>
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title"> Disability-first Design and Creation of a Dataset Showing Private Visual Information Collected with People Who are Blind</span><br>
 					<strong>Tanusree Sharma</strong>, Abigale Stangl, Lotus Zhang, Yu-Yun Tseng, Inan Xu, Leah Findlater, Danna Gurari, Yang Wang. <br>
 									  (<strong>CHI 2023</strong>) The ACM CHI Conference on Human Factors in Computing Systems<br>
 									  <a href="https://dl.acm.org/doi/abs/10.1145/3544548.3580922">[PDF]</a><br>
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title">User Perceptions and Experiences of Targeted Ads on Social Media Platforms: Learning from Bangladesh and India</span><br>
 					<strong>Tanusree Sharma*</strong>, Smirity Kaushik*, Yaman Yu*, Syed Ishtiaque Ahmed, Yang Wang<br>
 									  (<strong>CHI 2023</strong>) The ACM CHI Conference on Human Factors in Computing Systems<br>
 									  <a href="https://dl.acm.org/doi/abs/10.1145/3544548.3581498">[PDF]</a>
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title">A Mixed-Methods Study of Security Practices of Smart Contract Developers</span><br>
 					<strong>Tanusree Sharma</strong>, Zhixuan Zhou, Andrew Miller, and Yang Wang<br>
 									  (<strong>USENIX Security 23</strong>) 32nd USENIX Security Symposium<br>
 									  <a href="https://www.usenix.org/conference/usenixsecurity23/presentation/sharma">[PDF]</a>
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title">Iterative Design of An Accessible Crypto Wallet for Blind Users.</span><br>
 					<strong>Tanusree Sharma*</strong>, Zhixuan Zhou*, Luke Emano, Sauvik Das, Yang Wang.<br>
 									  (<strong>SOUPS 2023</strong>) Symposium on Usable Privacy and Security <br>
 									  <a href="https://www.usenix.org/system/files/soups2023-zhou.pdf">[PDF]</a>
-							 </li> <br>
+							 </li>
 				  <li><span class="publication-title">Rethinking Data Minimization from a User-Centered Approach: A Paradigm.</span><br>
 					<strong>Tanusree Sharma</strong>, Lin Kyi, Yang Wang, Asia Beiga <br>
 									  (<strong> USENIX PEPR 23</strong>)2023 USENIX Conference on Privacy Engineering Practice and Respect<br>
 									  <a href="https://www.usenix.org/conference/pepr23/presentation/sharma">[PDF]</a>
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title">GuardLens: Supporting Safer Online Browsing for People with Visual Impairments</span><br>
 									  Smirity Kaushik, Natã M. Barbosa, Yaman 
 									  Yu, <strong> Tanusree Sharma</strong>, Zachary Kilhoffer, JooYoung Seo, Sauvik Das, and Yang Wang<br>
 									  (<strong>SOUPS 2023</strong>) Symposium on Usable Privacy and Security <br>
 									  <a href="https://www.usenix.org/conference/soups2023/presentation/kaushik">[PDF]</a>
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title">Using ChatGPT in HCI Research—A Trioethnography</span><br>
 					Smit Desai, <strong>Tanusree Sharma</strong>, Pratyasha Saha<br>
 									  (<strong>ACM CUI '23</strong>) Proceedings of the 5th International Conference on Conversational User Interfaces<br>
 									  <a href="https://dl.acm.org/doi/abs/10.1145/3571884.3603755">[PDF]</a>
-							 </li> <br>
+							 </li> 
 					  <li><span class="publication-title"> A First Look into Software Security Practices in Bangladesh.</span><br>
 						<strong>Tanusree Sharma*</strong>, Ankit Shrestha*, Pratyasha Saha, Syed 
 						Ishtiaque Ahmed, Mahdi Nasrullah Al-Ameen <br>
 									  (<strong>ACM COMPASS 23</strong>) ACM Journal on Computing and Sustainable Societies <br>
 									  <a href="https://dl.acm.org/doi/full/10.1145/3616383">[PDF]</a>
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title"> “It's A Blessing and A Curse": Unpacking Creators' Practices with Non-Fungible Tokens (NFTs) and Their Communities.
-				  </span><br>
+				  </span>
 				  <strong>Tanusree Sharma</strong>, Zhixuan Zhou, Yun Huang, Yang Wang<br>
 									  (<strong>CESC 22</strong>) Crypto Economics Security Conference (CESC 22) <br>
 									  <a href="https://arxiv.org/abs/2201.13233">[PDF]</a>
-							 </li> <br>
+							 </li> 
 					  <li><span class="publication-title">Privacy during pandemic: A global view of privacy practices around COVID-19 apps</span><br>
 						<strong>Tanusree Sharma</strong>, Md Mirajul Islam, Anupam Das, SM Taiabul Haque, and Syed Ishtiaque Ahmed.  <br>
 									  (<strong>ACM COMPASS 21</strong>) ACM SIGCAS Conference on Computing and Sustainable. <br>
 									  <a href="https://dl.acm.org/doi/abs/10.1145/3460112.3471958">[PDF]</a>
-							 </li> <br>
+							 </li> 
 					  <li><span class="publication-title">Mapping risk assessment strategy for COVID-19 mobile apps’ vulnerabilities</span><br>
 						<strong>Tanusree Sharma</strong>, Hunter A. Dyer, Roy H. Campbell, and Masooda Bashir <br>
 									  (<strong>Computing Conference 2021</strong>) Proceedings of the Computing Conference 2021.                                              <br>
 									  <a href="https://link.springer.com/chapter/10.1007/978-3-030-80119-9_72">[PDF]</a> <br>
 
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title">Enabling user-centered privacy controls for mobile applications: COVID-19 perspective. </span><br>
 					<strong>Tanusree Sharma</strong>, Hunter A. Dyer, and Masooda Bashir<br>
 									  (<strong>ACM TOIT 2021</strong>) ACM Transactions on Internet Technologies <br>
 									  <a href="https://dl.acm.org/doi/abs/10.1145/3434777">[PDF]</a>
 								  
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title"> Use of apps in the COVID-19 response and the loss of privacy protection.</span> <br>
 					<strong>Tanusree Sharma</strong>, and Masooda Bashir.<br>
 									  (<strong>Nature 2020</strong>) Nature Comment 2020<br>
 									  <a href="https://www.nature.com/articles/s41591-020-0928-y">[PDF]</a>
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title">Towards inclusive privacy protections in the cloud</span> <br>
 					<strong>Tanusree Sharma</strong>, Tian Wang, Carlo Di Giulio, and Masooda Bashir. 
 					<br>
 									  (<strong>ACNS 20</strong>) In Applied Cryptography and Network Security.<br>
 									  <a href="https://link.springer.com/chapter/10.1007/978-3-030-61638-0_19">[PDF]</a>
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title">Preserving Privacy in Cyber-Physical Social Systems: An Anonymity and Access Control Approach</span> <br>
 					<strong>Tanusree Sharma</strong>, John 
 									  Bambenek, Masooda Bashir. 
@@ -325,87 +364,74 @@ Zou <br>
 									  (<strong>IOT'20</strong>) Proceedings of International Conference on the Internet of Things 2019 <br>
 									  
 									  <a href="https://www.ideals.illinois.edu/items/113204">[PDF]</a>
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title">Privacy apps for smartphones: An assessment of users’ preferences and limitations. </span> <br>
 					<strong>Tanusree Sharma</strong>, and Masooda Bashir. <br>
 									  (<strong>HCII 2020</strong>)   In HCI for Cybersecurity, Privacy, and Trust. 
 									  <br>
 									  <a href="https://link.springer.com/chapter/10.1007/978-3-030-50309-3_35">[PDF]</a>
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title"> A restful e-governance application framework for people identity verification in the cloud. </span> <br>
 					Ahmedur Rahman, Shanto Roy, 
 					Tanusree Sharma, Md Whaiduzzaman.<br>
 									  (<strong>CLOUD 2018</strong>)In Cloud Computing–CLOUD 2018
 									  <br>
 									  <a href="https://link.springer.com/chapter/10.1007/978-3-319-94295-7_19">[PDF]</a>
-							 </li> <br>
+							 </li> 
 				  <li><span class="publication-title">PSO-NF-based vertical handoff decision for ubiquitous heterogeneous wireless network (UHWN). </span> <br>
 					Saoreen Rahman, Tanusree 
 					Sharma, S. M. Reza, M. M. Rahman, and M. S. Kaiser.<br>
 									  (<strong>IWCI 2016</strong>) In 2016 International Workshop on Computational Intelligence IWCI.
 									  <br>
 									  <a href="https://ieeexplore.ieee.org/abstract/document/7860357" target="_blank">[PDF]</a>
-							  </li> <br>
+							  </li> 
 				  <li><span class="publication-title">  A dynamic data placement policy for heterogeneous Hadoop cluster. Tushar Saha. </span> <br>
 									  Tushar Saha. Tanusree Sharma. <br>
 									  (<strong>ICAEE 2017</strong>) In 2017 4th International 
 									  Conference on Advances in Electrical Engineering (ICAEE)
-							<br>
+			
 									  <a href="https://ieeexplore.ieee.org/abstract/document/8255371">[PDF]</a>
-							  </li> <br>
+							  </li> 
 				  
 		  
 				  </li>
 				</ul>
-				 
-				
-			  </div>
-            
-			</div>
-	
-			    
-	<!-- <div class="col-md-8">    
-		<h2 id="services" style="font-family: Philosopher, sans-serif;">Service</h2>
-	  <div class="p1 w-richtext">
-		<ul>
-		<p>
-		  <strong>Organizing Committee</strong> <br />
-		  2024 CHI Chair Assistant <br />
-		  2023 CHI Chair Assistant <br /><br />
-		  <strong>Workshop Organizer</strong> <br />
-		  2023 WIPS Workshop on Inclusive Privacy and Security, SOUPS 2023
-		  <br />
-		  2022 WIPS Workshop on Inclusive Privacy and Security, SOUPS 2022
-		   <br />
-		  <br />
-		  <strong>Session Chair</strong> <br />
-		  SOUPS Workshop on Inclusive Privacy and Security 2023
-		  on Understudied & Innovative Session <br /><br />
-		  <strong>Conference Reviewer</strong><br />
-		  ACM CHI (2021-2024), ACM CSCW (2021-2024), IMWUT
-		  (2023), ACM DIS (2023), ACM MobileHCI (2023), ACM
-		  COMPASS (2023) <br />
-		  Received “special recognitions” for outstanding
-		  reviews for ACM CSCW 2022, ACM CHI 2023, ACM CHI 2023
-		  Late Breaking Work, IMWUT 2023, CSCW 2024 <br /><br />
-		  <strong>Journal Reviewer</strong> <br />
-		  IEEE Transactions on Dependable and Secure Computing
-		  (2022-2023), IEEE Access (2022) <br /><br />
-		  <strong>Community Service</strong> <br />
-		  Co-Chair, ACM-W UIUC chapter (2021-2022) <br />
-		  Privacy Testing, Safer Illinois App, UIUC, 2020 <br />
-		  MOOC Classes for Underserved Community in Bangladesh
-		  of 7k+ Students (2019-now) <br />
-		  
-		  <br />
-		</ul>
+      </ul>
 
-    </div> -->
-    <!-- /.container -->
-    
-    <!-- Other people may like it too! -->
-    <a style="color:#b5bec9;font-size:0.8em; float:right;" href="https://github.com/mavroudisv/plain-academic"></a> 
-    
+    </div>
+
+    <div class="col-md-3">
+      <div style="background-color: #f9f9f9; border-left: 1px solid #ddd; padding: 20px; height: 100%; max-height: 800px; overflow-y: auto;">
+        <div style="font-family: 'Philosopher', sans-serif; font-size: 20px; border-bottom: 2px solid #00274C; margin-bottom: 10px;">Recent News</div>
+        <ul style="font-size: 14px; line-height: 1.6; padding-left: 20px;">
+			<li><b>[Jun, 2025]</b> Received <a href="https://research.google/programs-and-events/research-scholar-program/" target="_blank">Google Research Scholar Award 2025 🎉 🎉  </a></li>
+          <li><b>[Jun 10, 2025]</b> Giving a Talk at <a href="https://www.usenix.org/conference/pepr25/presentation/sharma" target="_blank">Usenix PEPR 2025 on Personhood Credential</a></li>
+         
+          <li><b>[Mar, 2025]</b> One paper Accepted to <a href="https://compass.acm.org/" target="_blank">ACM COMPASS</a></li>
+          <li><b>[Jan, 2025]</b> One paper Accepted to <a href="https://cvpr.thecvf.com/" target="_blank">IEEE CVF</a></li>
+          <li><b>[Jan, 2025]</b> One paper Accepted to <a href="https://petsymposium.org/2025/" target="_blank">PETs2025</a></li>
+          <li><b>[Dec, 2024]</b> Two papers Accepted to <a href="https://sp2025.ieee-security.org/" target="_blank">IEEE S&P 2025</a></li>
+          <li><b>[Dec, 2024]</b> One paper Accepted to <a href="https://www.ndss-symposium.org/ndss2025/" target="_blank">NDSS 2025</a></li>
+          <li><b>[Oct 14, 2024]</b> Received IST Seed Grant <a href="https://ist.psu.edu/research/administration/find-funding" target="_blank">on Human Aspect in Digital Identity Solutions 🎉 🎉 </a></li>
+          <li><b>[Aug 12, 2024]</b> Received John Karat Award at <a href="https://x.com/Tanusree_Sharma/status/1823140462699463008" target="_blank">SOUPS and Usenix 2024</a></li>
+          <li><b>[Aug 11, 2024]</b> Attended <a href="https://www.usenix.org/conference/usenixsecurity24" target="_blank">SOUPS and Usenix 2024</a></li>
+          <li><b>[Aug 6, 2024]</b> Talk at <a href="https://rdi.berkeley.edu/events/decentralizationaisummit24" target="_blank">Berkeley RDI Summit on Decentralization and AI</a></li>
+          <li><b>[July, 2024]</b> Serving as AC at <a href="https://cscw.acm.org/2025/" target="_blank">CSCW 2025</a></li>
+          <li><b>[June 10, 2024]</b> Talk at <a href="https://www.initc3.org/events/2024-06-10-ic3-blockchain-camp-2024" target="_blank">IC3 Blockchain Camp, Cornell Tech</a></li>
+        </ul>
+      </div>
+	  <!-- SPONSORS SECTION -->
+  <div style="margin-top: 30px;">
+    <div style="font-family: 'Philosopher', sans-serif; font-size: 20px; border-bottom: 2px solid #00274C; margin-bottom: 10px;">SPONSORS</div>
+    <div style="text-align: center;">
+		<img src="img/google.png" alt="Google" style="width: 30%; margin-bottom: 8px;">
+		<img src="img/openai.png" alt="OpenAI" style="width: 30%; margin-bottom: 8px;">
+		<img src="img/meta.png" alt="Meta" style="width: 40%; margin-bottom: 8px;">
+      <!-- <img src="img/sponsors/Seed.png" alt="pennstate seed" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+     -->
+    </div>
+  </div>
+</div>
+
 </body>
-
 </html>
