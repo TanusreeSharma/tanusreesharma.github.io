@@ -1,438 +1,485 @@
 <!DOCTYPE html>
-<!--
-    Plain-Academic by Vasilios Mavroudis
-    Released under the Simplified BSD License/FreeBSD (2-clause) License.
-    https://github.com/mavroudisv/plain-academic
--->
-
 <html lang="en">
 <head>
-	<title>Tanusree Sharma</title> 
-  <link rel="shortcut icon" type="image/jpg" href="img/icons/cs-icon-small.png"/>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GPS Lab</title>
+  <link rel="shortcut icon" type="image/png" href="/assets/images/main/favicon/favicon-32x32.png">
+  
+  <!-- Bootstrap & Fonts -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Georgia&family=Philosopher&display=swap" rel="stylesheet">
+  <link href="/assets/fonts/fontawesome/css/all.css" rel="stylesheet">
+
+  <!-- Custom Styles -->
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      font-size: 13px;
+      line-height: 1.5;
+      background-color: #fff;
+      color: #222;
+      padding-bottom: 50px;
+    }
+
+    a {
+      color: #00274C;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .navbar-inverse {
+      background-color: #00274C;
+      border-color: #00274C;
+    }
+
+    .navbar-inverse .navbar-brand,
+    .navbar-inverse .navbar-nav > li > a {
+      color: #fff;
+    }
+
+    .page-title {
+      font-family: 'Philosopher', sans-serif;
+      font-size: 20px;
+      border-bottom: 2px solid #00274C;
+      margin: 30px 0 10px;
+    }
+
+    .section-title {
+      font-family: 'Philosopher', sans-serif;
+      font-size: 18px;
+      border-bottom: 2px solid #00274C;
+      margin: 40px 0 10px;
+    }
+
+    .paragraph {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .news-box {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 20px;
+      background-color: #f9f9f9;
+      font-size: 13px;
+    }
+
+    .news-title {
+      font-weight: bold;
+    }
+
+    .person-card {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .person-card img {
+      max-width: 100px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    .person-card p {
+      margin: 0;
+      font-size: 13px;
+    }
+
+    .sponsor-logos img {
+      max-height: 60px;
+      margin: 10px 20px;
+    }
+
+    .project-box {
+      margin-bottom: 30px;
+    }
+
+    /* .project-box p {
+      font-size: 13px;
+      line-height: 1.5;
+    } */
+    /* .project-box p,
+.project-box .author,
+.project-box .description,
+.project-box .links {
+  font-size: 13px;
+  font-family: 'Georgia', serif;
+  line-height: 1.5;
+  margin-bottom: 10px;
+} */
+/* .project-box .title {
+  font-size: 15px;
+  font-family: 'Philosopher', sans-serif;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #00274C;
+} */
+.project-box {
+  margin-bottom: 30px;
+}
+
+.project-box p,
+.project-box .author,
+.project-box .description,
+.project-box .links {
+  font-size: 13px;
+  font-family: 'Georgia', serif;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.project-box .title {
+  font-size: 15px;
+  font-family: 'Philosopher', sans-serif;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #00274C;
+}
+
+.project-box .badge-tag {
+  background-color: #fdf1e5;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+
+
+    hr {
+      border-color: #ccc;
+    }
+    .research-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.research-box {
+  flex: 1;
+  background-color: #eef6fb;
+  border: 1px solid #ddd;
+  border-left: 5px solid #3A86FF;
+  padding: 15px;
+  font-size: 13px;
+  min-width: 0;
+}
+
+.research-title {
+  font-weight: bold;
+  color: #00274C;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  .col-sm-1-5 {
+    width: 20%;
+    float: left;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+  .research-box {
+    flex: 1 1 calc(50% - 15px);
+  }
+}
+  </style>
 </head>
+<body>
 
-<body style="font-family: Georgia, serif; font-size: 1.5em; margin-bottom: 40px">
+<!-- Navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">GPS Lab</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <a class="navbar-brand" href="index.html">Tanusree Sharma</a>
+        <li><a href="joinus.html">Join Us</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
-<!-- Navigation -->
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                          <span class="sr-only">Toggle navigation</span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                      </button>
-          </div>
+<div class="container" style="margin-top: 80px;">
+  <!-- Intro -->
+  <div class="page-title"> <span style="color:#28d6d3">G</span><span style="color:#F77F00">P</span><span style="color:#3A86FF">S</span> <span style="color:#000000">Lab</span>
+    (Governance, Privacy, and Security Lab)</div>
+ 
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="publications.html">Publications</a></li> 
-                    <!-- <li><a href="projects.html">Project</a></li> -->
+  <p class="paragraph">
+    We are GPS Lab at 
+    <a href="https://psu.edu">Penn State University</a>.
+  </p>
+  <p class="paragraph">
+    Our work, at the intersection of Security, AI, and HCI to address question: How can we design secure systems that improve the quality of human interaction and human data authenticity in digital ecosystems? Some Research Directions in our Lab
+  </p>
+
+  <div class="research-row">
+    <div class="research-box">
+      <div class="research-title">Accessible tools and Provenance AIGC</div>
+      <p>We study media provenance and design tools to verify digital content authenticity. 
+        <a href="https://arxiv.org/abs/2505.16057">(Preprint)</a>
+      </p>
+    </div>
   
-                    <li><a href="services.html">Service</a></li>
-                    <li><a href="joinus.html">Join Us</a></li>
-<!--                     <li><a href="files/Tanusree_CV.pdf" target="_blank">CV</a></li>  -->
-                    <li><a href="gpsresearchlab.html">GPSLab</a></li>
-                     
-                  
-                      <!-- <li><a href="services">Services</a></li>  -->
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <div class="container" style="margin-top: 80px">
-    
-        <section class="hero">
-          <div class="hero-body">
-            <div class="container is-max-desktop">
-              <div class="columns is-centered">
-                <div class="column has-text-centered">
-                  <h1 class="title is-1 publication-title"> <strong style="color: #5f9ea0;">G</strong>overnance, 
-                    <strong style="color: #5f9ea0;">P</strong>rivacy and 
-                    <strong style="color: #5f9ea0;">S</strong>ecurity Research Lab</h1>
-                  <!-- <div class="is-size-5 publication-authors"> -->
-                    <!-- Paper authors -->
-                    <!-- <span class="author-block">
-                      <a href="https://pages.cs.huji.ac.il/eliahu-horwitz/" target="_blank">Eliahu Horwitz</a>,</span>
-                      <span class="author-block">
-                        <a href="https://pages.cs.huji.ac.il/jonkahana/" target="_blank">Jonathan Kahana</a>,</span>
-                        <span class="author-block">
-                          <a href="https://www.cs.huji.ac.il/w~ydidh/" target="_blank">Yedid Hoshen</a>
-                        </span>
-                      </div>
-      
-                      <div class="is-size-5 publication-authors">
-                        <span class="author-block">The Hebrew University of Jerusalem<br>ICML 2024<br></span>
-                      </div> -->
-      
-                      <!-- <div class="column has-text-centered">
-                        <div class="publication-links">
-                         Arxiv PDF link -->
-                         <!-- <span class="link-block">
-                          <a href="https://arxiv.org/pdf/2402.10208.pdf" target="_blank"
-                            class="external-link button is-normal is-rounded is-dark">
-                            <span class="icon">
-                              <i class="fas fa-file-pdf"></i>
-                            </span>
-                            <span>Paper</span>
-                          </a>
-                        </span> -->
-
-                              <!-- Paper abstract -->
-                              <section class="section hero is-light">
-                                <div class="container is-max-desktop">
-                                    <div class="columns is-centered has-text-centered">
-                                        <div class="column is-narrow" style="width: 70%;">
-                                          <div style="text-align: center;">
-                                            <img src="img/4-1.png" alt="GPS Research Lab" width="580" height="400">
-                                        </div>
-                                            <h3 class="title is-3">Research Focus</h3>
-                                            <div class="content has-text-justified">
-                                               
-                       Our work, at the intersection of Security, AI, and HCI to address question: How can we design secure systems that improve the quality of human interaction and human data authenticity in digital ecosystems? Some Research Directions in our Lab <br>
-               
-                       <br>
-
-
-                       <strong>Identity (Personhood) Verification </strong> We study identity verification systems to uncover hidden privacy and security risks for users and organizations, addressing challenges like fraud, bot activity, and human-AI distinction in high-stakes contexts<a
-                       href="https://www.usenix.org/conference/pepr25/presentation/sharma"><span style="color: green;">(Talk on Personhood Credentials</span></a>,
-                   <a href="https://arxiv.org/abs/2502.16375"><span style="color: green;">Preprint on Personhood Credentials)</span></a>
-                   <br>
-                   <strong> AI-Generated Media Verification </strong>We study user challenges in understanding media provenance and design interventions to verify the authenticity of digital content across images, video, and audio  
-                   <a
-                   href="https://arxiv.org/abs/2505.16057"><span style="color: green;">(Preprint)</span></a>
-               
-               <br>
-                        <strong>Visual Privacy Preservation:</strong> We develop representative dataset and tools to develop novel algorithms in empowering individuals (e.g. blind users) to identify and manage any private content in images and videos <a
-                            href="https://home.cs.colorado.edu/~DrG/VisualPrivacy/BIV-Priv/"><span style="color: green;">(BivPriv -- Novel Private Vision Data</span></a>,
-                        <a href="https://arxiv.org/abs/2407.18243"><span style="color: green;">Biv-Priv-Seg -- Benchmark</span></a>, <a
-                            href="https://dl.acm.org/doi/full/10.1145/3613904.3642713"><span style="color: green;">BivPriv App -- Privacy Preserving Tool)</span></a> 
-                            <!-- <a href="https://www.usenix.org/conference/soups2023/presentation/kaushik"><span style="color: green;">GuardLens</span></a>) to -->
-                        <!-- maintain the privacy of various media (e.g., website, images, videos), often emphasizing on
-                        marginalized and underserved populations. We also design and evaluate tools to verify uniqueness
-                        of human and characteristics while highlighting the significance of usability and accessibility
-                        in those tools’ design. -->
-                        <br>
-
-                        <strong>AI (Data and Model) Governance: </strong> We investigate issues at the intersection of
-                        computing and society by interpreting and operationalizing principles of data privacy (such as <a
-                            href="https://www.usenix.org/conference/usenixsecurity24/presentation/sharma"><span style="color: green;">Data
-                        Minimization </span></a>, <a
-                            href="https://ieeexplore.ieee.org/abstract/document/10634404/"><span style="color: green;">Decentralized Governance</span></a>
-                        <a href="https://arxiv.org/abs/2410.13095"><span style="color: green;">DAO</span></a>, 
-                        <a href="https://arxiv.org/abs/2410.01817"><span style="color: green;">Democratic Tool for AI Governance</span></a>).
-                        <br>
-
-                        <strong>Blockchain and Usable Crypto:</strong> We design and develop accessible and easy-to-understand
-                        cryptographic solutions to mitigate security risks with usability benefits (e.g.,<a href="https://dl.acm.org/doi/full/10.1145/3613904.3642464">
-                            <span style="color: green;"> MFKDF-- usable decentralized key management</span></a>, <a
-                            href="https://www.usenix.org/conference/soups2023/presentation/zhou"><span style="color: green;">iWallet</span>) </a> 
-
-                        
-                    </p>
-<!-- We believe that navigating the complexities of modern life shouldn’t feel like a game of hide and seek, but rather a well-planned road trip .
-<br> -->
-<!-- So, whether you are trying to dodge data breaches or simply figure out who is got your back in the digital jungle, the GPS Lab is here to ensure you are always on the right path in navigating the digital world.  -->
-                                                </p>
-                                                <span style="color: rgb(219, 65, 27);">
-                                                  Our lab is actively recruiting PhD students, master's students, and undergraduates! If you're interested in joining the lab
-                                              </span> <a href="https://tanusreesharma.github.io/joinus.html">learn more here</a>!
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                            
-                            <!-- Teaser video-->
-                            <section class="hero teaser">
-                                <div class="container is-max-desktop">
-                                    <div class="hero-body">
-                                        <div class="columns is-centered">
-                                            <div class="column is-narrow" style="width: 70%;">
-                                                <!-- <video poster="" id="tree" autoplay controls muted loop style="width: 100%; height: auto;"> 
-                                                    <source src="static/videos/banner_video.mp4" type="video/mp4">
-                                                </video> -->
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-  <!-- End teaser video -->
+    <div class="research-box">
+      <div class="research-title">Cyber Risk Mitigation with Identity (Personhood) Verification</div>
+      <p>We analyze fraud, bots, and personhood risks. 
+        <a href="https://www.usenix.org/conference/pepr25/presentation/sharma">(Talk)</a>, 
+        <a href="https://arxiv.org/abs/2502.16375">(Preprint)</a>
+      </p>
+    </div>
   
-      <!-- End paper abstract -->
-
-                        <div class="span8 offset1">
-<!--                             <section id="principalinvestigator">
-                               <div class="page-header">
-                                  <h3>Lab Director (PI)</h3>
-                               </div>
-                               <div class="row-fluid">
-
-                          
-
-
-                                  <div class="span3">
-                                     
-                                    <img src="img/2.png" alt="Tanusree Sharma" width="130" height="130"> -->
-                                     <!-- </a> -->
-<!--                                   </div>
-                                  <div class="span9">
-                                     <h4>Tanusree Sharma</h4>
-                                     <p>Assistant Professor<br/><a href="https://ist.psu.edu/directory/tfs5747">College of Information Sciences and Technology<br/><a href="https://www.psu.edu/"> Pennsylvania State University</a></p> -->
-                                     <!-- <p>Ph.D. in Informatics, UIUC, 2024<br/></p> -->
-<!--                                      <p><b>Email: </b><a href="mailto:tanusree.sharma@psu.edu">tanusree.sharma@psu.edu</a> -->
-                                      <!-- <br/><b>Address: </b>E388 Westgate Building, University Park, PA 16802</p> -->
-                                     <!-- <p><b><a href="https://tanusreesharma.github.io/files/Tanusree_CV.pdf">CV</a>, <a href="https://scholar.google.com/citations?hl=en&user=U_iQbMIAAAAJ&view_op=list_works&sortby=pubdate">Googlescholar</a></b></p> -->
-<!--                                   </div> -->
-
-                                  
-<!--                                </div>
-                            </section> -->
-                            <!-- <hr> -->
-                            
-                            
-                            
-                            <section id="postdocs">
-                                  <div class="page-header">
-                                 <h3>Ph.D. Student</h3>
-
-                        <ul>
-                        <li><a href="https://ayaeide.github.io/"><span style="color: green;">Aye Ide</span></a> (PhD Student since 2024)</li>
-                        <li><a href="https://mfarhadhossain.github.io/"><span style="color: green;">Farhad Hossain</span></a> (incoming PhD Student Fall 2025) </li>
-                        <li><a href="https://scholar.google.com/citations?user=Av5w8wkAAAAJ&hl=en"><span style="color: green;">Aljawharah M. Alzahrani</span></a> (incoming PhD Student Fall 2025) </li>
-                        </ul>
-                        
-                        <h3>Masters Student, Research Intern</h3>
-                        
-                        <ul>
-                        <li><a href="https://yihaozhou.com/"><span style="color: green;">Yihao Zhou</span> </a> (Masters Student since 2024)</li>
-                        <li><a href="https://saleheenshafiq9.github.io/"><span style="color: green;">Shafiq Saleheen</span></a> (Researcher > will start PhD Fall 2025)</li>
-                        <li><a href="https://www.linkedin.com/in/park-psu/"><span style="color: green;">Tory Park</span></a> (Cybersecurity Analytics Bachelors Student)</li>
-                        <li><a href=""><span style="color: green;"></span> Ryan John Oommen</a> (Researcher, Cybersecurity Analytics and Operations IUG Student )</li>
-                        <li><a href="https://ist.psu.edu/directory/wjw5326"><span style="color: green;">Winston Jen White</span></a> (Research Intern, Cybersecurity Analytics and Operations IUG Student)</li>
-                     
-                        
-                        </ul>
-                        
-                  
-                                        </div>
-                                    </div>
-                                </section>
-      
-                        <!-- Github link -->
-                        <!-- <span class="link-block">
-                          <a href="https://github.com/eliahuhorwitz/Spectral-DeTuning" target="_blank"
-                          class="external-link button is-normal is-rounded is-dark">
-                          <span class="icon">
-                            <i class="fab fa-github"></i>
-                          </span>
-                          <span>Code</span>
-                        </a>
-                      </span> -->
-      
-                      <!-- ArXiv abstract Link -->
-                      <!-- <span class="link-block">
-                        <a href="https://arxiv.org/abs/2402.10208" target="_blank"
-                          class="external-link button is-normal is-rounded is-dark">
-                          <span class="icon">
-                            <i class="ai ai-arxiv"></i>
-                          </span>
-                          <span>arXiv</span>
-                        </a>
-                      </span> -->
-      
-                      <!-- Dataset -->
-      
-
-      
-
-      
-
-      
-      
+    <div class="research-box">
+      <div class="research-title">Visual Privacy with Computer Vision</div>
+      <p>We build tools to help blind users manage private image/video content. 
+        <a href="https://home.cs.colorado.edu/~DrG/VisualPrivacy/BIV-Priv/">BivPriv Dataset</a>, 
+        <a href="https://arxiv.org/abs/2407.18243">Benchmark</a>, 
+        <a href="https://dl.acm.org/doi/full/10.1145/3613904.3642713">Privacy Tool</a>
+      </p>
+    </div>
   
-      
-<!--       
-      <section class="hero is-small is-light">
-        <div class="hero-body">
-          <div class="container  is-max-desktop">
-            <h2 class="title is-3">Pre-Fine-Tuning Weight Recovery</h2>
-            <div class="level-set has-text-justified">
-              <p>
-                We propose the task of <it>Pre-Fine-Tuning Weight Recovery</it>. In this paper, we tackle this task in cases where multiple LoRA fine-tuned flavors of the same source model are available.
-                To solve this task we present <em>Spectral DeTuning</em>, a method that recovers Pre-FT weights of SoTA models using iterative low-rank matrix factorization
-                </p>
-             <p>
-              Unlike previous attacks on model alignment that attempt to recover Pre-FT capabilities, we aim to recover the exact Pre-FT weights.<br>
-              Moreover, it does not require running inference through the model. This is advantageous as i) it does not require training data ii) it is highly parallelizable, e.g., on a cluster of desktop GPUs such as RTX2080 our method can recover the Pre-FT weights of a Mistral-7B model in under five minutes.
-             </p>
-           </div>
-           <img src="static/images/stable_diffusion.png" alt="Recovering the Pre-Fine-Tuning Weight of an Aligned Mistral 7B" class="blend-img-background center-image"/>
-                <p><strong>Stable Diffusion Results:</strong> Spectral DeTuning recovers the Pre-Fine-Tuning images with high precision, even when using "in the wild" LoRAs, essentially reversing the personalization fine-tuning of the LoRA model.
-            </div>
-         </div>
-       </div>
-      </section>
-      
-      
-      
-      <section class="section hero is-small">
-        <div class="container is-max-desktop">
-          <div class="columns is-centered">
-            <div class="column is-full">
-              <div class="content">
-                <h2 class="title is-3">Vulnerability of SoTA Models</h2>
-                <div class="level-set has-text-justified">
-                  <p>
-                    By using just 5 LoRAs taken from CivitAI, we can recover the Pre-FT Stable Diffusion weights with a vanishingly small error. As can be seen below, scaling up to a DPO aligned Mistral only requires 8 LoRAs.
-                  </p>
-                  <img src="static/images/semantic_conv.png" alt="Number of LoRAs for semantic convergence" class="center-image"/>
-                  <div class="container mt-4">
-                    <div class="alert alert-danger" role="alert">
-                      <strong>Implications:</strong> SoTA LLMs that use LoRA for alignment fine-tuning are vulnerable to Pre-FT weight recovery attacks
-                    </div>
-                  </div>
-      
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> -->
-      
-<!--       
-      <section class="hero is-small is-light">
-        <div class="hero-body">
-          <div class="container  is-max-desktop">
-            <h2 class="title is-3">Spectral DeTuning</h2>
-            <div class="level-set has-text-justified">
-              <p>
-                The core idea of Spectral DeTuning is to iteratively break down the optimization into a set of simple sub-problems which have closed-form solutions. This results in a simple yet powerful algorithm that can be implemented in 8 lines of code.
-             </p>
-             <img src="static/images/algorithm.png" alt="Spectral DeTuning code" class="center-image"/>
-           </div>
-         </div>
-       </div>
-      </section>
-      
-      <section class="section hero is-small">
-        <div class="container is-max-desktop">
-          <div class="columns is-centered">
-            <div class="column is-full">
-              <div class="content">
-                <h2 class="title is-3">LoWRA Bench</h2>
-                <div class="level-set has-text-justified">
-                  <p>
-                    To stimulate research into preventing Pre-FT weight leakage and the associated risks in terms of model safety and alignment we present <strong>Lo</strong>RA <strong>W</strong>eight <strong>R</strong>ecovery <strong>A</strong>ttack (LoWRA) Bench, a comprehensive benchmark designed to evaluate Pre-FT weight recovery methods.<br>
-      
-                    Our dataset encompasses three pre-trained representative source models: a Vision Transformer (ViT) trained on ImageNet-1K, Stable Diffusion 1.5, and Mistral-7B-v0.1. Notably, these models are widely used and deployed in numerous production systems.
-      
-                  </p>
-                  <img src="static/images/lowra_bench.png" alt="LoWRA Bench Details" class="center-image"/>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      
-      
-      <section class="hero is-small is-light">
-        <div class="hero-body">
-          <div class="container  is-max-desktop">
-            <h2 class="title is-3">Broader Impact</h2>
-            <div class="level-set has-text-justified">
-              <p>
-                This work uncovers a significant vulnerability in fine-tuned models, allowing attackers to access pre-fine-tuning weights. While this discovery reveals potential security risks, our primary objective is to advance the field of Machine Learning and raise awareness within the research community about the existing vulnerabilities in current models.
-              </p>
-              <p>
-                Instead of using the findings of this study to execute attacks, we advocate for their use by model creators to enhance the safety and security of their models. By acknowledging and addressing vulnerabilities, creators can proactively safeguard against potential threats.
-              </p>
-              <p>
-                Furthermore, in the discussion section, we outline potential future directions and mitigation strategies. Following established practices in the cyber security community, we emphasize the importance of open discussion and encourage the reporting of vulnerabilities. By fostering transparency and collaboration, we can collectively create a safer environment for deploying machine learning models.
-             </p>
-           </div>
-         </div>
-       </div>
-      </section>
-      
-      
-      
-      <!--BibTex citation -->
-      <!-- <section class="section" id="BibTeX">
-        <div class="container is-max-desktop content">
-          <h2 class="title">BibTeX</h2>
-          <pre><code>@article{horwitz2024recovering,
-        title={Recovering the Pre-Fine-Tuning Weights of Generative Models},
-        author={Horwitz, Eliahu and Kahana, Jonathan and Hoshen, Yedid},
-        journal={arXiv preprint arXiv:2402.10208},
-        year={2024}
-      }</code></pre>
+    <div class="research-box">
+      <div class="research-title">AI Governance for (Data & Model) Contributor </div>
+      <p>We research governance approaches like DAOs and data minimization. 
+        <a href="https://www.usenix.org/conference/usenixsecurity24/presentation/sharma">Data Minimization</a>, 
+        <a href="https://ieeexplore.ieee.org/abstract/document/10634404/">Decentralized Governance</a>, 
+        <a href="https://arxiv.org/abs/2410.13095">DAO</a>, 
+        <a href="https://arxiv.org/abs/2410.01817">Democratic AI</a>
+      </p>
+    </div>
+  
+    <div class="research-box">
+      <div class="research-title">Usable Blockchain & Crypto for User Autonomy</div>
+      <p>We design user-friendly cryptographic tools like 
+        <a href="https://dl.acm.org/doi/full/10.1145/3613904.3642464">MFKDF</a>, 
+        <a href="https://www.usenix.org/conference/soups2023/presentation/zhou">iWallet</a>
+      </p>
+    </div>
+  </div>
+  
+
+
+  <!-- News -->
+  <div class="section-title">News</div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="news-box">
+        <div class="news-title">
+          Tanusree Sharma received 🟢🔴🟡🔵 
+          <a href="https://research.google/programs-and-events/research-scholar-program/recipients/?filtertab=2025">
+            Google Research Scholar Grant as PI 🎉
+          </a>May 31, 2025
         </div>
-      </section> -->
-      <!--End BibTex citation -->
+        <p>
+          This generous support will drive GPS Lab's research on 
+          "Designing Accessible Tools for Blind and Low-Vision People to Navigate Deepfake Media"
+        </p>
+      </div>
+    </div>
+  
+    <div class="col-md-12">
+      <div class="news-box">
+        <div class="news-title">Welcome to new incoming students for Fall 2025! 🎉👋</div>
       
-      
-      <!-- <footer class="footer">
-        <div class="container">
-          <div class="columns is-centered">
-            <div class="column is-8">
-              <div class="content">
-      
-                <p>
-                  This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from theֲ <a href="https://nerfies.github.io" target="_blank">Nerfies</a>ֲ project page.
-                  You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-                  Commons Attribution-ShareAlike 4.0 International License</a>.
-                </p>  -->
-<!-- 
-                <p> This page is built using Academic Project Page Template </p> -->
-      
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-      
-      <!-- Statcounter tracking code -->
-      
-      <!-- Default Statcounter code for Spectral DeTuning
-      https://vision.huji.ac.il/spectral_detuning/ -->
-      <script type="text/javascript">
-      var sc_project=12968013; 
-      var sc_invisible=1; 
-      var sc_security="c534194a"; 
-      </script>
-      <script type="text/javascript"
-      src="https://www.statcounter.com/counter/counter.js"
-      async></script>
-      <noscript><div class="statcounter"><a title="Web Analytics
-      Made Easy - Statcounter" href="https://statcounter.com/"
-      target="_blank"><img class="statcounter"
-      src="https://c.statcounter.com/12968013/0/c534194a/1/"
-      alt="Web Analytics Made Easy - Statcounter"
-      referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-    
-       
-            
+        <p>We are super excited excited to welcome new PhD students, Farhad and Aljawharah!</p>
+      </div>
+    </div>
+  </div>
+  
 
-	
+  <!-- Research -->
+ 
+  <div class="section-title">Some Ongoing Research</div>
 
-			    
+  <!-- Project 1 -->
+  <div class="project-box">
+    <div class="row align-items-center">
+      <div class="col-md-3 mb-3">
+        <img src="img/p1.png" width="100%" alt="Project image">
+      </div>
+      <div class="col-md-9">
+        <p class="title">Signals of Provenance: Practices & Challenges of Navigating Indicators in AI-Generated Media</p>
+        <p class="author">Ayae Ide, Tory Park, Jaron Mink, Tanusree Sharma</p>
+        <p class="badge-tag">Preprint</p>
+        <p class="description">
+          AI-generated content has become widespread through easy-to-use tools and powerful generative models. However, provenance indicators are often missed, especially when relying on visual cues alone. This study explores how blind and sighted individuals perceive and interpret these signals, uncovering four mental models that shape their judgments about authenticity and authorship in digital media.
+        </p>
+        <p class="links">
+          <a href="https://arxiv.org/pdf/2505.16057" target="_blank">
+            <img src="img/arx.jpg" style="height: 1rem;"> arXiv
+          </a>
+        </p>
+      </div>
+    </div>
+    <hr>
+  </div>
+  
+  <!-- Project 2 -->
+  <div class="project-box">
+    <div class="row align-items-center">
+      <div class="col-md-3 mb-3">
+        <img src="img/p2.png" width="100%" alt="Project image">
+      </div>
+      <div class="col-md-9">
+        <p class="title">Personhood Credentials: Human-Centered Design Recommendation</p>
+        <p class="author">Ayae Ide, Tanusree Sharma</p>
+        <p class="badge-tag">Usenix PEPR 2025</p>
+        <p class="description">
+          Personhood credentials (PHCs) enable individuals to verify they are human without revealing unnecessary data. This study investigates user perceptions of PHCs versus traditional identity verification. Participants favored features like periodic biometric checks, time-bound credentials, interactive human checks, and government involvement. We present actionable design recommendations rooted in user expectations.
+        </p>
+        <p class="links">
+          <a href="https://arxiv.org/pdf/2502.16375?" target="_blank">
+            <img src="img/arx.jpg" style="height: 1rem;"> arXiv
+          </a>
+          &nbsp;|&nbsp;
+          <a href="https://www.usenix.org/conference/pepr25/presentation/sharma" target="_blank">
+            <i class="fa fa-play"></i> Video
+          </a>
+        </p>
+      </div>
+    </div>
+    <hr>
+  </div>
+  
+  <!-- Project 3 -->
+  <div class="project-box">
+    <div class="row align-items-center">
+      <div class="col-md-3 mb-3">
+        <img src="img/p3.png" width="100%" alt="Project image">
+      </div>
+      <div class="col-md-9">
+        <p class="title">Design of Provenance and Verification for Voice Origin</p>
+        <p class="author">Tanusree Sharma, Farhad Hossain, Visar Berisha</p>
+        <p class="badge-tag">Preprint TBD</p>
+        <p class="description">
+          Voice plays a critical role in sectors like finance and government, but is vulnerable to spoofing via synthetic audio. This project explores systems to verify that a voice originates from a real human. It combines technical development with user-centered evaluation and advocates for greater awareness and education around voice authentication.
+        </p>
+        <p class="links">
+          <a href="#" target="_blank">
+            <img src="img/arx.jpg" style="height: 1rem;"> arXiv
+          </a>
+        </p>
+      </div>
+    </div>
+    <hr>
+  </div>
+  
+  <!-- Project 4 -->
+  <div class="project-box">
+    <div class="row align-items-center">
+      <div class="col-md-3 mb-3">
+        <img src="img/p4.png" width="100%" alt="Project image">
+      </div>
+      <div class="col-md-9">
+        <p class="title">Visual Privacy Management with Generative AI</p>
+        <p class="author">Tanusree Sharma, Yu-Yun Tseng, Lotus Zhang, Ayae Ide, Kelly Avery Mack, Leah Findlater, Danna Gurari, Yang Wang</p>
+        <p class="badge-tag">Preprint TBD</p>
+        <p class="description">
+          Through interviews with 21 blind or low-vision participants, this study examines how people use GenAI tools for self-presentation, navigation, and professional tasks. Findings reveal user preferences for privacy-aware design features including on-device processing, redaction tools, and multimodal feedback. We offer guidelines to ensure privacy and empowerment in GenAI systems.
+        </p>
+        <p class="links">
+          <a href="#" target="_blank">
+            <img src="img/arx.jpg" style="height: 1rem;"> arXiv
+          </a>
+        </p>
+      </div>
+    </div>
+    <hr>
+  </div>
+  
 
-         
 
-    <a style="color:#b5bec9;font-size:0.8em; float:right;" href="https://github.com/mavroudisv/plain-academic"></a> 
-    
+
+  <!-- People -->
+  <div class="section-title">People</div>
+  <div class="row">
+    <div class="col-sm-1-5 person-card">
+      <img src="img/tanusree1.jpeg" alt="Tanusree Sharma">
+      <p><strong>Tanusree Sharma</strong></p>
+      <p>Principal Investigator</p>
+    </div>
+    <div class="col-sm-1-5 person-card">
+      <img src="img/ayae.jpg" alt="Ayae Ide">
+      <p><strong>Ayae Ide</strong></p>
+      <p>Ph.D. Student</p>
+    </div>
+    <div class="col-sm-1-5 person-card">
+      <img src="img/yihao.jpg" alt="Yihao Zhou">
+      <p><strong>Yihao Zhou</strong></p>
+      <p>Masters Student</p>
+    </div>
+    <div class="col-sm-1-5 person-card">
+      <img src="img/farhad.jpg" alt="Farhad Hossain">
+      <p><strong>Farhad Hossain</strong></p>
+      <p>Incoming Ph.D. Student</p>
+    </div>
+    <div class="col-sm-1-5 person-card">
+      <img src="img/happy.jpg" alt="Aljawharah M. Alzahrani">
+      <p><strong>Aljawharah M. Alzahrani</strong></p>
+      <p>Incoming Ph.D. Student</p>
+    </div>
+  </div>
+  
+  <div class="section-title">Researchers and Undergrads</div>
+  <div class="row">
+    <div class="col-sm-1-5 person-card">
+      <a href="https://saleheenshafiq9.github.io/">
+        <img src="img/happy.jpg" alt="Shafiq Saleheen">
+      </a>
+      <p><strong>Shafiq Saleheen</strong></p>
+      <p>Researcher → Ph.D. Fall 2025 at Purdue University</p>
+    </div>
+    <div class="col-sm-1-5 person-card">
+      <a href="https://www.linkedin.com/in/park-psu/">
+        <img src="img/tory.jpeg" alt="Tory Park">
+      </a>
+      <p><strong>Tory Park</strong></p>
+      <p>Cybersecurity Analytics Undergrad</p>
+    </div>
+    <div class="col-sm-1-5 person-card">
+      <img src="img/ryan.jpeg" alt="Ryan John Oommen">
+      <p><strong>Ryan John Oommen</strong></p>
+      <p>Researcher, IUG Student</p>
+    </div>
+    <div class="col-sm-1-5 person-card">
+      <a href="https://ist.psu.edu/directory/wjw5326">
+        <img src="img/winston.jpeg" alt="Winston Jen White">
+      </a>
+      <p><strong>Winston Jen White</strong></p>
+      <p>Research Intern, IUG Student</p>
+    </div>
+    <div class="col-sm-1-5 person-card">
+      <img src="img/happy.jpg" alt="New Member">
+      <p><strong>you can be the New Member </strong></p>
+      <p>Title / Role</p>
+    </div>
+  </div>
+  
+
+  <!-- Sponsors -->
+  <div class="section-title">Funding and Support</div>
+  <p>We are gratefull for the support from:</p>
+  <div class="text-center sponsor-logos">
+    <img src="img/google.png" alt="Google" style="width: 5%; margin-bottom: 8px;">
+		<img src="img/openai.png" alt="OpenAI" style="width: 5%; margin-bottom: 8px;">
+		<img src="img/meta.png" alt="Meta" style="width: 10%; margin-bottom: 8px;">
+  </div>
+</div>
+
 </body>
-
 </html>
