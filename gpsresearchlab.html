@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GPS Lab</title>
+  <title>Research Lab</title>
   <link rel="shortcut icon" type="image/png" href="/assets/images/main/favicon/favicon-32x32.png">
   
   <!-- Bootstrap & Fonts -->
@@ -42,6 +42,10 @@
     .navbar-inverse .navbar-nav > li > a {
       color: #fff;
     }
+.container-narrow {
+  max-width: 900px;
+  margin: 0 auto;
+}
 
     .page-title {
       font-family: 'Philosopher', sans-serif;
@@ -202,7 +206,7 @@
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
         <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">GPS Lab</a>
+      <a class="navbar-brand" href="#">Research Lab</a>
 	           
     </div>
     <div id="navbar" class="collapse navbar-collapse">
@@ -216,21 +220,55 @@
   </div>
 </nav>
 
-<div class="container" style="margin-top: 80px;">
+<div class="container container-narrow" style="margin-top:80px;">
+
   <!-- Intro -->
-  <div class="page-title"> <span style="color:#28d6d3">G</span><span style="color:#F77F00">P</span><span style="color:#3A86FF">S</span> <span style="color:#000000">Lab</span>
-    (Governance, Privacy, and Security Lab)</div>
+  <!-- <div class="page-title"> <span style="color:#28d6d3">G</span><span style="color:#F77F00">P</span><span style="color:#3A86FF">S</span> <span style="color:#000000">Lab</span>
+    (Governance, Privacy, and Security Lab)</div> -->
  
 
-  <p class="paragraph">
+  <!-- <p class="paragraph">
     We are GPS Lab at 
     <a href="https://psu.edu">Penn State University</a>.
-  </p>
-  <p class="paragraph">
-    Our work, at the intersection of Security, AI, and HCI to address question: How can we design secure systems that improve the quality of human interaction and human data authenticity in digital ecosystems? Some Research Directions in our Lab
-  </p>
+  </p> -->
+  <div class="section-title">Research Summary</div>
+<p class="paragraph">
+  In our group, we work at the intersection of <strong>Security</strong>, <strong>AI</strong>, and <strong>HCI</strong>.
+  We study people’s safety concerns, decision-making behaviors, and the role of power dynamics in innovation 
+  across the AI development lifecycle, addressing complex privacy and safety challenges in AI as well as 
+  leveraging AI’s capabilities to solve long-standing privacy issues. We draw theories and techniques from 
+  information and computer sciences (e.g., privacy and security, human-computer interaction, machine learning) 
+  as well as social sciences (e.g., behavioral economics). Our research often involves an iterative design 
+  process that consists of studying users, building prototypes, designing experiments, and evaluating them 
+  empirically. More recently, we are deeply engaged in addressing questions such as: <em>How can we design secure systems that improve the quality of human interaction and human data authenticity in digital ecosystems?</em>
+</p>
 
-  <div class="research-row">
+<p class="paragraph"><strong>I have the following main lines of research:</strong></p>
+
+<p class="paragraph">
+  <span style="color:#00274C; font-weight:bold;">Usable Security and Privacy:</span>  
+  We design mechanisms to support people with different backgrounds and characteristics to protect their privacy and security. A large part of this line of work builds solutions for visual privacy by leveraging computer vision techniques.
+</p>
+
+<p class="paragraph">
+  <span style="color:#3A86FF; font-weight:bold;">Content Provenance and Identity:</span>  
+  This line of work focuses on verifying where digital content (such as AI-generated media) comes from and who created or modified it to maintain trust and safety online. Our work in this area involves designing and evaluating novel solutions for verifying humanness and developing context-aware provenance of content to combat platform abuse, Sybil attacks, and coordinated misinformation campaigns.
+</p>
+
+<p class="paragraph">
+  <span style="color:#F77F00; font-weight:bold;">Human-Centered AI:</span>  
+  We design and develop AI systems that are centered around human needs, values, and behaviors. Our research explores domains such as search engines, social media targeted advertising, AI assistive technologies, and large language model–based applications.
+</p>
+
+<p class="paragraph">
+  <span style="color:#28d6d3; font-weight:bold;">Computational AI Governance:</span>  
+  This line of work challenges the top-down governance model controlled by corporations—with limited opportunity for meaningful public input—by developing computational governance mechanisms grounded in participatory, collective intelligence, and decentralized systems.
+</p>
+
+
+
+
+  <!-- <div class="research-row">
     <div class="research-box">
       <div class="research-title">Accessible tools and Provenance for AIGC</div>
       <p>We study media (e.g. AI AI-generated contents) provenance and design tools to verify digital content authenticity. 
@@ -272,9 +310,9 @@
         <a href="https://www.usenix.org/conference/soups2023/presentation/zhou">iWallet</a>
       </p>
     </div>
-  </div>
+  </div> -->
 
-	<p style="color:red;"><strong>Prospective Students:</strong> We are always looking for PhD students and interns to join our group. Please review the <a href="https://tanusreesharma.github.io/joinus.html">Interested to Join Us</a> page and email me your CV and fill out this <a href="https://qualtricsxml7y6vlrfv.qualtrics.com/jfe/form/SV_bezAXi3aHdjBHrE">form.</a></p>
+	<p style="color: #3A86FF;"><strong>Prospective Students:</strong> We are always looking for PhD students and interns to join our group. Please review the <a href="https://tanusreesharma.github.io/joinus.html">Interested to Join Us</a> page and email me your CV and fill out this <a href="https://qualtricsxml7y6vlrfv.qualtrics.com/jfe/form/SV_bezAXi3aHdjBHrE">form.</a></p>
 
 
   <!-- News -->
@@ -289,7 +327,7 @@
           </a>May 31, 2025
         </div>
         <p>
-          This generous support will drive GPS Lab's research on 
+          This generous support will drive our research on 
           "Designing Accessible Tools for Blind and Low-Vision People to Navigate Deepfake Media"
         </p>
       </div>
@@ -346,7 +384,7 @@
         Voice plays a critical role in sectors like finance and government, but is vulnerable to spoofing via synthetic audio. As voice constitutes one of the most ubiquitous modes of human communication, it has inevitably become a major vector for producing large-scale scams and fraud, particularly when voice models are rapidly advancing in both capabilities and public utilization. This work focuses on investigating voice-based deception for people with high exposure to their voice, personally and professionally, with an aim to build socio-technical solutions and mitigate long tailed risks. 
         </p>
         <p class="links">
-          <a href="" target="_blank">
+          <a href="https://www.arxiv.org/abs/2507.16247" target="_blank">
             <img src="img/arx.jpg" style="height: 1rem;"> arXiv
           </a>
         </p>
@@ -459,12 +497,41 @@ structural concepts from management science and community coordination. Some ear
   <!-- People -->
   <div class="section-title">People</div>
   <div class="row">
+    <ul class="person-list">
+  <li>
+    <strong><a href = "https://ayaeide.github.io/">Ayae Ide </a></strong>Ph.D. Student <br>
+
+  </li>
+  <li>
+    <strong><a href = "https://www.linkedin.com/in/lili-dudas-a46801226/">Lili Dudas</strong> </a>Ph.D. Student (Co-advised with Kelley Cotter)<br>
+    
+  </li>
+  <li>
+    <strong>Aljawharah M. Alzahrani</strong> </a>Ph.D. Student (Scholarship)<br>
+
+  </li>
+  <li>
+    <strong>Farhad Hossain</strong> Ph.D. Student<br>
+  </li>
+  <li>
+    <strong>Yihao Zhou</strong> Masters Student<br>
+
+  </li>
+    <li>
+    <strong><a href = "https://www.linkedin.com/in/park-psu/">Tory Park</a></strong> Cybersecurity Analytics Undergrad<br>
+
+  </li>
+      <li>
+    <strong><a href = "https://www.linkedin.com/in/ryan-oommen-90551b208/">Ryan John Oommen</a></strong> Researcher, IUG Student<br>
+
+  </li>
+</ul>
     <!-- <div class="col-sm-1-5 person-card">
       <img src="img/tanusree1.jpeg" alt="Tanusree Sharma">
       <p><strong>Tanusree Sharma</strong></p>
       <p>Principal Investigator</p>
     </div> -->
-    <div class="col-sm-1-5 person-card">
+    <!-- <div class="col-sm-1-5 person-card">
       <img src="img/ayae.jpg" alt="Ayae Ide">
       <p><strong>Ayae Ide</strong></p>
       <p>Ph.D. Student</p>
@@ -491,15 +558,15 @@ structural concepts from management science and community coordination. Some ear
       <p>Masters Student</p>
     </div>
   
-  </div>
+  </div> -->
   
-  <div class="section-title">Researchers and Undergrads</div>
+  <!-- <div class="section-title">Researchers and Undergrads</div>
   <div class="row">
     <div class="col-sm-1-5 person-card">
       <a href="https://saleheenshafiq9.github.io/">
         <img src="img/happy.jpg" alt="Shafiq Saleheen">
-      </a>
-      <p><strong>Shafiq Saleheen</strong></p>
+      </a> -->
+      <!-- <p><strong>Shafiq Saleheen</strong></p>
       <p>Researcher → Ph.D. Fall 2025 at Purdue University</p>
     </div>
     <div class="col-sm-1-5 person-card">
@@ -513,7 +580,7 @@ structural concepts from management science and community coordination. Some ear
       <img src="img/ryan.jpeg" alt="Ryan John Oommen">
       <p><strong>Ryan John Oommen</strong></p>
       <p>Researcher, IUG Student</p>
-    </div>
+    </div> -->
     <!-- <div class="col-sm-1-5 person-card">
       <a href="https://ist.psu.edu/directory/wjw5326">
         <img src="img/winston.jpeg" alt="Winston Jen White">
@@ -521,12 +588,12 @@ structural concepts from management science and community coordination. Some ear
       <p><strong>Winston Jen White</strong></p>
       <p>Research Intern, IUG Student</p>
     </div> -->
-    <div class="col-sm-1-5 person-card">
+    <!-- <div class="col-sm-1-5 person-card">
       <img src="img/happy.jpg" alt="New Member">
       <p><strong>you can be the New Member </strong></p>
       <p>Title / Role</p>
     </div>
-  </div>
+  </div> -->
   
 
   <!-- Sponsors -->
