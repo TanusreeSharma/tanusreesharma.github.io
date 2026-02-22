@@ -172,7 +172,81 @@
     font-size:13px;
     margin:8px 0 8px 0;
   }
+    .people-list {
+      font-family: Georgia, serif;
+      font-size: 14px;
+      width: 220px;
+    }
 
+    .person {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      gap: 10px;
+    }
+
+    .person img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .person span {
+      color: #cc0000; /* red color like in the screenshot */
+    }
+	/* GRID LAYOUT */
+/* compact 3-column grid */
+
+
+.side-card {
+  padding: 8px;
+}
+
+/* Section labels tighter */
+.people-section-label {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 6px 0 4px 0;
+}
+
+/* 3 per row, very tight spacing */
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;              /* smaller gap */
+  margin-bottom: 6px;    /* tighter bottom spacing */
+  text-align: center;
+}
+
+/* Compact person block */
+.person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Smaller circular images */
+.person img {
+  width: 42px;           /* smaller */
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 2px;    /* tighter spacing */
+}
+
+/* Smaller name text */
+.person a {
+  font-size: 11px;
+  line-height: 1.1;
+  color: #00274C;
+  text-decoration: none;
+}
+
+.person a:hover {
+  text-decoration: underline;
+}
   </style>
 </head>
 <body>
@@ -302,7 +376,8 @@ Privacy, Security, and Safety for People Using AI: PRAC3 Risk Framework for Audi
 </p>
 
 <p style="font-size: 12px; line-height: 1.6;">
-  <strong>Research Interests:</strong> I work at the intersection of privacy and security, AI, and blockchain, where I examine question of How can we design secure systems that improve the quality of human interaction and ensure the authenticity of human data in digital ecosystems? My research investigates the individual, social, and organizational implications of emerging technologies, such as AI, with particular emphasis on provenance, authenticity, and the embedding of public values across diverse contexts of human-AI interaction. Some recent and past research in these directions:
+  <!-- <strong>Research Interests:</strong> -->
+   I work at the intersection of privacy and security, AI, and blockchain, where I examine question of How can we design secure systems that improve the quality of human interaction and ensure the authenticity of human data in digital ecosystems? My research investigates the individual, social, and organizational implications of emerging technologies, such as AI, with particular emphasis on provenance, authenticity, and the embedding of public values across diverse contexts of human-AI interaction. Some recent and past research in these directions:
 </p>
 
 <p style="font-size: 11px; line-height: 1.6; margin-left: 20px;">
@@ -344,14 +419,28 @@ Privacy, Security, and Safety for People Using AI: PRAC3 Risk Framework for Audi
 
       <div id="publications" class="section-title">Selected Publications (<a href="https://scholar.google.com/citations?hl=en&user=U_iQbMIAAAAJ&view_op=list_works&sortby=pubdate">GoogleScholar</a>)</div>
       <ul class="list-unstyled">
+		 <li><span class="publication-title">	
+Democratic Governance Through DAO-Based Deliberation and Voting for Inclusive Decision Making In AI Model</span><br>
+            <strong>Tanusree Sharma,</strong> Yujin Potter, Jongwon Park, Yiren Liu, Yun Huang, Sunny Liu, Dawn Song, Jeff Hancock, Yang Wang<br>
+          <a href="https://www.nature.com/srep/">To Appear in Nature Scientific Report</a>
+        </li>
+
+		 <li><span class="publication-title">	
+Hierarchical Instance Tracking to Balance Privacy Preservation with Accessible Information</span><br>
+             Neelima Prasad, Jarek Reynods, Neel Karsanbhai, <strong>Tanusree Sharma,</strong>, Lotus Zhang, Abigale Stangl, Yang Wang, Leah Findlater, Danna Gurari<br>
+          <a href="https://arxiv.org/abs/2512.10102">To Appear in IEEE Winter Conference on Applications in Computer Vision (WACV) 2026</a>
+        </li>
+
   <li><span class="publication-title">Signals of Provenance: Practices & Challenges of Navigating Indicators in AI-Generated Media for Sighted and Blind Individuals</span><br>
            Ayae Ide, Tory Park, Jaron Mink, <strong>Tanusree Sharma</strong> <br>
           <a href="https://arxiv.org/abs/2505.16057">[preprint]</a>
         </li>
 		<li><span class="publication-title">Future of Algorithmic Organization: Large-Scale Analysis of Decentralized Autonomous Organizations (DAOs)</span><br>
           <strong>Tanusree Sharma,</strong> Yujin Potter, Kornrapat Pongmala, Henry Wang, Andrew Miller, Dawn Song, Yang Wang <br>
-          <a href="https://arxiv.org/abs/2410.13095">[preprint]</a>
+          <a href="https://dl.acm.org/doi/10.1145/3796547">To Appear in ACM Tweb 2026</a>
         </li>
+
+		
 		       <li><span class="publication-title">PRAC3 (Privacy, Reputation, Accountability, Consent, Credit, Compensation): Long Tailed Risks of Voice Actors in AI Data-Economy</span><br>
            <strong>Tanusree Sharma,</strong> Yihao Zhou, Visar Berisha <br>
           <a href="https://arxiv.org/abs/2507.16247"><em>To appear 8th AAAI/ACM Conference on AI, Ethics, and Society</em></a>
@@ -604,90 +693,76 @@ Privacy, Security, and Safety for People Using AI: PRAC3 Risk Framework for Audi
 <!--           <li><b>[June 10, 2024]</b> Talk at <a href="https://www.initc3.org/events/2024-06-10-ic3-blockchain-camp-2024" target="_blank">IC3 Blockchain Camp, Cornell Tech</a></li> -->
         </ul>
       </div>
-<div style="margin-top: 30px;">
-    <!-- <div style="font-family: 'Philosopher', sans-serif; font-size: 20px; border-bottom: 2px solid #00274C; margin-bottom: 10px;"></div> -->
-<!-- PEOPLE SECTION (Students & Alumni) -->
 <div class="side-card">
-  <!-- <div class="side-card-title">People</div> -->
 
   <div class="people-section-label">Ph.D. students</div>
-  <ul class="people-list">
-    <li>
-      <img class="people-avatar" src="img/people/smile.png" alt="Aljawharah Alzahrani">
-      <p class="people-name"><a href="https://ist.psu.edu/directory/AMA9555">Aljawharah Alzahrani</a></p>
-    </li>
-    <li>
-      <img class="people-avatar" src="img/people/smile.png" alt="Lili Dudas">
-      <p class="people-name"><a href="https://www.linkedin.com/in/lili-dudas-a46801226/">Lili Dudas</a></p>
-    </li>
-    <li>
-      <img class="people-avatar" src="img/people/smile.png" alt="Ayae Ide">
-      <p class="people-name"><a href="https://ayaeide.github.io/">Ayae Ide</a></p>
-    </li>
-    <!-- add more students... -->
-  </ul>
+  <div class="people-grid">
 
-  <div class="people-section-label" style="margin-top:12px;">Masters Student</div>
-  <ul class="people-list" style="max-height:240px;">
-    <li>
-      <img class="people-avatar" src="img/people/yihao.jpg" alt="Yihao Zhou">
-      <div>
-        <p class="people-name"><a href="https://yihaozhou.com/">Yihao Zhou</a></p>
-      </div>
-    </li>
-	
- </ul>
-	  <div class="people-section-label" style="margin-top:12px;">Undergraduate Student</div>
-  <ul class="people-list" style="max-height:240px;">
-    <li>
-      <img class="people-avatar" src="img/people/tory.jpeg" alt="Tory Park">
-      <div>
-        <p class="people-name"><a href="https://www.linkedin.com/in/park-psu/">Tory Park </a></p>
+    <div class="person">
+      <img src="img/user.jpg" alt="Aljawharah Alzahrani">
+      <a href="https://ist.psu.edu/directory/AMA9555">Aljawharah Alzahrani</a>
+    </div>
 
-    </li>
-	    <li>
-      <img class="people-avatar" src="img/people/ryan.jpeg" alt="Ryan John Oommen">
-      <div>
-        <p class="people-name"><a href="https://www.linkedin.com/in/ryan-oommen-90551b208/">Ryan John Oommen</a></p>
+    <div class="person">
+      <img src="img/user.jpg" alt="Lili Dudas">
+      <a href="https://www.linkedin.com/in/lili-dudas-a46801226/">Lili Dudas</a>
+    </div>
 
-      </div>
-    </li>
+    <div class="person">
+      <img src="img/user.jpg" alt="Ayae Ide">
+      <a href="https://ayaeide.github.io/">Ayae Ide</a>
+    </div>
 
-    <li>
-      <img class="people-avatar" src="img/people/gwen.jpeg" alt="Gwendolyn Elizabeth Powell">
-      <div>
-        <p class="people-name"><a href="#">Gwendolyn Elizabeth Powell</a></p>
-  
-      </div>
-    </li>
+  </div>
 
-    <li>
-      <img class="people-avatar" src="img/people/smile.png" alt="Anish Krishnagiri">
-      <div>
-        <p class="people-name"><a href="#">Anish Krishnagiri</a></p>
-  
-      </div>
-    </li>
-    <!-- add more alumni... -->
-  </ul>
 
-    <div class="people-section-label" style="margin-top:12px;">Intern</div>
-  <ul class="people-list" style="max-height:240px;">
-    <li>
-      <img class="people-avatar" src="img/people/adnan.jpg" alt="Ahmed Adnan">
-      <div>
-        <p class="people-name"><a href="https://sites.google.com/iit.du.ac.bd/ahmedadnan23/">Ahmed Adnan</a></p>
-      </div>
-    </li>
+  <div class="people-section-label">Masters & Undergrad Student</div>
+  <div class="people-grid">
 
-	  <li>
-      <img class="people-avatar" src="img/people/smile.png" alt="Saad Noor">
-      <div>
-        <p class="people-name"><a href="https://github.com/SaadNoor555">Saad Noor</a></p>
-      </div>
-    </li>
-	
- </ul>
+    <div class="person">
+      <img src="img/yihao.jpg" alt="Yihao Zhou">
+      <a href="https://yihaozhou.com/">Yihao Zhou</a>
+    </div>
+
+
+    <div class="person">
+      <img src="img/tory.jpeg" alt="Tory Park">
+      <a href="https://www.linkedin.com/in/park-psu/">Tory Park</a>
+    </div>
+
+    <div class="person">
+      <img src="img/ryan.jpeg" alt="Ryan John Oommen">
+      <a href="https://www.linkedin.com/in/ryan-oommen-90551b208/">Ryan John Oommen</a>
+    </div>
+
+    <div class="person">
+      <img src="img/gwen.jpeg" alt="Gwendolyn Elizabeth Powell">
+      <a href="#">Gwendolyn Elizabeth Powell</a>
+    </div>
+
+    <div class="person">
+      <img src="img/user.jpg" alt="Anish Krishnagiri">
+      <a href="#">Anish Krishnagiri</a>
+    </div>
+
+  </div>
+
+
+  <div class="people-section-label">Intern</div>
+  <div class="people-grid">
+
+    <div class="person">
+      <img src="img/adnan.jpg" alt="Ahmed Adnan">
+      <a href="https://sites.google.com/iit.du.ac.bd/ahmedadnan23/">Ahmed Adnan</a>
+    </div>
+
+    <div class="person">
+      <img src="img/user.jpg" alt="Saad Noor">
+      <a href="https://github.com/SaadNoor555">Saad Noor</a>
+    </div>
+
+  </div>
+
 </div>
 
 
