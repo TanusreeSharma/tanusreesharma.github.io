@@ -122,6 +122,57 @@
 	  font-size: 13px;
 	  line-height: 1.4;
 	}
+
+  .side-card{
+    background-color:#f9f9f9;
+    border-left:1px solid #ddd;
+    padding:12px;
+    margin-top:18px;
+  }
+  .side-card-title{
+    font-family:'Philosopher', sans-serif;
+    font-size:18px;
+    border-bottom:2px solid #00274C;
+    margin-bottom:10px;
+    padding-bottom:6px;
+  }
+  .people-list{
+    list-style:none;
+    padding-left:0;
+    margin:0;
+    max-height:320px;     /* adjust: 250–450px */
+    overflow-y:auto;
+  }
+  .people-list li{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    margin-bottom:10px;
+  }
+  .people-avatar{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    object-fit:cover;
+    flex:0 0 34px;
+  }
+  .people-name{
+    font-size:13px;
+    line-height:1.2;
+    margin:0;
+  }
+  .people-sub{
+    font-size:12px;
+    color:#666;
+    line-height:1.2;
+    margin:2px 0 0 0;
+  }
+  .people-section-label{
+    font-weight:bold;
+    font-size:13px;
+    margin:8px 0 8px 0;
+  }
+
   </style>
 </head>
 <body>
@@ -289,7 +340,7 @@ Privacy, Security, and Safety for People Using AI: PRAC3 Risk Framework for Audi
 
  
 
-      <p style="color:red;"><strong>Prospective Students:</strong> I’m looking for PhD students and interns to join my group. Please review the <a href="https://tanusreesharma.github.io/joinus.html">Interested to Join Us</a> page and email me your CV.</p>
+      <p style="color:rgb(86, 167, 208);"><strong>Prospective Students:</strong> I’m looking for PhD students and interns to join my group. Please review the <a href="https://tanusreesharma.github.io/joinus.html">Interested to Join Us</a> page and email me your CV.</p>
 
       <div id="publications" class="section-title">Selected Publications (<a href="https://scholar.google.com/citations?hl=en&user=U_iQbMIAAAAJ&view_op=list_works&sortby=pubdate">GoogleScholar</a>)</div>
       <ul class="list-unstyled">
@@ -524,9 +575,13 @@ Privacy, Security, and Safety for People Using AI: PRAC3 Risk Framework for Audi
     </div>
 
     <div class="col-md-3">
-      <div style="background-color: #f9f9f9; border-left: 1px solid #ddd; padding: 20px; height: 100%; max-height: 800px; overflow-y: auto;">
-        <div style="font-family: 'Philosopher', sans-serif; font-size: 20px; border-bottom: 2px solid #00274C; margin-bottom: 10px;">Recent News</div>
-        <ul style="font-size: 12px; line-height: 1.6; padding-left: 20px;">
+		<div style="background-color:#f9f9f9; border-left:1px solid #ddd; padding:12px; max-height:280px; overflow-y:auto;">
+  <div style="font-family:'Philosopher', sans-serif; font-size:18px; border-bottom:2px solid #00274C; margin-bottom:8px;">
+    Recent News
+  </div>
+      <!-- <div style="background-color: #f9f9f9; border-left: 1px solid #ddd; padding: 20px; height: 100%; max-height: 800px; overflow-y: auto;">
+        <div style="font-family: 'Philosopher', sans-serif; font-size: 20px; border-bottom: 2px solid #00274C; margin-bottom: 10px;">Recent News</div> -->
+        <ul style="font-size: 11px; line-height: 1.4; padding-left: 18px; margin:0;">
 			<li><b>[Feb, 2026]</b> Our paper on <a href="https://openai.com/index/democratic-inputs-to-ai-grant-program-update/" target="_blank">democratic AI governance</a> got accept at <a href="https://www.nature.com/srep/" target="_blank">Nature Scientific Report 🎉  </a></li>
 			<li><b>[Oct 7, 2025]</b> Gave an invited talk at <a href="https://www.cylab.cmu.edu/research/blockchain/secure-blockchain-summit/sharma-talk-abstract.html" target="_blank"> Carnegie Mellon University’s Secure Blockchain Summit</a></li>
 			<li><b>[Sept, 2025]</b> One paper Accepted to <a href="https://wacv.thecvf.com/Conferences/2026/CallForPapers" target="_blank">IEEE/CVF Winter Conference on Applications of Computer Vision (WACV) </a></li>
@@ -549,12 +604,100 @@ Privacy, Security, and Safety for People Using AI: PRAC3 Risk Framework for Audi
 <!--           <li><b>[June 10, 2024]</b> Talk at <a href="https://www.initc3.org/events/2024-06-10-ic3-blockchain-camp-2024" target="_blank">IC3 Blockchain Camp, Cornell Tech</a></li> -->
         </ul>
       </div>
+<div style="margin-top: 30px;">
+    <!-- <div style="font-family: 'Philosopher', sans-serif; font-size: 20px; border-bottom: 2px solid #00274C; margin-bottom: 10px;"></div> -->
+<!-- PEOPLE SECTION (Students & Alumni) -->
+<div class="side-card">
+  <!-- <div class="side-card-title">People</div> -->
+
+  <div class="people-section-label">Ph.D. students</div>
+  <ul class="people-list">
+    <li>
+      <img class="people-avatar" src="img/people/smile.png" alt="Aljawharah Alzahrani">
+      <p class="people-name"><a href="https://ist.psu.edu/directory/AMA9555">Aljawharah Alzahrani</a></p>
+    </li>
+    <li>
+      <img class="people-avatar" src="img/people/smile.png" alt="Lili Dudas">
+      <p class="people-name"><a href="https://www.linkedin.com/in/lili-dudas-a46801226/">Lili Dudas</a></p>
+    </li>
+    <li>
+      <img class="people-avatar" src="img/people/smile.png" alt="Ayae Ide">
+      <p class="people-name"><a href="https://ayaeide.github.io/">Ayae Ide</a></p>
+    </li>
+    <!-- add more students... -->
+  </ul>
+
+  <div class="people-section-label" style="margin-top:12px;">Masters Student</div>
+  <ul class="people-list" style="max-height:240px;">
+    <li>
+      <img class="people-avatar" src="img/people/yihao.jpg" alt="Yihao Zhou">
+      <div>
+        <p class="people-name"><a href="https://yihaozhou.com/">Yihao Zhou</a></p>
+      </div>
+    </li>
+	
+ </ul>
+	  <div class="people-section-label" style="margin-top:12px;">Undergraduate Student</div>
+  <ul class="people-list" style="max-height:240px;">
+    <li>
+      <img class="people-avatar" src="img/people/tory.jpeg" alt="Tory Park">
+      <div>
+        <p class="people-name"><a href="https://www.linkedin.com/in/park-psu/">Tory Park </a></p>
+
+    </li>
+	    <li>
+      <img class="people-avatar" src="img/people/ryan.jpeg" alt="Ryan John Oommen">
+      <div>
+        <p class="people-name"><a href="https://www.linkedin.com/in/ryan-oommen-90551b208/">Ryan John Oommen</a></p>
+
+      </div>
+    </li>
+
+    <li>
+      <img class="people-avatar" src="img/people/gwen.jpeg" alt="Gwendolyn Elizabeth Powell">
+      <div>
+        <p class="people-name"><a href="#">Gwendolyn Elizabeth Powell</a></p>
+  
+      </div>
+    </li>
+
+    <li>
+      <img class="people-avatar" src="img/people/smile.png" alt="Anish Krishnagiri">
+      <div>
+        <p class="people-name"><a href="#">Anish Krishnagiri</a></p>
+  
+      </div>
+    </li>
+    <!-- add more alumni... -->
+  </ul>
+
+    <div class="people-section-label" style="margin-top:12px;">Intern</div>
+  <ul class="people-list" style="max-height:240px;">
+    <li>
+      <img class="people-avatar" src="img/people/adnan.jpg" alt="Ahmed Adnan">
+      <div>
+        <p class="people-name"><a href="https://sites.google.com/iit.du.ac.bd/ahmedadnan23/">Ahmed Adnan</a></p>
+      </div>
+    </li>
+
+	  <li>
+      <img class="people-avatar" src="img/people/smile.png" alt="Saad Noor">
+      <div>
+        <p class="people-name"><a href="https://github.com/SaadNoor555">Saad Noor</a></p>
+      </div>
+    </li>
+	
+ </ul>
+</div>
+
+
+	  
 	  <!-- SPONSORS SECTION -->
   <div style="margin-top: 30px;">
     <div style="font-family: 'Philosopher', sans-serif; font-size: 20px; border-bottom: 2px solid #00274C; margin-bottom: 10px;">SPONSORS</div>
     <div style="text-align: center;">
-		<img src="img/google.png" alt="Google" style="width: 30%; margin-bottom: 8px;">
-		<img src="img/openai.png" alt="OpenAI" style="width: 30%; margin-bottom: 8px;">
+		<img src="img/google.png" alt="Google" style="width: 20%; margin-bottom: 8px;">
+		<img src="img/openai.png" alt="OpenAI" style="width: 20%; margin-bottom: 8px;">
 		<img src="img/meta.png" alt="Meta" style="width: 40%; margin-bottom: 8px;">
       <!-- <img src="img/sponsors/Seed.png" alt="pennstate seed" style="max-width: 100%; height: auto; margin-bottom: 10px;">
      -->
