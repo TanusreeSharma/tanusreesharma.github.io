@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hive Lab — news, talks, and media mentions covering our work in security, AI, and HCI." />
+  <title>News &amp; Media — Hive Lab</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" />
+
+  <style>
+    /* ── Reset & tokens ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --paper:    #faf9f6;
+      --paper-2:  #f1efe8;
+      --ink:      #1c1b18;
+      --ink-2:    #55524a;
+      --ink-3:    #918d80;
+      --line:     rgba(30,25,15,0.13);
+      --line-2:   rgba(30,25,15,0.07);
+
+      --accent:       #9c6b2e;
+      --accent-soft:  #f3ead9;
+      --slate:        #3c4a52;
+
+      --font-display: 'Source Serif 4', Georgia, serif;
+      --font-sans:    'Inter', system-ui, sans-serif;
+      --font-mono:    'IBM Plex Mono', monospace;
+
+      --max-w: 1320px;
+      --radius: 3px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; animation: none !important; }
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── Top nav ─────────────────────────────────────────────── */
+    .topbar {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 26px 0 14px;
+      flex-wrap: wrap;
+      gap: .75rem;
+    }
+
+    .wordmark {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      color: var(--ink);
+    }
+    .wordmark sup {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--ink-3);
+      letter-spacing: .08em;
+      margin-left: 8px;
+      top: -8px;
+      text-transform: uppercase;
+    }
+
+    nav { display: flex; gap: 0; flex-wrap: wrap; }
+    nav a {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--ink-3);
+      margin-left: 1.4rem;
+      padding-bottom: 3px;
+      border-bottom: 1.5px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    nav a:hover { color: var(--ink); text-decoration: none; border-bottom-color: var(--accent); }
+    nav a.active { color: var(--ink-3); text-decoration: none; border-bottom-color: var(--accent); }
+
+    .rule-strong { height: 2px; background: var(--ink); width: 100%; }
+
+    /* ── Page intro ──────────────────────────────────────────── */
+    .page-intro { padding: 2.25rem 0 0; }
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--accent);
+      margin-bottom: .65rem;
+      display: block;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: .6rem;
+      line-height: 1.15;
+    }
+    .page-sub {
+      font-size: 14.5px;
+      color: var(--ink-2);
+      max-width: 56em;
+    }
+
+    /* ── Section headings ────────────────────────────────────── */
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: .6rem;
+      margin: 0 0 1.1rem;
+    }
+    .section-head .num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-3);
+      letter-spacing: .04em;
+    }
+    .section-head h2 {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink);
+    }
+    .section-head .fill { flex: 1; height: 1px; background: var(--line); }
+
+    /* ════════════════════════════════════════════════════════════
+       Three columns side by side: Talks · News · Media Mentions
+       ════════════════════════════════════════════════════════════ */
+    .nm-layout {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 2.25rem;
+      align-items: start;
+      margin-top: 2rem;
+      padding-bottom: 3rem;
+    }
+    .nm-col { display: flex; flex-direction: column; min-width: 0; }
+
+    .col-shell { position: relative; }
+
+    .col-panel {
+      max-height: 600px;
+      overflow-y: auto;
+      padding-right: 6px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--ink-3) transparent;
+    }
+    .col-panel::-webkit-scrollbar { width: 6px; }
+    .col-panel::-webkit-scrollbar-track { background: transparent; }
+    .col-panel::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+    .col-panel::-webkit-scrollbar-thumb:hover { background: var(--ink-3); }
+    .col-panel.expanded { max-height: none; overflow: visible; }
+
+    .fade-edge {
+      position: absolute;
+      left: 0; right: 6px; bottom: 44px;
+      height: 56px;
+      background: linear-gradient(to bottom, rgba(250,249,246,0), var(--paper) 80%);
+      pointer-events: none;
+      transition: opacity .15s ease;
+    }
+    .col-shell.is-expanded .fade-edge { opacity: 0; }
+
+    .toggle-more {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      width: 100%; margin-top: .9rem;
+      font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em;
+      color: var(--accent); background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 7px 0; cursor: pointer; transition: border-color .15s, background .15s;
+    }
+    .toggle-more:hover { border-color: var(--accent); background: var(--accent-soft); }
+    .toggle-more i { font-size: 13px; transition: transform .2s ease; }
+    .toggle-more.is-expanded i { transform: rotate(180deg); }
+
+    /* ── Talk / video cards ──────────────────────────────────── */
+    .talk-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper-2);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--ink);
+      margin-bottom: .85rem;
+    }
+    .video-frame iframe {
+      position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block;
+    }
+    .video-pending {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: .85rem;
+      background: repeating-linear-gradient(135deg, var(--paper) 0 10px, var(--paper-2) 10px 20px);
+      border: 1px dashed var(--line);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .4rem;
+      color: var(--ink-3);
+    }
+    .video-pending i { font-size: 22px; }
+    .video-pending span {
+      font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em;
+    }
+    .talk-title { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: .25rem; line-height: 1.35; }
+    .talk-venue { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-3); letter-spacing: .02em; margin-bottom: .35rem; }
+    .talk-speaker { font-size: 13px; color: var(--ink-2); }
+    .talk-speaker .me { font-weight: 600; color: var(--ink); }
+    .talk-badge {
+      display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: .03em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft);
+      border: 1px solid var(--accent); border-radius: var(--radius); padding: 2px 7px; margin-top: .5rem;
+    }
+
+    /* ── News list (text feed) ──────────────────────────────── */
+    .news-list { list-style: none; }
+    .news-list li {
+      padding: .8rem 0;
+      border-bottom: 1px solid var(--line-2);
+      font-size: 13.5px;
+    }
+    .news-list li:last-child { border-bottom: none; }
+    .ndate {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-3);
+      letter-spacing: .02em;
+      margin-bottom: .25rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .news-list li span:last-child { color: var(--ink-2); }
+    .news-list li a { color: var(--ink); border-bottom: 1px solid var(--line); }
+    .news-list li a:hover { color: var(--accent); border-bottom-color: var(--accent); text-decoration: none; }
+
+    /* ── Media mention cards ─────────────────────────────────── */
+    .media-list { display: flex; flex-direction: column; gap: .75rem; }
+    .media-item {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: .8rem .9rem;
+      background: var(--paper);
+      transition: border-color .15s, background .15s;
+    }
+    .media-item:hover { border-color: var(--accent); background: var(--accent-soft); }
+    .media-source {
+      font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em;
+      color: var(--accent); margin-bottom: .35rem; display: flex; align-items: center; gap: 5px;
+    }
+    .media-source i { font-size: 13px; }
+    .media-title { font-size: 13.5px; font-weight: 600; color: var(--ink); line-height: 1.4; margin-bottom: .3rem; }
+    .media-item a.media-link { color: var(--ink); }
+    .media-item:hover a.media-link { color: var(--accent); }
+    .media-date { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-3); letter-spacing: .02em; }
+
+    /* ── Footer ──────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 1.4rem 0 2.5rem;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: .02em;
+      color: var(--ink-3);
+    }
+    footer a { color: var(--ink-3); }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 980px) {
+      .nm-layout { grid-template-columns: 1fr 1fr; }
+      .nm-col:last-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 640px) {
+      .nm-layout { grid-template-columns: 1fr; }
+      .nm-col:last-child { grid-column: auto; }
+      nav a { margin-left: .9rem; font-size: 10.5px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header role="banner">
+    <div class="topbar">
+      <div class="wordmark">Hive Lab</div>
+      <nav aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/people/">People</a>
+        <a href="/research/">Research</a>
+        <a href="/publications/">Publications</a>
+        <a href="/philosophy/">Philosophy</a>
+        <a href="/news-media/" class="active">Media</a>
+        <a href="/join/">Join</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <div class="page-intro">
+      <span class="eyebrow">News &amp; Media</span>
+      <h1>What we are working on and who's talking about it.</h1>
+      <p class="page-sub">Talks from inside the lab, our latest announcements, and press &amp; conference mentions of our work — each column scrolls independently, or expand any of them to see everything at once.</p>
+    </div>
+
+    <div class="nm-layout">
+
+      <!-- ══════════════════ Talks ══════════════════ -->
+      <div class="nm-col">
+        <div class="section-head">
+          <span class="num">01</span>
+          <h2>Selected Talks</h2>
+          <span class="fill"></span>
+        </div>
+
+        <div class="col-shell" id="shell-talks">
+          <div class="col-panel" id="panel-talks">
+ <div class="talk-card">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/0WJXQmaiVao" title="V.O.I.C.E: Risk Taxonomy of Voice Synthesis — USENIX PEPR 2025" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <div class="talk-title">V.O.I.C.E: Risk Taxonomy of Voice Synthesis</div>
+              <div class="talk-venue">USENIX PEPR 2026 · Recorded talk</div>
+              <div class="talk-speaker"><a href="https://www.linkedin.com/in/lili-dudas-a46801226/" target="_blank" rel="noopener">Lili Dudas</a> &amp; <span class="me">Tanusree Sharma</span></div>
+            </div>
+
+            <div class="talk-card">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/4Obgzdyv_vs" title="Decentralized Identity and Trust: Empirical Insights — CMU CyLab" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <div class="talk-title">Decentralized Identity and Trust: Empirical Insights</div>
+              <div class="talk-venue">CMU CyLab Secure Blockchain Summit 2025· Recorded talk</div>
+              <div class="talk-speaker"><span class="me">Tanusree Sharma</span> (PI)</div>
+            </div>
+
+            <div class="talk-card">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/T6IgYUv_aQk" title="Verifying Humanness: Personhood Credentials for the Digital Identity Crisis — USENIX PEPR 2025" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <div class="talk-title">Verifying Humanness: Personhood Credentials for the Digital Identity Crisis</div>
+              <div class="talk-venue">USENIX PEPR 2025 · Recorded talk</div>
+              <div class="talk-speaker"><span class="me">Tanusree Sharma</span> (PI)</div>
+            </div>
+
+
+        
+<!--          
+         <div class="talk-card">
+              <div class="video-pending">
+                <i class="ti ti-video" aria-hidden="true"></i>
+                <span>Recording pending</span>
+              </div>
+              <div class="talk-title">V.O.I.C.E: Risk Taxonomy of Voice Synthesis</div>
+              <div class="talk-venue">USENIX PEPR 2026</div>
+              <div class="talk-speaker"><a href="https://www.linkedin.com/in/lili-dudas-a46801226/" target="_blank" rel="noopener">Lili Dudas</a> &amp; <span class="me">Tanusree Sharma</span></div>
+              <span class="talk-badge"><i class="ti ti-clock" aria-hidden="true"></i> Video coming soon</span>
+            </div> -->
+
+            <div class="talk-card">
+              <div class="video-pending">
+                <i class="ti ti-microphone-2" aria-hidden="true"></i>
+                <span>Recording pending</span>
+              </div>
+              <div class="talk-title">V.O.I.C.E— Showcase</div>
+              <div class="talk-venue">Trust &amp; Safety Research Conference, Stanford FSI · 2026</div>
+              <div class="talk-speaker"><span class="me">Hive Lab</span></div>
+            </div>
+
+          </div>
+          <div class="fade-edge"></div>
+          <button class="toggle-more" data-target="panel-talks" data-shell="shell-talks">
+            <span>Show all talks</span>
+            <i class="ti ti-chevron-down" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ══════════════════ News ══════════════════ -->
+      <div class="nm-col">
+        <div class="section-head">
+          <span class="num">02</span>
+          <h2>News</h2>
+          <span class="fill"></span>
+        </div>
+
+        <div class="col-shell" id="shell-news">
+          <div class="col-panel" id="panel-news">
+            <ul class="news-list">
+              <li>
+                <span class="ndate">Jun 2026</span>
+                <span>Hive Lab will showcase the V.O.I.C.E Risk Framework at the <a href="https://tip.fsi.stanford.edu/evergreen-trust-and-safety-research-conference" target="_blank" rel="noopener">Trust &amp; Safety Research Conference, Stanford University</a>.</span>
+              </li>
+              <li>
+                <span class="ndate">May 2026</span>
+                <span><a href="https://www.linkedin.com/in/lili-dudas-a46801226/" target="_blank" rel="noopener">Lili</a> and Tanusree will co-present the V.O.I.C.E Risk Framework at <a href="https://www.usenix.org/conference/pepr26/presentation/sharma" target="_blank" rel="noopener">USENIX PEPR</a>.</span>
+              </li>
+              <li>
+                <span class="ndate">May 2026</span>
+                <span><a href="https://www.linkedin.com/in/lili-dudas-a46801226/" target="_blank" rel="noopener">Lili</a> will present "Contextual Integrity in Youth AI Use" (with Aljawharah) at the <a href="https://privaci.info/symposium/2026/cfp.html" target="_blank" rel="noopener">PrivaCI Symposium 2026</a>.</span>
+              </li>
+              <li>
+                <span class="ndate">Apr 2026</span>
+                <span>New paper on democratic AI governance accepted in <a href="https://www.nature.com/articles/s41598-026-40180-8" target="_blank" rel="noopener">Nature Scientific Reports</a>.</span>
+              </li>
+              <li>
+                <span class="ndate">Mar 2026</span>
+                <span>Two paper accepted to <a href="https://dl.acm.org/doi/abs/10.1145/3796547" target="_blank" rel="noopener">ACM Transactions on the Web</a>.</span>
+              </li>
+              <li>
+                <span class="ndate">Oct 2025</span>
+                <span>Hive Lab PI gives an invited talk at <a href="https://www.cylab.cmu.edu/research/blockchain/secure-blockchain-summit/sharma-talk-abstract.html" target="_blank" rel="noopener">Carnegie Mellon University's Secure Blockchain Summit</a>.</span>
+              </li>
+              <li>
+                <span class="ndate">Sep 2025</span>
+                <span>New paper accepted to <a href="https://wacv.thecvf.com/Conferences/2026/CallForPapers" target="_blank" rel="noopener">IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)</a>.</span>
+              </li>
+              <li>
+                <span class="ndate">Aug 2025</span>
+                <span>Two papers accepted to the <a href="https://www.aies-conference.com/2025/" target="_blank" rel="noopener">AAAI/ACM Conference on AI, Ethics, and Society</a>.</span>
+              </li>
+                   <li>
+                <span class="ndate">Jun 2025</span>
+                <span>One paper accepted to <a href="https://assets25.sigaccess.org/" target="_blank" rel="noopener">ACM ASSETS 2025</a>.</span>
+              </li>
+              <li>
+                <span class="ndate">Mar 2025</span>
+                <span>One paper accepted to <a href="https://compass.acm.org/" target="_blank" rel="noopener">ACM COMPASS</a>.</span>
+              </li>
+              <li>
+                <span class="ndate">Jul 2025</span>
+                <span>Hive Lab PI Tanusree received the <a href="https://research.google/programs-and-events/" target="_blank" rel="noopener">Google Research Scholar Award 2025</a></span>
+              </li>
+                 <li>
+                <span class="ndate">Aug 2025</span>
+                <span>Agentic AI Summit <a href="https://rdi.berkeley.edu/events/agentic-ai-summit" target="_blank" rel="noopener">UC Berkeley RDI</a></span>
+              </li>
+
+               <li>
+                <span class="ndate">Oct 2025</span>
+                <span>Invited talk — Secure Blockchain Summit <a href="https://www.cylab.cmu.edu/research/blockchain/secure-blockchain-summit/sharma-talk-abstract.html" target="_blank" rel="noopener">CMU CyLab</a></span>
+              </li>
+                <li>
+                <span class="ndate">Aug 2024</span>
+                <span>Invited talk - Decentralization and AI Summit<a href="https://rdi.berkeley.edu/events/decentralizationaisummit24" target="_blank" rel="noopener">UC Berkeley RDI</a></span>
+              </li>
+
+        
+              <li>
+                <span class="ndate">Dec 2024</span>
+                <span>Two papers accepted to <a href="https://sp2025.ieee-security.org/" target="_blank" rel="noopener">IEEE S&amp;P 2025</a>, and one to <a href="https://www.ndss-symposium.org/ndss2025/" target="_blank" rel="noopener">NDSS 2025</a>.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="fade-edge"></div>
+          <button class="toggle-more" data-target="panel-news" data-shell="shell-news">
+            <span>Show all news</span>
+            <i class="ti ti-chevron-down" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ══════════════════ Media Mentions ══════════════════ -->
+      <div class="nm-col">
+        <div class="section-head">
+          <span class="num">03</span>
+          <h2>Media Mentions</h2>
+          <span class="fill"></span>
+        </div>
+
+        <div class="col-shell" id="shell-media">
+          <div class="col-panel" id="panel-media">
+            <div class="media-list">
+
+                              <a class="media-item" href="https://www.nytimes.com/2025/10/29/technology/characterai-underage-users.html" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-news" aria-hidden="true"></i> The New York Times</div>
+                <div class="media-title media-link">Character.AI to Bar Children Under 18 From Using Its Chatbots</div>
+                <div class="media-date">Oct 2025 · <span class="media-flag">Unconfirmed mention</span></div>
+              </a>
+
+              <a class="media-item" href="https://www.psu.edu/news/information-sciences-and-technology/story/democratic-approach-challenge-improve-ai-tools" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-building-bank" aria-hidden="true"></i> Penn State News</div>
+                <div class="media-title media-link">Democratic approach to challenge, improve AI tools</div>
+                <div class="media-date">May 2026</div>
+              </a>
+
+              <a class="media-item" href="https://www.psu.edu/news/information-sciences-and-technology/story/qa-improving-how-blind-and-low-vision-people-navigate" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-building-bank" aria-hidden="true"></i> Penn State News</div>
+                <div class="media-title media-link">Q&amp;A: Improving How Blind and Low-Vision People Navigate Deepfakes</div>
+                <div class="media-date">2025</div>
+              </a>
+
+              <a class="media-item" href="https://theadna.libsyn.com/tanusree-sharma-2-of-2" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-microphone" aria-hidden="true"></i> The ADNA Podcast</div>
+                <div class="media-title media-link">The Hidden Risks Behind Voice AI</div>
+                <div class="media-date">Jul 2025</div>
+              </a>
+
+              <a class="media-item" href="https://ist.psu.edu/news/tanusree-sharma-recognized-by-soups-2024" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-building-bank" aria-hidden="true"></i> Penn State IST News</div>
+                <div class="media-title media-link">Tanusree Sharma Recognized by SOUPS 2024 — John Karat Award</div>
+                <div class="media-date">Sep 2024</div>
+              </a>
+
+              <a class="media-item" href="https://toptech.news/is-openais-moonshot-to-integrate-democracy-into-ai-tech-more-than-pr-the-ai-beat/" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-news" aria-hidden="true"></i> Top Tech News — The AI Beat</div>
+                <div class="media-title media-link">Is OpenAI's "Moonshot" to Integrate Democracy Into AI Tech More Than PR?</div>
+                <div class="media-date">2024</div>
+              </a>
+
+              <a class="media-item" href="https://crypto.news/crypto-claims-to-be-inclusive-not-for-visually-impaired-as-it-turns-out/" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-news" aria-hidden="true"></i> Crypto.news</div>
+                <div class="media-title media-link">Crypto Claims to Be Inclusive. Not for the Visually Impaired, as It Turns Out.</div>
+                <div class="media-date">2024</div>
+              </a>
+
+              <a class="media-item" href="https://www.hapticsdao.info/research/journals-and-relevant-papers" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-accessible" aria-hidden="true"></i> HapticsDAO</div>
+                <div class="media-title media-link">Web3 Accessibility — Research &amp; Relevant Papers</div>
+                <div class="media-date">2024</div>
+              </a>
+
+              <a class="media-item" href="https://ischool.illinois.edu/news-events/news/2022/02/wang-receives-meta-grant-research-social-media-advertising-and-privacy" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-building-bank" aria-hidden="true"></i> iSchool, UIUC</div>
+                <div class="media-title media-link">Social Media Advertising and Privacy in the Global South</div>
+                <div class="media-date">Feb 2022</div>
+              </a>
+
+              <a class="media-item" href="https://openai.com/index/democratic-inputs-to-ai-grant-program-update/" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-news" aria-hidden="true"></i> OpenAI Blog</div>
+                <div class="media-title media-link">Democratic Inputs to AI — Grant Program Update</div>
+                <div class="media-date">2023</div>
+              </a>
+
+              <a class="media-item" href="https://www.oasislabs.com/" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-currency-bitcoin" aria-hidden="true"></i> Oasis Labs</div>
+                <div class="media-title media-link">DAOs Should Enable Private Voting for Decentralization</div>
+                <div class="media-date"><span class="media-flag">Unconfirmed mention</span></div>
+              </a>
+
+              <a class="media-item" href="https://ist.psu.edu/research/administration/find-funding" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-building-bank" aria-hidden="true"></i> Penn State IST</div>
+                <div class="media-title media-link">IST Seed Grant — Human Aspects in Digital Identity Solutions</div>
+                <div class="media-date">Oct 2024</div>
+              </a>
+
+              <a class="media-item" href="https://www.forbes.com/sites/helenalbert/2020/06/19/how-to-use-covid-19-tracking-apps-and-still-protect-your-privacy/" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-news" aria-hidden="true"></i> Forbes</div>
+                <div class="media-title media-link">How To Use COVID-19 Tracking Apps And Still Protect Your Privacy</div>
+                <div class="media-date">Jun 2020</div>
+              </a>
+
+              <!-- <a class="media-item" href="https://www.cylab.cmu.edu/research/blockchain/secure-blockchain-summit/sharma-talk-abstract.html" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-microphone-2" aria-hidden="true"></i> CMU CyLab</div>
+                <div class="media-title media-link">Invited talk — Secure Blockchain Summit</div>
+                <div class="media-date">Oct 2025</div>
+              </a> -->
+
+              <!-- <a class="media-item" href="https://rdi.berkeley.edu/events/decentralizationaisummit24" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-microphone-2" aria-hidden="true"></i> UC Berkeley RDI</div>
+                <div class="media-title media-link">Decentralization and AI Summit</div>
+                <div class="media-date">Aug 2024</div>
+              </a>
+
+              <a class="media-item" href="https://rdi.berkeley.edu/events/agentic-ai-summit" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-microphone-2" aria-hidden="true"></i> UC Berkeley RDI</div>
+                <div class="media-title media-link">Agentic AI Summit</div>
+                <div class="media-date">Aug 2025</div>
+              </a> -->
+
+              <!-- <a class="media-item" href="https://tip.fsi.stanford.edu/evergreen-trust-and-safety-research-conference" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-microphone-2" aria-hidden="true"></i> Stanford FSI</div>
+                <div class="media-title media-link">Trust &amp; Safety Research Conference</div>
+                <div class="media-date">Jun 2026</div>
+              </a> -->
+              <!-- <a class="media-item" href="https://research.google/programs-and-events/research-scholar-program/" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-award" aria-hidden="true"></i> Google Research</div>
+                <div class="media-title media-link">2025 Google Research Scholar Award</div>
+                <div class="media-date">Jun 2025</div>
+              </a>
+
+              <a class="media-item" href="https://ist.psu.edu/research/administration/find-funding" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-building-bank" aria-hidden="true"></i> Penn State IST</div>
+                <div class="media-title media-link">IST Seed Grant — Human Aspects in Digital Identity Solutions</div>
+                <div class="media-date">Oct 2024</div>
+              </a>
+
+              <a class="media-item" href="https://x.com/Tanusree_Sharma/status/1823140462699463008" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-trophy" aria-hidden="true"></i> USENIX / SOUPS</div>
+                <div class="media-title media-link">John Karat Award, SOUPS &amp; USENIX 2024</div>
+                <div class="media-date">Aug 2024</div>
+              </a> -->
+<!-- 
+              <a class="media-item" href="https://www.cylab.cmu.edu/research/blockchain/secure-blockchain-summit/sharma-talk-abstract.html" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-microphone-2" aria-hidden="true"></i> CMU CyLab</div>
+                <div class="media-title media-link">Invited talk — Secure Blockchain Summit</div>
+                <div class="media-date">Oct 2025</div>
+              </a>
+
+              <a class="media-item" href="https://rdi.berkeley.edu/events/decentralizationaisummit24" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-microphone-2" aria-hidden="true"></i> UC Berkeley RDI</div>
+                <div class="media-title media-link">Decentralization and AI Summit</div>
+                <div class="media-date">Aug 2024</div>
+              </a>
+
+              <a class="media-item" href="https://rdi.berkeley.edu/events/agentic-ai-summit" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-microphone-2" aria-hidden="true"></i> UC Berkeley RDI</div>
+                <div class="media-title media-link">Agentic AI Summit</div>
+                <div class="media-date">Aug 2025</div>
+              </a> -->
+
+              <!-- <a class="media-item" href="https://tip.fsi.stanford.edu/evergreen-trust-and-safety-research-conference" target="_blank" rel="noopener">
+                <div class="media-source"><i class="ti ti-microphone-2" aria-hidden="true"></i> Stanford FSI</div>
+                <div class="media-title media-link">Trust &amp; Safety Research Conference</div>
+                <div class="media-date">Jun 2026</div>
+              </a> -->
+
+            </div>
+          </div>
+          <div class="fade-edge"></div>
+          <button class="toggle-more" data-target="panel-media" data-shell="shell-media">
+            <span>Show all mentions</span>
+            <i class="ti ti-chevron-down" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <a href="https://www.psu.edu/" target="_blank" rel="noopener">Penn State</a>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var buttons = Array.prototype.slice.call(document.querySelectorAll('.toggle-more'));
+    buttons.forEach(function (btn) {
+      var panel = document.getElementById(btn.getAttribute('data-target'));
+      var shell = document.getElementById(btn.getAttribute('data-shell'));
+      var label = btn.querySelector('span');
+      var collapsedLabel = label.textContent;
+      var expandedLabel = 'Show less';
+
+      btn.addEventListener('click', function () {
+        var nowExpanded = !panel.classList.contains('expanded');
+        panel.classList.toggle('expanded', nowExpanded);
+        shell.classList.toggle('is-expanded', nowExpanded);
+        btn.classList.toggle('is-expanded', nowExpanded);
+        label.textContent = nowExpanded ? expandedLabel : collapsedLabel;
+        if (!nowExpanded) panel.scrollTop = 0;
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
