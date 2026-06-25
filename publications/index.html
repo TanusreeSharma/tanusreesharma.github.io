@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hive Lab publications — research papers on security, privacy, AI, and human-computer interaction." />
+  <title>Publications — Hive Lab</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --paper:    #faf9f6;
+      --paper-2:  #f1efe8;
+      --ink:      #1c1b18;
+      --ink-2:    #55524a;
+      --ink-3:    #918d80;
+      --line:     rgba(30,25,15,0.13);
+      --line-2:   rgba(30,25,15,0.07);
+
+      --accent:       #9c6b2e;
+      --accent-soft:  #f3ead9;
+      --slate:        #3c4a52;
+      --plum:         #5b4b8a;
+      --plum-soft:    #ece9f7;
+
+      --font-display: 'Source Serif 4', Georgia, serif;
+      --font-sans:    'Inter', system-ui, sans-serif;
+      --font-mono:    'IBM Plex Mono', monospace;
+
+      --max-w: 1080px;
+      --radius: 3px;
+    }
+
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; animation: none !important; }
+    }
+
+    body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.7; color: var(--ink); background: var(--paper); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .outer { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── Top nav ─────────────────────────────────────────────── */
+    .topbar { display: flex; align-items: baseline; justify-content: space-between; padding: 26px 0 14px; flex-wrap: wrap; gap: .75rem; }
+    .wordmark { font-family: var(--font-display); font-size: 21px; font-weight: 700; letter-spacing: -0.2px; color: var(--ink); }
+    .wordmark sup { font-family: var(--font-mono); font-size: 10px; font-weight: 500; color: var(--ink-3); letter-spacing: .08em; margin-left: 8px; top: -8px; text-transform: uppercase; }
+
+    nav.primary-nav { display: flex; flex-wrap: wrap; }
+    nav.primary-nav a {
+      font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em;
+      color: var(--ink-3); margin-left: 1.4rem; padding-bottom: 3px; border-bottom: 1.5px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    nav.primary-nav a:hover, nav.primary-nav a.active { color: var(--ink); text-decoration: none; border-bottom-color: var(--accent); }
+
+    .rule-strong { height: 2px; background: var(--ink); width: 100%; }
+
+    /* ── Page intro ──────────────────────────────────────────── */
+    .page-intro { padding: 2.25rem 0 0; }
+    .eyebrow { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: .65rem; display: block; }
+    h1 { font-family: var(--font-display); font-size: 30px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: .6rem; line-height: 1.15; }
+    .page-sub { font-size: 14.5px; color: var(--ink-2); max-width: 46em; }
+
+    /* ── Layout ──────────────────────────────────────────────── */
+    .pub-layout { display: grid; grid-template-columns: 96px 1fr; gap: 0 2.75rem; align-items: start; margin-top: 2.25rem; }
+
+    /* ── Year sidebar ────────────────────────────────────────── */
+    .year-nav { position: sticky; top: 1.75rem; }
+    .year-nav a {
+      display: block; font-family: var(--font-mono); font-size: 13px; color: var(--ink-3);
+      padding: 5px 0 5px 10px; border-left: 2px solid transparent;
+      transition: color .12s, border-color .12s; line-height: 1; text-decoration: none;
+    }
+    .year-nav a:hover { color: var(--ink); text-decoration: none; }
+    .year-nav a.active { color: var(--accent); font-weight: 600; border-left-color: var(--accent); }
+
+    /* ── Publications content ────────────────────────────────── */
+    .pub-content { padding-bottom: 4rem; }
+
+    .year-group { margin-bottom: 3rem; }
+    .year-heading {
+      font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--ink);
+      margin-bottom: 1.25rem; scroll-margin-top: 1.5rem;
+      display: flex; align-items: baseline; gap: .7rem;
+    }
+    .year-heading .fill { flex: 1; height: 1px; background: var(--line); }
+
+    /* ── Paper entry ─────────────────────────────────────────── */
+    .paper { display: grid; grid-template-columns: 168px 1fr; gap: 0 1.5rem; padding: 1.4rem 0; border-top: 1px solid var(--line); }
+    .paper:last-child { border-bottom: 1px solid var(--line); }
+
+    .paper-thumb {
+      width: 168px; height: 122px; border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--paper-2); overflow: hidden; flex-shrink: 0;
+    }
+    .paper-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.92); }
+
+    .paper-meta { display: flex; flex-direction: column; }
+    .paper-title { font-family: var(--font-display); font-size: 15.5px; font-weight: 700; color: var(--ink); line-height: 1.45; margin-bottom: 5px; }
+    .paper-title a { color: var(--ink); }
+    .paper-title a:hover { color: var(--accent); text-decoration: none; }
+
+    .paper-authors { font-size: 13px; color: var(--ink-2); line-height: 1.5; margin-bottom: 4px; }
+    .paper-authors .me { font-weight: 600; color: var(--ink); }
+
+    .paper-venue { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .01em; color: var(--ink-3); margin-bottom: 9px; line-height: 1.6; }
+    .paper-venue em { font-style: normal; }
+    .paper-venue .sep { margin: 0 6px; color: var(--line); }
+
+    .best-paper, .hon-mention {
+      display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono);
+      font-size: 10.5px; letter-spacing: .02em; border-radius: var(--radius); padding: 2px 8px;
+      vertical-align: middle; text-transform: uppercase;
+    }
+    .best-paper { color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent); }
+    .best-paper i { font-size: 12px; }
+    .hon-mention { color: var(--plum); background: var(--plum-soft); border: 1px solid var(--plum); }
+    .hon-mention i { font-size: 12px; }
+
+    .paper-actions { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-size: 11px;
+      color: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 3px 9px;
+      background: var(--paper); transition: border-color .12s, color .12s, background .12s; cursor: pointer; text-decoration: none;
+    }
+    .pill i { font-size: 13px; }
+    .pill:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); text-decoration: none; }
+
+    @media (max-width: 660px) {
+      .pub-layout { grid-template-columns: 1fr; }
+      .year-nav { position: static; display: flex; flex-wrap: wrap; gap: .25rem .9rem; border-bottom: 1px solid var(--line); padding-bottom: .75rem; margin-bottom: 1.5rem; }
+      .year-nav a { border-left: none; padding-left: 0; border-bottom: 2px solid transparent; padding-bottom: 2px; }
+      .year-nav a.active { border-bottom-color: var(--accent); border-left: none; }
+      .paper { grid-template-columns: 1fr; }
+      .paper-thumb { width: 100%; height: 150px; margin-bottom: .5rem; }
+    }
+    @media (max-width: 480px) {
+      nav.primary-nav a { margin-left: .9rem; font-size: 10.5px; }
+      h1 { font-size: 23px; }
+    }
+
+    /* ── Footer ──────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--line); padding: 1.4rem 0 2.5rem; margin-top: 1rem;
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: .02em; color: var(--ink-3);
+    }
+    footer a { color: var(--ink-3); }
+    footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<div class="outer">
+
+  <header role="banner">
+    <div class="topbar">
+      <div class="wordmark">Hive Lab</div>
+      <nav class="primary-nav" aria-label="Primary navigation">
+           <a href="/">Home</a>
+        <a href="/people/">People</a>
+        <a href="/research/">Research</a>
+        <a href="/publications/" class="active">Publications</a>
+        <a href="/philosophy/">Philosophy</a>
+        <!-- <a href="news.html">News</a> -->
+        <a href="/join/">Join</a>
+      </nav>
+    </div>
+    <!-- <div class="rule-strong"></div> -->
+  </header>
+
+  <div class="page-intro">
+    <span class="eyebrow">Publications</span>
+    <h1>Papers by year.</h1>
+    <p class="page-sub">Our group's research spanns from security, privacy, AI governance, accessibility, and Web3 published at venues including Nature, AAAI, CHI, USENIX Security, IEEE S&amp;P, NDSS, and SOUPS.</p>
+  </div>
+
+  <div class="pub-layout">
+
+    <nav class="year-nav" aria-label="Jump to year">
+      <a href="#y2026" class="active">2026</a>
+      <a href="#y2025">2025</a>
+      <a href="#y2024">2024</a>
+      <a href="#y2023">2023</a>
+      <a href="#y2021">2021</a>
+      <a href="#y2020">2020</a>
+      <a href="#y2018">2019</a>
+    </nav>
+
+    <main class="pub-content" id="main-content">
+
+      <!-- ── 2026 ── -->
+      <section class="year-group" id="y2026">
+        <h2 class="year-heading">2026<span class="fill"></span></h2>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper1.pdf" target="_blank"><img src="/images/paper1.1.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://openaccess.thecvf.com/content/WACV2026/papers/Prasad_Hierarchical_Instance_Tracking_to_Balance_Privacy_Preservation_with_Accessible_Information_WACV_2026_paper.pdf">Hierarchical Instance Tracking to Balance Privacy Preservation with Accessible Information</a></div>
+            <div class="paper-authors">Neelima Prasad, Jarek Reynolds, Neel Karsanbhai, <span class="me">Tanusree Sharma</span>, Lotus Zhang, Abigale Stangl, Yang Wang, Leah Findlater, Danna Gurari</div>
+            <div class="paper-venue">IEEE Winter Conference on Applications in Computer Vision (WACV 2026)</div>
+            <div class="paper-actions"><a class="pill" href="https://openaccess.thecvf.com/content/WACV2026/papers/Prasad_Hierarchical_Instance_Tracking_to_Balance_Privacy_Preservation_with_Accessible_Information_WACV_2026_paper.pdf" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper2.pdf" target="_blank"><img src="/images/paper2.2.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://www.nature.com/articles/s41598-026-40180-8">Democratic governance through DAO-based deliberation and voting for inclusive decision making in AI models</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Yujin Potter, Jongwon Park, Yiren Liu, Yun Huang, Sunny Liu, Dawn Song, Jeff Hancock, Yang Wang</div>
+            <div class="paper-venue">Scientific Reports (2026)</div>
+            <div class="paper-actions"><a class="pill" href="https://www.nature.com/articles/s41598-026-40180-8" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper3.pdf" target="_blank"><img src="/images/paper3.1.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/epdf/10.1145/3796547">Future of Algorithmic Organization: Large-Scale Analysis of Decentralized Autonomous Organizations (DAOs)</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Yujin Potter, Kornrapat Pongmala, Henry Wang, Andrew Miller, Dawn Song, Yang Wang</div>
+            <div class="paper-venue">ACM Transactions on the Web (2026)</div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/epdf/10.1145/3796547" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://www.usenix.org/conference/pepr26/presentation/sharma" target="_blank"><img src="/images/paper-2026-4.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://www.usenix.org/conference/pepr26/presentation/sharma">VOICE: Data-Driven Risk Taxonomy for Synthetic Voice Generation</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Lili Dudas</div>
+            <div class="paper-venue">2026 USENIX Conference on Privacy Engineering Practice and Respect (PEPR 2026)</div>
+            <div class="paper-actions"><a class="pill" href="https://www.usenix.org/conference/pepr26/presentation/sharma" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper5.pdf" target="_blank"><img src="/images/paper5.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://arxiv.org/abs/2604.24794">V.O.I.C.E (Voice, Ownership, Identity, Control, Expression): Risk Taxonomy of Synthetic Voice Generation From Empirical Data</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Anish Krishnagiri, Lili Dudas, Ahmed Adnan, Visar Berisha</div>
+            <div class="paper-venue">arXiv preprint arXiv:2604.24794 (2026)</div>
+            <div class="paper-actions"><a class="pill" href="https://arxiv.org/pdf/2604.24794" target="_blank" rel="noopener"><i class="ti ti-file-text" aria-hidden="true"></i> arXiv</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper6.pdf" target="_blank"><img src="/images/paper-2025-1.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://arxiv.org/abs/2604.26494">Culturally Aware GenAI Risks for Youth: Perspectives from Youth, Parents, and Teachers in a Non-Western Context</a></div>
+            <div class="paper-authors">Aljawharah Alzahrani, Tory Park, <span class="me">Tanusree Sharma</span></div>
+            <div class="paper-venue">arXiv preprint arXiv:2604.26494 (2026)</div>
+            <div class="paper-actions"><a class="pill" href="https://arxiv.org/abs/2604.26494" target="_blank" rel="noopener"><i class="ti ti-file-text" aria-hidden="true"></i> arXiv</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper7.pdf" target="_blank"><img src="/images/paper7.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://arxiv.org/abs/2604.28166">Essential, Yet Overlooked: Identity Verification Barriers for Blind and Low Vision People in Government Services</a></div>
+            <div class="paper-authors">Ryan John Oommen, <span class="me">Tanusree Sharma</span></div>
+            <div class="paper-venue">arXiv preprint arXiv:2604.28166 (2026)</div>
+            <div class="paper-actions"><a class="pill" href="https://arxiv.org/abs/2604.28166" target="_blank" rel="noopener"><i class="ti ti-file-text" aria-hidden="true"></i> arXiv</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper8.pdf" target="_blank"><img src="/images/paper8.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://arxiv.org/abs/2505.16057">Design for Provenance: Practices &amp; Challenges of Navigating Indicators in AI-Generated Media for Sighted and Blind Individuals</a></div>
+            <div class="paper-authors">Ayae Ide, Tory Park, Jaron Mink, <span class="me">Tanusree Sharma</span></div>
+            <div class="paper-venue">arXiv preprint arXiv:2505.16057 (2026)</div>
+            <div class="paper-actions"><a class="pill" href="https://arxiv.org/abs/2505.16057" target="_blank" rel="noopener"><i class="ti ti-file-text" aria-hidden="true"></i> arXiv</a></div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ── 2025 ── -->
+      <section class="year-group" id="y2025">
+        <h2 class="year-heading">2025<span class="fill"></span></h2>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2025-1.pdf" target="_blank"><img src="/images/paper-2026-1.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11023500">Exploring Parent-Child Perceptions on Safety in Generative AI: Concerns, Mitigation Strategies, and Design Implications</a></div>
+            <div class="paper-authors">Yaman Yu, <span class="me">Tanusree Sharma</span>, Melinda Hu, Justin Wang, Yang Wang</div>
+            <div class="paper-venue">IEEE Symposium on Security and Privacy (S&amp;P 2025)</div>
+            <div class="paper-actions"><a class="pill" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11023500" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2025-2.pdf" target="_blank"><img src="/images/paper-2025-2.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://ieeexplore.ieee.org/abstract/document/11023350">Security Perceptions of Users in Stablecoins: Advantages and Risks within the Cryptocurrency Ecosystem</a></div>
+            <div class="paper-authors">Maggie Yongqi Guan, Yaman Yu, <span class="me">Tanusree Sharma</span>, Molly Zhuangtong Huang, Kaihua Qin, Yang Wang, Kanye Ye Wang</div>
+            <div class="paper-venue">IEEE Symposium on Security and Privacy (S&amp;P 2025)</div>
+            <div class="paper-actions"><a class="pill" href="https://ieeexplore.ieee.org/abstract/document/11023350" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2025-3.pdf" target="_blank"><img src="/images/paper-2025-3.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://www.ndss-symposium.org/wp-content/uploads/2025-775-paper.pdf">Exploring User Perceptions of Security Auditing in the Web3 Ecosystem</a></div>
+            <div class="paper-authors">Molly Zhuangtong Huang, Rui Jiang, <span class="me">Tanusree Sharma</span>, Kanye Ye Wang</div>
+            <div class="paper-venue">Network and Distributed System Security Symposium (NDSS 2025)</div>
+            <div class="paper-actions"><a class="pill" href="https://www.ndss-symposium.org/wp-content/uploads/2025-775-paper.pdf" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2025-4.pdf" target="_blank"><img src="/images/paper-2025-4.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://openaccess.thecvf.com/content/WACV2025/papers/Tseng_BIV-Priv-Seg_Locating_Private_Content_in_Images_Taken_by_People_with_WACV_2025_paper.pdf">BIV-Priv-Seg: Locating Private Content in Images Taken by People With Visual Impairments</a></div>
+            <div class="paper-authors">Yu-Yun Tseng, <span class="me">Tanusree Sharma</span>, Lotus Zhang, Abigale Stangl, Leah Findlater, Yang Wang, Danna Gurari</div>
+            <div class="paper-venue">IEEE/CVF Winter Conference on Applications of Computer Vision (WACV 2025)</div>
+            <div class="paper-actions"><a class="pill" href="https://openaccess.thecvf.com/content/WACV2025/papers/Tseng_BIV-Priv-Seg_Locating_Private_Content_in_Images_Taken_by_People_with_WACV_2025_paper.pdf" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2025-5.pdf" target="_blank"><img src="/images/paper-2025-5.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://petsymposium.org/popets/2025/popets-2025-0057.pdf">Privacy Perceptions and Behaviors Towards Targeted Advertising on Social Media: A Cross-Country Study on the Effect of Culture and Religion</a></div>
+            <div class="paper-authors">Smirity Kaushik, <span class="me">Tanusree Sharma</span>, Yaman Yu, Amna F. Ali, Bart Piet Knijnenburg, Yang Wang, Yixin Zou</div>
+            <div class="paper-venue">Proceedings on Privacy Enhancing Technologies (PoPETs 2025)</div>
+            <div class="paper-actions"><a class="pill" href="https://petsymposium.org/popets/2025/popets-2025-0057.pdf" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2025-6.pdf" target="_blank"><img src="/images/paper-2025-6.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/10.1145/3715335.3735466">COINFUSED: Social Norms, Current Practices and Perceived Risks among the Cryptocurrency Users</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Atm Mizanur Rahman, Silvia Sandhi, Yang Wang, Rifat Shahriyar, SM Taiabul Haque</div>
+            <div class="paper-venue">ACM Computing and Sustainable Societies (COMPASS 2025)</div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/10.1145/3715335.3735466" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2025-7.pdf" target="_blank"><img src="/images/paper-2025-7.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://ojs.aaai.org/index.php/AIES/article/view/36720/38858">Aligning AI with Public Values: Deliberation and Decision-Making for Governing Multimodal LLMs in Political Video Analysis</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Yujin Potter, Zachary Kilhoffer, Yun Huang, Dawn Song, Yang Wang</div>
+            <div class="paper-venue">AAAI/ACM Conference on AI, Ethics, and Society (AIES 2025)</div>
+            <div class="paper-actions"><a class="pill" href="https://ojs.aaai.org/index.php/AIES/article/view/36720/38858" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2025-8.pdf" target="_blank"><img src="/images/paper-2025-8.jpeg" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://ojs.aaai.org/index.php/AIES/article/view/36721/38859">PRAC3 (Privacy, Reputation, Accountability, Consent, Credit, Compensation): Voice Actors in AI Data-economy</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Yihao Zhou, Visar Berisha</div>
+            <div class="paper-venue">AAAI/ACM Conference on AI, Ethics, and Society (AIES 2025)</div>
+            <div class="paper-actions"><a class="pill" href="https://ojs.aaai.org/index.php/AIES/article/view/36721/38859" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2025-9.pdf" target="_blank"><img src="/images/paper-2025-9.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/10.1145/3663547.3746335">"Before, I Asked My Mom, Now I Ask ChatGPT": Visual Privacy Management with Generative AI for Blind and Low-Vision People</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Yu-Yun Tseng, Lotus Zhang, Ayae Ide, Kelly Avery Mack, Leah Findlater, Danna Gurari, Yang Wang</div>
+            <div class="paper-venue">ACM SIGACCESS Conference on Computers and Accessibility (ASSETS 2025)</div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/10.1145/3663547.3746335" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2025-10.pdf" target="_blank"><img src="/images/paper-2025-10.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/10.1145/3663547.3759688">The Accessibility, Security, and Privacy Nexus: Trends and Opportunities</a></div>
+            <div class="paper-authors">Kelly Avery Mack, Yu-Jie Chen, Lotus Zhang, Danna Gurari, <span class="me">Tanusree Sharma</span>, Yang Wang, Leah Findlater</div>
+            <div class="paper-venue">ACM SIGACCESS Conference on Computers and Accessibility (ASSETS 2025)</div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/10.1145/3663547.3759688" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2025-11.pdf" target="_blank"><img src="/images/paper-2025-11.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://arxiv.org/abs/2502.16375">Verifying Humanness: Personhood Credentials for the Digital Identity Crisis</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span></div>
+            <div class="paper-venue">USENIX Conference on Privacy Engineering Practice and Respect (PEPR 2025)</div>
+            <div class="paper-actions">
+              <a class="pill" href="https://www.youtube.com/watch?v=T6IgYUv_aQk&source_ve_path=OTY3MTQ&embeds_referring_euri=https%3A%2F%2Fwww.usenix.org%2F" target="_blank" rel="noopener"><i class="ti ti-presentation" aria-hidden="true"></i> Presentation</a>
+              <a class="pill" href="https://arxiv.org/abs/2502.16375" target="_blank" rel="noopener"><i class="ti ti-file-text" aria-hidden="true"></i> arXiv</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2025-12.pdf" target="_blank"><img src="/images/paper-2025-12.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/epdf/10.1145/3706599.3719831">Honey Trap or Romantic Utopia: A Case Study of Final Fantasy XIV Players' PII Disclosure in Intimate Partner-Seeking Posts</a></div>
+            <div class="paper-authors">Yihao Zhou, <span class="me">Tanusree Sharma</span></div>
+            <div class="paper-venue">Extended Abstracts of the CHI Conference on Human Factors in Computing Systems (CHI EA 2025)</div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/epdf/10.1145/3706599.3719831" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2025-13.pdf" target="_blank"><img src="/images/paper-2025-13.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/epdf/10.1145/3775069">From Discussions to Decisions: Understanding User Behavior in Decentralized Autonomous Organizations</a></div>
+            <div class="paper-authors">Janice Jianing Si, Rainie Siyu Wang, Silvan Bruggmann, <span class="me">Tanusree Sharma</span>, Roger Wattenhofer, Kanye Ye Wang, Xiaobo Zhou</div>
+            <div class="paper-venue">ACM Transactions on the Web (2025)</div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/epdf/10.1145/3775069" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ── 2024 ── -->
+      <section class="year-group" id="y2024">
+        <h2 class="year-heading">2024<span class="fill"></span></h2>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2024-1.pdf" target="_blank"><img src="/images/paper-2024-1.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://www.usenix.org/conference/usenixsecurity24/presentation/sharma">"I'm not convinced that they don't collect more than is necessary": User-Controlled Data Minimization Design in Search Engines</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Lin Kyi, Yang Wang, Asia J. Biega</div>
+            <div class="paper-venue">33rd USENIX Security Symposium (USENIX Security 2024)</div>
+            <div class="paper-actions"><a class="pill" href="https://www.usenix.org/conference/usenixsecurity24/presentation/sharma" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2024-2.pdf" target="_blank"><img src="/images/paper-2024-2.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/epdf/10.1145/3613904.3642464">"I Can't Believe It's Not Custodial!": Usable Trustless Decentralized Key Management</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Vivek Nair, Henry Wang, Yang Wang, Dawn Song</div>
+            <div class="paper-venue">ACM CHI Conference on Human Factors in Computing Systems (CHI 2024)<span class="sep">|</span><span class="best-paper"><i class="ti ti-trophy" aria-hidden="true"></i> Best Paper</span></div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/epdf/10.1145/3613904.3642464" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2024-3.pdf" target="_blank"><img src="/images/paper-2024-3.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/10.1145/3613904.3642534">"Don't Put All Your Eggs In One Basket": How Cryptocurrency Users Choose and Secure Their Wallets</a></div>
+            <div class="paper-authors">Yaman Yu, <span class="me">Tanusree Sharma</span>, Sauvik Das, Yang Wang</div>
+            <div class="paper-venue">ACM CHI Conference on Human Factors in Computing Systems (CHI 2024)<span class="sep">|</span><span class="best-paper"><i class="ti ti-trophy" aria-hidden="true"></i> Best Paper</span></div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/10.1145/3613904.3642534" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/images/paper-2024-7.png" target="_blank"><img src="/images/paper-2024-7.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/10.1145/3613904.3642291">Understanding User-Perceived Security Risks and Mitigation Strategies in the Web3 Ecosystem</a></div>
+            <div class="paper-authors">Janice Jianing Si, <span class="me">Tanusree Sharma</span>, Kanye Ye Wang</div>
+            <div class="paper-venue">ACM CHI Conference on Human Factors in Computing Systems (CHI 2024)</div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/10.1145/3613904.3642291" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2024-4.pdf" target="_blank"><img src="/images/paper-2024-4.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/10.1145/3613904.3642713">Designing Accessible Obfuscation Support for Blind Individuals' Visual Privacy Management</a></div>
+            <div class="paper-authors">Lotus Zhang, Abigale Stangl, <span class="me">Tanusree Sharma</span>, Yu-Yun Tseng, Inan Xu, Danna Gurari, Yang Wang, Leah Findlater</div>
+            <div class="paper-venue">ACM CHI Conference on Human Factors in Computing Systems (CHI 2024)</div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/epdf/10.1145/3613904.3642713" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2024-5.pdf" target="_blank"><img src="/images/paper-2024-5.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/10.1145/3613905.3650780">Cross-Country Examination of People's Experience with Targeted Advertising on Social Media</a></div>
+            <div class="paper-authors">Smirity Kaushik, <span class="me">Tanusree Sharma</span>, Yaman Yu, Amna F. Ali, Yang Wang, Yixin Zou</div>
+            <div class="paper-venue">Extended Abstracts of the CHI Conference on Human Factors in Computing Systems (CHI EA 2024)</div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/10.1145/3613905.3650780" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="/pdf/paper-2024-6.pdf" target="_blank"><img src="/images/paper-2024-6.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://ieeexplore.ieee.org/abstract/document/10634404">Unpacking How Decentralized Autonomous Organizations (DAOs) Work in Practice</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Yujin Kwon, Kornrapat Pongmala, Henry Wang, Andrew Miller, Dawn Song, Yang Wang</div>
+            <div class="paper-venue">IEEE International Conference on Blockchain and Cryptocurrency (ICBC 2024)</div>
+            <div class="paper-actions"><a class="pill" href="https://ieeexplore.ieee.org/abstract/document/10634404" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ── 2023 ── -->
+      <section class="year-group" id="y2023">
+        <h2 class="year-heading">2023<span class="fill"></span></h2>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://dl.acm.org/doi/epdf/10.1145/3544548.3580922" target="_blank"><img src="/images/paper-2023-1.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/abs/10.1145/3544548.3580922">Disability-first Design and Creation of a Dataset Showing Private Visual Information Collected with People Who are Blind</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Abigale Stangl, Lotus Zhang, Yu-Yun Tseng, Inan Xu, Leah Findlater, Danna Gurari, Yang Wang</div>
+            <div class="paper-venue">ACM CHI Conference on Human Factors in Computing Systems (CHI 2023)</div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/abs/10.1145/3544548.3580922" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://dl.acm.org/doi/full/10.1145/3544548.3581498" target="_blank"><img src="/images/paper-2023-2.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/abs/10.1145/3544548.3581498">User Perceptions and Experiences of Targeted Ads on Social Media Platforms: Learning from Bangladesh and India</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma*</span>, Smirity Kaushik*, Yaman Yu*, Syed Ishtiaque Ahmed, Yang Wang</div>
+            <div class="paper-venue">ACM CHI Conference on Human Factors in Computing Systems (CHI 2023)</div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/abs/10.1145/3544548.3581498" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://www.usenix.org/conference/usenixsecurity23/presentation/sharma" target="_blank"><img src="/images/paper-2023-3.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://www.usenix.org/conference/usenixsecurity23/presentation/sharma">A Mixed-Methods Study of Security Practices of Smart Contract Developers</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Zhixuan Zhou, Andrew Miller, Yang Wang</div>
+            <div class="paper-venue">32nd USENIX Security Symposium (USENIX Security 2023)</div>
+            <div class="paper-actions"><a class="pill" href="https://www.usenix.org/conference/usenixsecurity23/presentation/sharma" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://www.usenix.org/system/files/soups2023-zhou.pdf" target="_blank"><img src="/images/paper-2023-4.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://www.usenix.org/system/files/soups2023-zhou.pdf">Iterative Design of An Accessible Crypto Wallet for Blind Users</a></div>
+            <div class="paper-authors">Zhixuan Zhou*, <span class="me">Tanusree Sharma*</span>, Luke Emano, Sauvik Das, Yang Wang</div>
+            <div class="paper-venue">Symposium on Usable Privacy and Security (SOUPS 2023)</div>
+            <div class="paper-actions"><a class="pill" href="https://www.usenix.org/system/files/soups2023-zhou.pdf" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://www.usenix.org/conference/soups2023/presentation/kaushik" target="_blank"><img src="/images/paper-2023-5.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://www.usenix.org/conference/soups2023/presentation/kaushik">GuardLens: Supporting Safer Online Browsing for People with Visual Impairments</a></div>
+            <div class="paper-authors">Smirity Kaushik, Natã M. Barbosa, Yaman Yu, <span class="me">Tanusree Sharma</span>, Zachary Kilhoffer, JooYoung Seo, Sauvik Das, Yang Wang</div>
+            <div class="paper-venue">Symposium on Usable Privacy and Security (SOUPS 2023)</div>
+            <div class="paper-actions"><a class="pill" href="https://www.usenix.org/conference/soups2023/presentation/kaushik" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://www.usenix.org/conference/pepr23/presentation/sharma" target="_blank"><img src="/images/paper-2023-6.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://www.usenix.org/conference/pepr23/presentation/sharma">Rethinking Data Minimization from a User-Centered Approach: A Paradigm Shift</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Lin Kyi, Yang Wang, Asia Biega</div>
+            <div class="paper-venue">USENIX Conference on Privacy Engineering Practice and Respect (PEPR 2023)</div>
+            <div class="paper-actions"><a class="pill" href="https://www.usenix.org/conference/pepr23/presentation/sharma" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://dl.acm.org/doi/10.1145/3571884.3603755" target="_blank"><img src="/images/paper-2023-7.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/abs/10.1145/3571884.3603755">Using ChatGPT in HCI Research — A Trioethnography</a></div>
+            <div class="paper-authors">Smit Desai, <span class="me">Tanusree Sharma</span>, Pratyasha Saha</div>
+            <div class="paper-venue">5th International Conference on Conversational User Interfaces (ACM CUI 2023)</div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/abs/10.1145/3571884.3603755" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://www.usenix.org/system/files/soups2023-poster160_guan_abstract_final.pdf" target="_blank"><img src="/images/paper-2023-8.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://www.usenix.org/system/files/soups2023-poster160_guan_abstract_final.pdf">Examining User Perceptions of Stablecoins: Understandings and Risks</a></div>
+            <div class="paper-authors">Yongqi Guan, Yaman Yu, <span class="me">Tanusree Sharma</span>, Kaihua Qin, Yang Wang, Ye Wang</div>
+            <div class="paper-venue">Symposium on Usable Privacy and Security (SOUPS 2023)</div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://dl.acm.org/doi/full/10.1145/3616383" target="_blank"><img src="/images/paper-2023-9.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/full/10.1145/3616383">A First Look into Software Security Practices in Bangladesh</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma*</span>, Ankit Shrestha*, Pratyasha Saha, Syed Ishtiaque Ahmed, Mahdi Nasrullah Al-Ameen</div>
+            <div class="paper-venue">ACM Journal on Computing and Sustainable Societies (COMPASS 2023)</div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/full/10.1145/3616383" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://dl.acm.org/doi/full/10.1145/3616383" target="_blank"><img src="/images/paper-2023-10.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://arxiv.org/abs/2201.13233">"It's A Blessing and A Curse": Unpacking Creators' Practices with Non-Fungible Tokens (NFTs) and Their Communities</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Zhixuan Zhou, Yun Huang, Yang Wang</div>
+            <div class="paper-venue">Crypto Economics Security Conference (CESC 2023)</div>
+            <div class="paper-actions"><a class="pill" href="https://arxiv.org/abs/2201.13233" target="_blank" rel="noopener"><i class="ti ti-file-text" aria-hidden="true"></i> Preprint</a></div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ── 2021 ── -->
+      <section class="year-group" id="y2021">
+        <h2 class="year-heading">2021<span class="fill"></span></h2>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://dl.acm.org/doi/pdf/10.1145/3434777" target="_blank"><img src="/images/paper-2021-1.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/abs/10.1145/3434777">Enabling User-Centered Privacy Controls for Mobile Applications: COVID-19 Perspective</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Hunter A. Dyer, Masooda Bashir</div>
+            <div class="paper-venue">ACM Transactions on Internet Technology (TOIT 2021)</div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/abs/10.1145/3434777" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://dl.acm.org/doi/abs/10.1145/3460112.3471958" target="_blank"><img src="/images/paper-2021-2.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/abs/10.1145/3460112.3471958">Privacy during pandemic: A global view of privacy practices around COVID-19 apps</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Md Mirajul Islam, Anupam Das, SM Taiabul Haque, Syed Ishtiaque Ahmed</div>
+            <div class="paper-venue">ACM SIGCAS Conference on Computing and Sustainable Societies (COMPASS 2021)</div>
+            <div class="paper-actions"><a class="pill" href="https://dl.acm.org/doi/abs/10.1145/3460112.3471958" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://link.springer.com/chapter/10.1007/978-3-030-80119-9_72" target="_blank"><img src="/images/paper-2021-3.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://link.springer.com/chapter/10.1007/978-3-030-80119-9_72">Mapping Risk Assessment Strategy for COVID-19 Mobile Apps' Vulnerabilities</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Hunter A. Dyer, Roy H. Campbell, Masooda Bashir</div>
+            <div class="paper-venue">Intelligent Computing / Computing Conference 2021</div>
+            <div class="paper-actions"><a class="pill" href="https://link.springer.com/chapter/10.1007/978-3-030-80119-9_72" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ── 2020 ── -->
+      <section class="year-group" id="y2020">
+        <h2 class="year-heading">2020<span class="fill"></span></h2>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://www.nature.com/articles/s41591-020-0928-y" target="_blank"><img src="/images/paper-2020-1.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://www.nature.com/articles/s41591-020-0928-y">Use of apps in the COVID-19 response and the loss of privacy protection</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Masooda Bashir</div>
+            <div class="paper-venue">Nature Comment (2020)</div>
+            <div class="paper-actions"><a class="pill" href="https://www.nature.com/articles/s41591-020-0928-y" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://link.springer.com/chapter/10.1007/978-3-030-61638-0_19" target="_blank"><img src="/images/paper-2020-2.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://link.springer.com/chapter/10.1007/978-3-030-61638-0_19">Towards inclusive privacy protections in the cloud</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Tian Wang, Carlo Di Giulio, Masooda Bashir</div>
+            <div class="paper-venue">Applied Cryptography and Network Security Workshops (ACNS 2020)</div>
+            <div class="paper-actions"><a class="pill" href="https://link.springer.com/chapter/10.1007/978-3-030-61638-0_19" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://link.springer.com/chapter/10.1007/978-3-030-52581-1_7" target="_blank"><img src="/images/paper-2020-3.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://link.springer.com/chapter/10.1007/978-3-030-52581-1_7">An Analysis of Phishing Emails and How the Human Vulnerabilities are Exploited</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Masooda Bashir</div>
+            <div class="paper-venue">International Conference on Applied Human Factors and Ergonomics (AHFE 2020)</div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://dl.acm.org/doi/10.1007/978-3-030-50309-3_35" target="_blank"><img src="/images/paper-2020-4.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/10.1007/978-3-030-50309-3_35">Privacy apps for smartphones: An assessment of users' preferences and limitations</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Masooda Bashir</div>
+            <div class="paper-venue">International Conference on Human-Computer Interaction (HCII 2020)</div>
+            <div class="paper-actions"><a class="pill" href="https://link.springer.com/chapter/10.1007/978-3-030-50309-3_35" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://dl.acm.org/doi/fullHtml/10.1145/3406324.3410711" target="_blank"><img src="/images/paper-2020-5.jpg" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/fullHtml/10.1145/3406324.3410711">Advocating for users' privacy protections: a case study of COVID-19 apps</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Tian Wang, Masooda Bashir</div>
+            <div class="paper-venue">22nd International Conference on Human-Computer Interaction with Mobile Devices and Services (MobileHCI 2020)</div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://www.ideals.illinois.edu/items/113204" target="_blank"><img src="/images/paper-2020-6.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://www.ideals.illinois.edu/items/113204">Preserving Privacy in Cyber-Physical-Social Systems: An Anonymity and Access Control Approach</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, John C. Bambenek, Masooda Bashir</div>
+            <div class="paper-venue">International Conference on the Internet of Things (IoT 2019/2020)</div>
+            <div class="paper-actions"><a class="pill" href="https://www.ideals.illinois.edu/items/113204" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://arxiv.org/abs/2007.04444" target="_blank"><img src="/images/paper-2020-7.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://arxiv.org/abs/2007.04444">Are PETs (Privacy Enhancing Technologies) Giving Protection for Smartphones? — A Case Study</a></div>
+            <div class="paper-authors"><span class="me">Tanusree Sharma</span>, Masooda Bashir</div>
+            <div class="paper-venue">arXiv preprint arXiv:2007.04444 (2020)</div>
+            <div class="paper-actions"><a class="pill" href="https://arxiv.org/abs/2007.04444" target="_blank" rel="noopener"><i class="ti ti-file-text" aria-hidden="true"></i> arXiv</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://dl.acm.org/doi/10.1007/978-3-030-59277-6_22" target="_blank"><img src="/images/paper-2020-8.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://dl.acm.org/doi/10.1007/978-3-030-59277-6_22">Comparing Instance-Based Classifiers Against Neural Networks for Classifying EEG Signal in the Identification of Cognitive States</a></div>
+            <div class="paper-authors">Shelia Rahman, <span class="me">Tanusree Sharma</span>, Mufti Mahmud</div>
+            <div class="paper-venue">International Conference on Brain Informatics (BI 2020)</div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ── 2018–2019 ── -->
+      <section class="year-group" id="y2018">
+        <h2 class="year-heading">2018–2019<span class="fill"></span></h2>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://link.springer.com/chapter/10.1007/978-3-319-94295-7_19" target="_blank"><img src="/images/paper-2019-1.jpg" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://link.springer.com/chapter/10.1007/978-3-319-94295-7_19">A restful e-governance application framework for people identity verification in cloud</a></div>
+            <div class="paper-authors">Ahmedur Rahman Shovon, Shanto Roy, Tanusree Sharma, Md Whaiduzzaman</div>
+            <div class="paper-venue">International Cloud Computing Conference (CLOUD 2018)</div>
+            <div class="paper-actions"><a class="pill" href="https://link.springer.com/chapter/10.1007/978-3-319-94295-7_19" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://ieeexplore.ieee.org/abstract/document/8255371" target="_blank"><img src="/images/paper-2019-2.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://ieeexplore.ieee.org/abstract/document/8255371">A dynamic data placement policy for heterogeneous Hadoop cluster</a></div>
+            <div class="paper-authors">Santa Maria Shithil, Tushar Kanti Saha, Tanusree Sharma</div>
+            <div class="paper-venue">4th International Conference on Advances in Electrical Engineering (ICAEE 2017)</div>
+            <div class="paper-actions"><a class="pill" href="https://ieeexplore.ieee.org/abstract/document/8255371" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+
+        <article class="paper">
+          <div class="paper-thumb"><a href="https://ieeexplore.ieee.org/abstract/document/7860357" target="_blank"><img src="/images/paper-2019-3.png" alt="Paper thumbnail" /></a></div>
+          <div class="paper-meta">
+            <div class="paper-title"><a href="https://ieeexplore.ieee.org/abstract/document/7860357">PSO-NF based vertical handoff decision for ubiquitous heterogeneous wireless network (UHWN)</a></div>
+            <div class="paper-authors">Saoreen Rahman, Tanusree Sharma, SM Reza, MM Rahman, MS Kaiser</div>
+            <div class="paper-venue">International Workshop on Computational Intelligence (IWCI 2016)</div>
+            <div class="paper-actions"><a class="pill" href="https://ieeexplore.ieee.org/abstract/document/7860357" target="_blank" rel="noopener"><i class="ti ti-file-type-pdf" aria-hidden="true"></i> PDF</a></div>
+          </div>
+        </article>
+      </section>
+
+    </main>
+  </div><!-- /.pub-layout -->
+
+  <footer>
+    <a href="https://www.psu.edu/" target="_blank" rel="noopener">Penn State</a>
+  </footer>
+
+</div><!-- /.outer -->
+
+<script>
+  (function () {
+    var sections = Array.prototype.slice.call(document.querySelectorAll('.year-group'));
+    var links = Array.prototype.slice.call(document.querySelectorAll('.year-nav a'));
+    if (!sections.length || !('IntersectionObserver' in window)) return;
+
+    var linkById = {};
+    links.forEach(function (link) {
+      linkById[link.getAttribute('href').slice(1)] = link;
+    });
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          links.forEach(function (l) { l.classList.remove('active'); });
+          var link = linkById[entry.target.id];
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-10% 0px -70% 0px' });
+
+    sections.forEach(function (s) { observer.observe(s); });
+  })();
+</script>
+
+</body>
+</html>
