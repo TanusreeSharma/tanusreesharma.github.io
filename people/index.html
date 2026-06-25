@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hive Lab — people: faculty, students, and alumni working at the intersection of security, AI, and HCI." />
+  <title>People — Hive Lab</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" />
+
+  <style>
+    /* ── Reset & tokens ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --paper:    #faf9f6;
+      --paper-2:  #f1efe8;
+      --ink:      #1c1b18;
+      --ink-2:    #55524a;
+      --ink-3:    #918d80;
+      --line:     rgba(30,25,15,0.13);
+      --line-2:   rgba(30,25,15,0.07);
+
+      --accent:       #9c6b2e;
+      --accent-soft:  #f3ead9;
+      --slate:        #3c4a52;
+
+      --font-display: 'Source Serif 4', Georgia, serif;
+      --font-sans:    'Inter', system-ui, sans-serif;
+      --font-mono:    'IBM Plex Mono', monospace;
+
+      --max-w: 920px;
+      --radius: 3px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; animation: none !important; }
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── Top nav ─────────────────────────────────────────────── */
+    .topbar {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 26px 0 14px;
+      flex-wrap: wrap;
+      gap: .75rem;
+    }
+
+    .wordmark {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      color: var(--ink);
+    }
+    .wordmark sup {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--ink-3);
+      letter-spacing: .08em;
+      margin-left: 8px;
+      top: -8px;
+      text-transform: uppercase;
+    }
+
+    nav { display: flex; gap: 0; flex-wrap: wrap; }
+    nav a {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--ink-3);
+      margin-left: 1.4rem;
+      padding-bottom: 3px;
+      border-bottom: 1.5px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    nav a:hover, nav a.active {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom-color: var(--accent);
+    }
+    nav a.active { color: var(--ink); }
+
+    .rule-strong { height: 2px; background: var(--ink); width: 100%; }
+
+    /* ── Page intro ──────────────────────────────────────────── */
+    .page-intro { padding: 2.25rem 0 0; }
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--accent);
+      margin-bottom: .65rem;
+      display: block;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: .6rem;
+      line-height: 1.15;
+    }
+    .page-sub {
+      font-size: 14.5px;
+      color: var(--ink-2);
+      max-width: 46em;
+    }
+
+    /* ── Section headings ────────────────────────────────────── */
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: .6rem;
+      margin: 2.75rem 0 1.1rem;
+    }
+    .section-head .num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-3);
+      letter-spacing: .04em;
+    }
+    .section-head h2 {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink);
+    }
+    .section-head .fill { flex: 1; height: 1px; background: var(--line); }
+
+    /* ── Full profiles ───────────────────────────────────────── */
+    .profiles { display: flex; flex-direction: column; }
+    .profile {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 1rem 1.25rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .profile:first-child { border-top: 1px solid var(--line); }
+
+    .prof-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      overflow: hidden;
+      background: var(--paper-2);
+      flex-shrink: 0;
+    }
+    .prof-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .prof-name {
+      font-family: var(--font-display);
+      font-size: 15.5px;
+      font-weight: 700;
+      margin-bottom: 1px;
+    }
+    .prof-name a { color: var(--ink); }
+    .prof-name a:hover { color: var(--accent); text-decoration: none; }
+
+    .prof-pronouns { font-size: 12px; color: var(--ink-3); font-style: italic; margin-bottom: 2px; }
+    .prof-role {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: .02em;
+      color: var(--ink-2);
+      margin-bottom: 9px;
+    }
+
+    .prof-links { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 9px; }
+    .plink {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--ink-2);
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 3px 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: border-color .15s, color .15s;
+    }
+    .plink i { font-size: 12px; }
+    .plink:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+
+    .prof-bio { font-size: 13.5px; color: var(--ink-2); line-height: 1.65; max-width: 56em; }
+
+    @media (max-width: 560px) {
+      .profile { grid-template-columns: 64px 1fr; }
+      .prof-photo { width: 60px; height: 60px; }
+    }
+
+    /* ── News ────────────────────────────────────────────────── */
+    .news-list { list-style: none; }
+    .news-list li {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 1.25rem;
+      padding: .85rem 0;
+      border-bottom: 1px solid var(--line-2);
+      font-size: 14px;
+    }
+    .news-list li:last-child { border-bottom: none; }
+    .ndate {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--ink-3);
+      letter-spacing: .02em;
+      padding-top: 2px;
+      font-variant-numeric: tabular-nums;
+    }
+    .news-list li span:last-child { color: var(--ink-2); }
+    .news-list li a { color: var(--ink); border-bottom: 1px solid var(--line); }
+    .news-list li a:hover { color: var(--accent); border-bottom-color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 560px) {
+      .news-list li { grid-template-columns: 1fr; gap: .2rem; }
+    }
+
+    /* ── Alumni ──────────────────────────────────────────────── */
+    .alumni { list-style: none; }
+    .alumni li {
+      padding: .7rem 0;
+      border-bottom: 1px solid var(--line-2);
+      font-size: 13.5px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: .5rem;
+      align-items: baseline;
+    }
+    .alumni li:last-child { border-bottom: none; }
+    .alum-name { font-weight: 600; }
+    .alum-role { color: var(--ink-3); font-family: var(--font-mono); font-size: 11.5px; }
+    .alum-after { font-size: 12.5px; color: var(--ink-2); text-align: right; }
+
+    @media (max-width: 560px) {
+      .alumni li { grid-template-columns: 1fr; gap: .15rem; }
+      .alum-after { text-align: left; }
+    }
+
+    /* ── Funding ─────────────────────────────────────────────── */
+    .funding-text { font-size: 14px; color: var(--ink-2); margin-bottom: 1.4rem; max-width: 42em; }
+    .sponsor-row {
+      display: flex;
+      align-items: center;
+      gap: 2.75rem;
+      flex-wrap: wrap;
+      padding: 1.4rem 0 .4rem;
+      border-top: 1px solid var(--line);
+    }
+    .sponsor-row img {
+      height: 22px;
+      width: auto;
+      filter: grayscale(1) contrast(1.05);
+      opacity: .72;
+      transition: opacity .15s, filter .15s;
+    }
+    .sponsor-row img:hover { filter: none; opacity: 1; }
+
+    /* ── Footer ──────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 1.4rem 0 2.5rem;
+      margin-top: 3rem;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: .02em;
+      color: var(--ink-3);
+    }
+    footer a { color: var(--ink-3); }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 520px) {
+      nav a { margin-left: .9rem; font-size: 10.5px; }
+      h1 { font-size: 23px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header role="banner">
+    <div class="topbar">
+      <div class="wordmark">Hive Lab</div>
+      <nav aria-label="Primary navigation">
+            <a href="/">Home</a>
+        <a href="/people/" class="active">People</a>
+        <a href="/research/">Research</a>
+        <a href="/publications/">Publications</a>
+        <a href="/philosophy/">Philosophy</a>
+        <!-- <a href="news.html">News</a> -->
+        <a href="/join/">Join</a>
+      </nav>
+    </div>
+    <!-- <div class="rule-strong"></div> -->
+  </header>
+
+  <main id="main-content">
+
+    <div class="page-intro">
+      <span class="eyebrow">People</span>
+      <h1>Faculty, students, and collaborators.</h1>
+      <p class="page-sub">HIVE (<span style="color:#E67E22; font-weight:bold;">H</span>uman Signal in 
+<span style="color:#E67E22; font-weight:bold;">I</span>ntelligence, 
+<span style="color:#E67E22; font-weight:bold;">V</span>erification  &amp;
+<span style="color:#E67E22; font-weight:bold;">E</span>mpowerment) is an interdisciplinary Research Lab, working across security, AI, and human-computer interaction drawing on backgrounds in informatics, cybersecurity, and design research.</p>
+    </div>
+
+    <div class="section-head">
+      <span class="num">01</span>
+      <h2>Lab Members</h2>
+      <span class="fill"></span>
+    </div>
+
+    <div class="profiles">
+
+      <article class="profile" id="tanusree-sharma">
+        <div class="prof-photo"><img src="/images/tanusree.jpeg" alt="Tanusree Sharma" /></div>
+        <div>
+          <div class="prof-name"><a href="https://tanusreesharma.github.io/" target="_blank" rel="noopener">Tanusree Sharma</a></div>
+          <div class="prof-pronouns">she/her/hers</div>
+          <div class="prof-role">Assistant Professor · Penn State</div>
+          <div class="prof-links">
+            <a class="plink" href="mailto:tanusree.sharma@psu.edu"><i class="ti ti-mail" aria-hidden="true"></i> tanusree.sharma@psu.edu</a>
+            <a class="plink" href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank"><i class="ti ti-school" aria-hidden="true"></i> Google Scholar</a>
+            <a class="plink" href="https://www.linkedin.com/in/tanusree-sharma-743697130/" target="_blank"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn</a>
+            <a class="plink" href="https://x.com/Tanusree_Sharma" target="_blank"><i class="ti ti-brand-twitter" aria-hidden="true"></i> Twitter/X</a>
+            <a class="plink" href="https://bsky.app/profile/tanusrees.bsky.social" target="_blank"><i class="ti ti-brand-bluesky" aria-hidden="true"></i> Bluesky</a>
+            <a class="plink" href="/files/Tanusree_Sharma_CV.pdf" target="_blank"><i class="ti ti-file-text" aria-hidden="true"></i> CV</a>
+          </div>
+          <p class="prof-bio">Tanusree works at the intersection of security, AI, and HCI. She studies people's safety concerns, decision-making behaviors, and the role of power dynamics in innovation across the AI development lifecycle — addressing complex privacy and safety challenges in AI, and leveraging AI's capabilities to solve long-standing privacy issues.</p>
+        </div>
+      </article>
+
+      <article class="profile" id="aj">
+        <div class="prof-photo"><img src="/images/student-Aj.png" alt="Aljawharah Aljahrani" /></div>
+        <div>
+          <div class="prof-name"><a href="https://ist.psu.edu/directory/AMA9555" target="_blank" rel="noopener">Aljawharah Aljahrani</a></div>
+          <div class="prof-pronouns">she/her/hers</div>
+          <div class="prof-role">PhD Student (Scholarship) · Penn State</div>
+          <div class="prof-links">
+            <a class="plink" href="mailto:ama9555@psu.edu"><i class="ti ti-mail" aria-hidden="true"></i> ama9555@psu.edu</a>
+            <a class="plink" href="https://ist.psu.edu/directory/AMA9555" target="_blank" rel="noopener"><i class="ti ti-world" aria-hidden="true"></i> Website</a>
+            <a class="plink" href="https://scholar.google.com/citations?user=Av5w8wkAAAAJ&hl=en"><i class="ti ti-school" aria-hidden="true"></i> Scholar</a>
+          </div>
+          <p class="prof-bio">Aljawharah is a first-year PhD student at Penn State, studying the intersection of privacy, safety, and HCI, with a particular focus on how vulnerable populations such as children interact with and are affected by generative AI. She is currently working on co-design research with parents and children across cross-cultural contexts (US, EU, and Bangladesh) to develop inclusive digital safety solutions for GenAI.</p>
+        </div>
+      </article>
+
+      <article class="profile" id="lili">
+        <div class="prof-photo"><img src="/images/student-lili.png" alt="Lili Dudas" /></div>
+        <div>
+          <div class="prof-name"><a href="https://ist.psu.edu/directory/lzd543" target="_blank" rel="noopener">Lili Dudas</a></div>
+          <div class="prof-pronouns">she/her/hers</div>
+          <div class="prof-role">PhD Student (Dean's Fellowship) · Penn State</div>
+          <div class="prof-links">
+            <a class="plink" href="mailto:lzd5436@psu.edu"><i class="ti ti-mail" aria-hidden="true"></i> lzd5436@psu.edu</a>
+            <a class="plink" href="https://ist.psu.edu/directory/lzd5436" target="_blank" rel="noopener"><i class="ti ti-world" aria-hidden="true"></i> Website</a>
+            <a class="plink" href="https://www.linkedin.com/in/lili-dudas-a46801226/" target="_blank"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn</a>
+          </div>
+          <p class="prof-bio">Lili is a first-year PhD student at Penn State, studying informatics with an interest in privacy, governance, and the intersection of social systems and data — specifically content authenticity and provenance for privacy and governance, and algorithmic ethics at the intersection of data and society.</p>
+        </div>
+      </article>
+
+      <article class="profile">
+        <div class="prof-photo"><img src="/images/student-yihao.jpg" alt="Yihao Zhou" /></div>
+        <div>
+          <div class="prof-name"><a href="https://yihaozhou.com/" target="_blank" rel="noopener">Yihao Zhou</a></div>
+          <div class="prof-pronouns">he/him/his</div>
+          <div class="prof-role">Graduate Student · Penn State</div>
+          <div class="prof-links">
+            <a class="plink" href="mailto:ypz5614@psu.edu"><i class="ti ti-mail" aria-hidden="true"></i> ypz5614@psu.edu</a>
+            <a class="plink" href="https://yihaozhou.com/" target="_blank" rel="noopener"><i class="ti ti-world" aria-hidden="true"></i> Website</a>
+            <a class="plink" href="https://scholar.google.com/citations?user=Eq876rAAAAAJ"><i class="ti ti-school" aria-hidden="true"></i> Scholar</a>
+          </div>
+          <p class="prof-bio">Yihao is a Master's student at Penn State. His research focuses on intimacy and attachment in digital spaces — how people form intimacy, attachment, and emotional relationships online, especially within online gaming and virtual communities, including romantic interactions in MMORPGs and cosplay culture in otome game communities.</p>
+        </div>
+      </article>
+
+      <article class="profile">
+        <div class="prof-photo"><img src="/images/student-tory.jpeg" alt="Tory Park" /></div>
+        <div>
+          <div class="prof-name">Tory Park</div>
+          <div class="prof-pronouns">they/them</div>
+          <div class="prof-role">Undergraduate Student · Penn State</div>
+          <div class="prof-links">
+            <a class="plink" href="https://www.linkedin.com/in/park-psu/" target="_blank"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn</a>
+          </div>
+          <p class="prof-bio">Tory is a Cyber Security Analytics and Operations student at Penn State, interested in applying AI and data analysis to strengthen proactive cyber defense, accessibility, and secure software development — particularly deepfake detection, cloud security, and emerging threats in human-centered technologies.</p>
+        </div>
+      </article>
+
+      <article class="profile">
+        <div class="prof-photo"><img src="/images/student-ryan.jpeg" alt="Ryan John Oommen" /></div>
+        <div>
+          <div class="prof-name">Ryan John Oommen</div>
+          <div class="prof-pronouns">he/him/his</div>
+          <div class="prof-role">Undergraduate Student · Penn State</div>
+          <div class="prof-links">
+            <a class="plink" href="https://www.linkedin.com/in/ryan-oommen-90551b208/" target="_blank"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn</a>
+          </div>
+          <p class="prof-bio">Ryan is a Schreyer Honors Scholar at Penn State. His research interests center on cybersecurity operations, vulnerability management, and risk analysis within enterprise and financial systems, particularly strengthening secure infrastructure through compliance testing, patch management, and AI-driven threat detection. He has interned at EY and Dow Jones.</p>
+        </div>
+      </article>
+
+      <article class="profile">
+        <div class="prof-photo"><img src="/images/student-gwen.jpeg" alt="Gwendolyn Elizabeth Powell" /></div>
+        <div>
+          <div class="prof-name">Gwendolyn Elizabeth Powell</div>
+          <div class="prof-pronouns">she/her/hers</div>
+          <div class="prof-role">Undergraduate Student · Penn State</div>
+          <div class="prof-links">
+            <a class="plink" href="#" target="_blank"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn</a>
+          </div>
+          <p class="prof-bio">Gwen is a Schreyer Honors Scholar at Penn State. Her research interests focus on digital health adoption, human-computer interaction, and technology accessibility among underserved and aging populations — exploring how usability, perceived usefulness, and equitable technology design can improve healthcare engagement and reduce digital health disparities.</p>
+        </div>
+      </article>
+
+      <article class="profile">
+        <div class="prof-photo"><img src="/images/student-anish.jpeg" alt="Anish Krishnagiri" /></div>
+        <div>
+          <div class="prof-name">Anish Krishnagiri</div>
+          <div class="prof-pronouns">he/him/his</div>
+          <div class="prof-role">Undergraduate Student · Penn State</div>
+          <div class="prof-links">
+            <a class="plink" href="#" target="_blank"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn</a>
+          </div>
+          <p class="prof-bio">Anish is an undergraduate student at Penn State. He works in traditional cybersecurity threat modeling and risk assessment.</p>
+        </div>
+      </article>
+
+    </div><!-- /.profiles -->
+
+    
+
+    <div class="section-head">
+      <span class="num">03</span>
+      <h2>Alumni</h2>
+      <span class="fill"></span>
+    </div>
+    <ul class="alumni">
+      <li><div><span class="alum-name">Silvia Sandhi</span> <span class="alum-role">2023–present</span></div><div class="alum-after">Jahangirnagar University, Bangladesh</div></li>
+      <li><div><span class="alum-name">ATM Mizanur Rahman</span> <span class="alum-role">2023–present</span></div><div class="alum-after">BUET, Bangladesh → PhD Student, UIUC</div></li>
+      <li><div><span class="alum-name">Pinky Rani Sarkar</span> <span class="alum-role">2023</span></div><div class="alum-after">BUP, Bangladesh → PhD Student, UVA</div></li>
+      <li><div><span class="alum-name">Jongwon Park</span> <span class="alum-role">2023</span></div><div class="alum-after">Bachelor Student, UIUC</div></li>
+      <li><div><span class="alum-name">Melinda Hu</span> <span class="alum-role">2023</span></div><div class="alum-after">High School Student</div></li>
+      <li><div><span class="alum-name">Justin Wang</span> <span class="alum-role">2023</span></div><div class="alum-after">High School Student</div></li>
+      <li><div><span class="alum-name">Henry Wang</span> <span class="alum-role">2022–2023</span></div><div class="alum-after">High School Student → Undergrad, UIUC</div></li>
+      <li><div><span class="alum-name">Inan Xu</span> <span class="alum-role">2022–2023</span></div><div class="alum-after">Undergrad → MS Student, UC Santa Cruz</div></li>
+      <li><div><span class="alum-name">Luke Emano</span> <span class="alum-role">2022–2023</span></div><div class="alum-after">Undergrad, UIUC</div></li>
+      <li><div><span class="alum-name">Kornrapat Pongmala</span> <span class="alum-role">2022</span></div><div class="alum-after">UC Berkeley → ML Engineer, TikTok</div></li>
+      <li><div><span class="alum-name">Jessica Mack</span> <span class="alum-role">2022</span></div><div class="alum-after">Undergrad, UIUC</div></li>
+      <li><div><span class="alum-name">Pratyasha Saha</span> <span class="alum-role">2020</span></div><div class="alum-after">MS Student, BRAC University → PhD Student, UIUC</div></li>
+      <li><div><span class="alum-name">Hunter Dyer</span> <span class="alum-role">2020</span></div><div class="alum-after">Undergrad, UIUC → PhD Student, GWU</div></li>
+    </ul>
+
+    <div class="section-head">
+      <span class="num">04</span>
+      <h2>Funding</h2>
+      <span class="fill"></span>
+    </div>
+    <p class="funding-text">Our work is supported by Google, OpenAI, and Meta.</p>
+    <div class="sponsor-row">
+      <img src="/images/google.png" alt="Google" />
+      <img src="/images/openai.png" alt="OpenAI" />
+      <img src="/images/meta.png" alt="Meta" />
+    </div>
+
+  </main>
+
+  <footer>
+    <a href="https://www.psu.edu/" target="_blank" rel="noopener">Penn State</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
