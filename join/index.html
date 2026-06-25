@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Join the Hive Lab — PhD students, interns, and visitors. Usable security, privacy, HCI, blockchain, accessible computing." />
+  <title>Join — Hive Lab</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --paper:    #faf9f6;
+      --paper-2:  #f1efe8;
+      --ink:      #1c1b18;
+      --ink-2:    #55524a;
+      --ink-3:    #918d80;
+      --line:     rgba(30,25,15,0.13);
+      --line-2:   rgba(30,25,15,0.07);
+
+      --accent:       #9c6b2e;
+      --accent-soft:  #f3ead9;
+      --slate:        #3c4a52;
+
+      --font-display: 'Source Serif 4', Georgia, serif;
+      --font-sans:    'Inter', system-ui, sans-serif;
+      --font-mono:    'IBM Plex Mono', monospace;
+
+      --max-w: 880px;
+      --radius: 3px;
+    }
+
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; animation: none !important; }
+    }
+
+    body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.7; color: var(--ink); background: var(--paper); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── Top nav ─────────────────────────────────────────────── */
+    .topbar { display: flex; align-items: baseline; justify-content: space-between; padding: 26px 0 14px; flex-wrap: wrap; gap: .75rem; }
+    .wordmark { font-family: var(--font-display); font-size: 21px; font-weight: 700; letter-spacing: -0.2px; color: var(--ink); }
+    .wordmark sup { font-family: var(--font-mono); font-size: 10px; font-weight: 500; color: var(--ink-3); letter-spacing: .08em; margin-left: 8px; top: -8px; text-transform: uppercase; }
+
+    nav { display: flex; flex-wrap: wrap; }
+    nav a {
+      font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em;
+      color: var(--ink-3); margin-left: 1.4rem; padding-bottom: 3px; border-bottom: 1.5px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    nav a:hover, nav a.active { color: var(--ink); text-decoration: none; border-bottom-color: var(--accent); }
+
+    .rule-strong { height: 2px; background: var(--ink); width: 100%; }
+
+    /* ── Page hero ───────────────────────────────────────────── */
+    .page-hero { padding: 2.25rem 0 2rem; border-bottom: 1px solid var(--line); margin-bottom: 2.25rem; }
+    .eyebrow { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: .65rem; display: block; }
+    .page-hero h1 { font-family: var(--font-display); font-size: 30px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: .5rem; line-height: 1.15; }
+    .page-hero .sub { font-size: 14.5px; color: var(--ink-2); max-width: 46em; }
+
+    /* ── Apply CTA ───────────────────────────────────────────── */
+    .apply-cta {
+      background: var(--ink); border-radius: var(--radius); padding: 1.6rem 1.85rem; margin-bottom: 2rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .apply-cta p { font-size: 14px; color: rgba(250,249,246,0.85); line-height: 1.65; max-width: 460px; }
+    .apply-cta p strong { color: var(--paper); }
+    .apply-btn-main {
+      display: inline-flex; align-items: center; gap: 6px; background: var(--paper); color: var(--ink);
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: .02em; font-weight: 500; padding: 9px 16px;
+      border-radius: var(--radius); white-space: nowrap; flex-shrink: 0; transition: background .12s;
+    }
+    .apply-btn-main:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+    .apply-btn-main i { font-size: 15px; }
+
+    /* ── Note box ────────────────────────────────────────────── */
+    .note-box {
+      background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1rem 1.25rem; margin-bottom: 2rem; font-size: 13.5px; color: var(--ink-2); line-height: 1.7;
+    }
+    .note-box i { color: var(--accent); font-size: 15px; vertical-align: middle; margin-right: 4px; }
+    .note-box strong { color: var(--ink); }
+
+    /* ── Section headings ────────────────────────────────────── */
+    .section-head { display: flex; align-items: baseline; gap: .6rem; margin: 2.75rem 0 1.1rem; }
+    .section-head .num { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); letter-spacing: .04em; }
+    .section-head h2 { font-family: var(--font-sans); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--ink); }
+    .section-head .fill { flex: 1; height: 1px; background: var(--line); }
+
+    .lede { font-size: 14.5px; color: var(--ink-2); line-height: 1.75; margin-bottom: 1.1rem; max-width: 50em; }
+
+    /* ── Focus tags ──────────────────────────────────────────── */
+    .focus-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.5rem; }
+    .focus-tag {
+      display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 11.5px;
+      padding: 4px 11px; border-radius: 20px; border: 1px solid var(--line); color: var(--ink-2); background: var(--paper-2);
+    }
+    .focus-tag i { font-size: 13px; color: var(--accent); }
+
+    /* ── Skills grid ─────────────────────────────────────────── */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; margin-bottom: 1.5rem; }
+    .skill-card { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; }
+    .skill-card .sk-icon { font-size: 21px; color: var(--accent); margin-bottom: .5rem; }
+    .skill-card .sk-title { font-size: 13.5px; font-weight: 600; color: var(--ink); margin-bottom: .3rem; }
+    .skill-card .sk-desc { font-size: 12.5px; color: var(--ink-2); line-height: 1.6; }
+
+    /* ── Position card ───────────────────────────────────────── */
+    .position-card {
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1.5rem; margin-bottom: 1.1rem;
+      background: var(--paper); transition: border-color .15s, background .15s;
+    }
+    .position-card:hover { border-color: var(--accent); background: var(--accent-soft); }
+    .pos-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: .35rem; display: flex; align-items: center; gap: .5rem; }
+    .pos-title i { font-size: 17px; color: var(--accent); }
+    .pos-status {
+      display: inline-block; font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; padding: 2px 9px;
+      border-radius: var(--radius); background: var(--paper-2); color: var(--ink-2); border: 1px solid var(--line);
+      margin-left: auto; flex-shrink: 0;
+    }
+    .pos-desc { font-size: 13.5px; color: var(--ink-2); line-height: 1.75; margin-top: .5rem; }
+    .pos-desc p { margin-bottom: .65rem; }
+    .pos-desc p:last-child { margin-bottom: 0; }
+
+    .checklist { list-style: none; margin: .75rem 0; display: flex; flex-direction: column; gap: .4rem; }
+    .checklist li { display: flex; align-items: flex-start; gap: .6rem; font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+    .checklist li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: .55rem; }
+    .checklist li strong { color: var(--ink); }
+
+    .apply-btn {
+      display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 11.5px; font-weight: 500;
+      color: var(--paper); background: var(--ink); border-radius: var(--radius); padding: 7px 14px; margin-top: 1rem; transition: background .12s;
+    }
+    .apply-btn:hover { background: var(--accent); text-decoration: none; }
+    .apply-btn i { font-size: 14px; }
+
+    .deadline {
+      display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+      color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent); border-radius: var(--radius);
+      padding: 3px 10px; margin-top: .85rem;
+    }
+    .deadline i { font-size: 13px; }
+
+    p.note { font-size: 13.5px; color: var(--ink-2); line-height: 1.75; margin-bottom: .85rem; }
+    p.note:last-child { margin-bottom: 0; }
+
+    /* ── Footer ──────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--line); padding: 1.4rem 0 2.5rem; margin-top: 1rem;
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: .02em; color: var(--ink-3);
+    }
+    footer a { color: var(--ink-3); }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 560px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .apply-cta { flex-direction: column; }
+      nav a { margin-left: .9rem; font-size: 10.5px; }
+      .page-hero h1 { font-size: 23px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header role="banner">
+    <div class="topbar">
+      <div class="wordmark">Hive Lab</div>
+      <nav aria-label="Primary navigation">
+    <a href="/">Home</a>
+        <a href="/people/">People</a>
+        <a href="/research/">Research</a>
+        <a href="/publications/">Publications</a>
+        <a href="/philosophy/">Philosophy</a>
+        <!-- <a href="news.html">News</a> -->
+        <a href="/join/" class="active">Join</a>
+      </nav>
+    </div>
+    <!-- <div class="rule-strong"></div> -->
+  </header>
+
+  <main id="main-content">
+
+    <div class="page-hero">
+      <span class="eyebrow">Join</span>
+      <h1>Join the Hive Lab</h1>
+      <p class="sub">We're looking for collaborators interested in usable security and privacy, blockchain, HCI, and accessible computing.</p>
+    </div>
+
+    <div class="apply-cta">
+      <p>Thank you for your interest! Please fill out the lab's application form — we will reach out if there is a good match. <strong>The more detail you provide about yourself and your goals, the more likely we can give a prompt response.</strong></p>
+      <a class="apply-btn-main" href="https://qualtricsxml7y6vlrfv.qualtrics.com/jfe/form/SV_bezAXi3aHdjBHrE" target="_blank" rel="noopener">
+        <i class="ti ti-forms" aria-hidden="true"></i> Fill out the application form
+      </a>
+    </div>
+
+    <div class="note-box">
+      <i class="ti ti-info-circle" aria-hidden="true"></i>
+      <strong>General Note:</strong> We receive a high volume of emails and may not be able to respond to all, but every message is read. Providing detail about yourself and your goals significantly increases the chance of a prompt response.
+    </div>
+
+    <div class="section-head"><span class="num">01</span><h2>What We Work On</h2><span class="fill"></span></div>
+    <p class="lede">Our lab builds usable and accessible tools for managing privacy, security, and governance in data-driven systems — with a special focus on underserved communities.</p>
+    <div class="focus-row">
+      <span class="focus-tag"><i class="ti ti-lock" aria-hidden="true"></i> Security &amp; Privacy</span>
+      <span class="focus-tag"><i class="ti ti-currency-bitcoin" aria-hidden="true"></i> Blockchain &amp; Web3</span>
+      <span class="focus-tag"><i class="ti ti-accessible" aria-hidden="true"></i> Accessible Computing</span>
+      <span class="focus-tag"><i class="ti ti-device-desktop" aria-hidden="true"></i> Human-Computer Interaction</span>
+      <span class="focus-tag"><i class="ti ti-brain" aria-hidden="true"></i> AI/ML Governance</span>
+    </div>
+
+    <div class="section-head"><span class="num">02</span><h2>What Skills Are We Looking For?</h2><span class="fill"></span></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="sk-icon"><i class="ti ti-pencil" aria-hidden="true"></i></div>
+        <div class="sk-title">Design Skills</div>
+        <div class="sk-desc">Experience in design and iterative prototyping — low and high fidelity — is highly valued.</div>
+      </div>
+      <div class="skill-card">
+        <div class="sk-icon"><i class="ti ti-code" aria-hidden="true"></i></div>
+        <div class="sk-title">Coding Skills</div>
+        <div class="sk-desc">We build mobile, web, and browser-extension tools. Full-stack developers are especially welcome.</div>
+      </div>
+      <div class="skill-card">
+        <div class="sk-icon"><i class="ti ti-book" aria-hidden="true"></i></div>
+        <div class="sk-title">Domain Knowledge</div>
+        <div class="sk-desc">Familiarity with privacy/security, accessible computing, blockchain, or AI is beneficial. Prior publications are a bonus but not required.</div>
+      </div>
+    </div>
+
+    <div class="section-head"><span class="num">03</span><h2>Prospective PhD Students</h2><span class="fill"></span></div>
+    <div class="position-card">
+      <div class="pos-title">
+        <i class="ti ti-school" aria-hidden="true"></i>
+        PhD Students
+        <span class="pos-status">Fall 2026 cycle open</span>
+      </div>
+      <div class="pos-desc">
+        <p>The official PhD application deadline is <strong>December 15, 2025</strong> for the Fall 2026 cycle. Apply via <a href="https://ist.psu.edu/prospective/graduate/application/phd" target="_blank" rel="noopener">Penn State IST Admissions</a>.</p>
+        <p>Admissions are typically managed by a central committee. To ensure your application reaches us, please <strong>mention the PI's name in your statement of purpose</strong>. After submitting, send a brief email to <a href="mailto:tfs5747@psu.edu">tfs5747@psu.edu</a> including:</p>
+        <ul class="checklist">
+          <li><strong>CV and academic transcript</strong> with GPA or rank</li>
+          <li><strong>Target role</strong> — PhD, intern, or current student</li>
+          <li><strong>Brief summary</strong> of your research interests and relevant experience</li>
+          <li><strong>What makes you stand out</strong> from your peers</li>
+          <li><strong>Links to publications</strong>, if any</li>
+        </ul>
+        <div class="deadline"><i class="ti ti-calendar-event" aria-hidden="true"></i> Application deadline: Dec 15, 2025 for Fall 2026</div>
+      </div>
+      <a class="apply-btn" href="https://ist.psu.edu/prospective/graduate/application/phd" target="_blank" rel="noopener">
+        <i class="ti ti-external-link" aria-hidden="true"></i> Apply via Penn State IST Admissions
+      </a>
+    </div>
+
+    <div class="section-head"><span class="num">04</span><h2>Interns &amp; Current Students</h2><span class="fill"></span></div>
+    <div class="position-card">
+      <div class="pos-title">
+        <i class="ti ti-user-check" aria-hidden="true"></i>
+        Masters, Undergrad &amp; Interns
+        <span class="pos-status">Rolling applications</span>
+      </div>
+      <div class="pos-desc">
+        <p>We are looking for highly motivated Masters, undergraduate, and intern applicants with interests in usable security &amp; privacy, blockchain, HCI, and accessible computing.</p>
+        <p>Please review our <a href="/research/">Research</a> page, then email your CV and fill out the application form.</p>
+      </div>
+      <a class="apply-btn" href="https://qualtricsxml7y6vlrfv.qualtrics.com/jfe/form/SV_bezAXi3aHdjBHrE" target="_blank" rel="noopener">
+        <i class="ti ti-forms" aria-hidden="true"></i> Fill out the application form
+      </a>
+    </div>
+
+    <div class="section-head"><span class="num">05</span><h2>Other Visitors</h2><span class="fill"></span></div>
+    <div class="position-card">
+      <div class="pos-title">
+        <i class="ti ti-users" aria-hidden="true"></i>
+        Exchange Students, Interns &amp; Visitors
+        <span class="pos-status">Open to arrangements</span>
+      </div>
+      <div class="pos-desc">
+        <p>The lab invites exchange students, interns, visitors from academia and industry, and post-baccalaureate research specialists. We are open to other arrangements as well.</p>
+        <p>We take high school students exclusively through affiliated programs and cannot accommodate students outside these programs.</p>
+      </div>
+      <a class="apply-btn" href="mailto:tfs5747@psu.edu">
+        <i class="ti ti-mail" aria-hidden="true"></i> Get in touch
+      </a>
+    </div>
+
+    <div class="section-head"><span class="num">06</span><h2>Contact</h2><span class="fill"></span></div>
+    <p class="note">Email: <a href="mailto:tfs5747@psu.edu">tfs5747@psu.edu</a></p>
+    <p class="note">Application form: <a href="https://qualtricsxml7y6vlrfv.qualtrics.com/jfe/form/SV_bezAXi3aHdjBHrE" target="_blank" rel="noopener">Fill out here →</a></p>
+
+  </main>
+
+  <footer>
+    <a href="https://www.psu.edu/" target="_blank" rel="noopener">Penn State</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

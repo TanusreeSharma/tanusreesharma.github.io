@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hive Lab research projects — visual privacy, voice AI, provenance, humanness, accessible computing, cybersecurity, Web3, youth AI." />
+  <title>Research — Hive Lab</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --paper:    #faf9f6;
+      --paper-2:  #f1efe8;
+      --ink:      #1c1b18;
+      --ink-2:    #55524a;
+      --ink-3:    #918d80;
+      --line:     rgba(30,25,15,0.13);
+      --line-2:   rgba(30,25,15,0.07);
+
+      --accent:       #9c6b2e;
+      --accent-soft:  #f3ead9;
+      --slate:        #3c4a52;
+
+      --font-display: 'Source Serif 4', Georgia, serif;
+      --font-sans:    'Inter', system-ui, sans-serif;
+      --font-mono:    'IBM Plex Mono', monospace;
+
+      --max-w: 1120px;
+      --radius: 3px;
+    }
+
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; animation: none !important; }
+    }
+
+    body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.7; color: var(--ink); background: var(--paper); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .outer { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── Top nav ─────────────────────────────────────────────── */
+    .topbar { display: flex; align-items: baseline; justify-content: space-between; padding: 26px 0 14px; flex-wrap: wrap; gap: .75rem; }
+    .wordmark { font-family: var(--font-display); font-size: 21px; font-weight: 700; letter-spacing: -0.2px; color: var(--ink); }
+    .wordmark sup { font-family: var(--font-mono); font-size: 10px; font-weight: 500; color: var(--ink-3); letter-spacing: .08em; margin-left: 8px; top: -8px; text-transform: uppercase; }
+
+    nav { display: flex; flex-wrap: wrap; }
+    nav a {
+      font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em;
+      color: var(--ink-3); margin-left: 1.4rem; padding-bottom: 3px; border-bottom: 1.5px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    nav a:hover, nav a.active { color: var(--ink); text-decoration: none; border-bottom-color: var(--accent); }
+
+    .rule-strong { height: 2px; background: var(--ink); width: 100%; }
+
+    /* ── Page intro ──────────────────────────────────────────── */
+    .page-intro { padding: 2.25rem 0 0; }
+    .eyebrow {
+      font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em;
+      color: var(--accent); margin-bottom: .65rem; display: block;
+    }
+    h1 { font-family: var(--font-display); font-size: 30px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: .6rem; line-height: 1.15; }
+    .page-sub { font-size: 14.5px; color: var(--ink-2); max-width: 46em; }
+
+    /* ── Layout ──────────────────────────────────────────────── */
+    .research-layout { display: grid; grid-template-columns: 190px 1fr; gap: 0 2.75rem; align-items: start; margin-top: 2.25rem; }
+
+    /* ── Filter sidebar ──────────────────────────────────────── */
+    .filter-sidebar { position: sticky; top: 1.75rem; }
+    .filter-label {
+      font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em;
+      color: var(--ink-3); margin-bottom: .75rem;
+    }
+
+    .filter-btn {
+      display: flex; align-items: center; justify-content: space-between; width: 100%;
+      padding: 7px 0; border: none; border-bottom: 1px solid var(--line-2); background: transparent;
+      cursor: pointer; font-family: var(--font-sans); font-size: 13px; color: var(--ink-2);
+      transition: color .12s, border-color .12s; text-align: left;
+    }
+    .filter-btn:hover { color: var(--ink); border-color: var(--accent); }
+    .filter-btn.active { color: var(--accent); font-weight: 600; border-color: var(--accent); }
+
+    .count {
+      font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-3);
+      min-width: 20px; text-align: right;
+    }
+    .filter-btn.active .count { color: var(--accent); }
+
+    .clear-btn {
+      display: flex; align-items: center; gap: 5px; width: 100%; margin-top: .9rem;
+      padding: 6px 10px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--paper);
+      cursor: pointer; font-family: var(--font-mono); font-size: 11px; letter-spacing: .02em; color: var(--ink-3);
+      transition: border-color .12s, color .12s;
+    }
+    .clear-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .clear-btn i { font-size: 13px; }
+    .clear-btn.hidden { opacity: 0; pointer-events: none; }
+
+    /* ── Section headings ────────────────────────────────────── */
+    .research-content { padding-bottom: 4rem; }
+    .section-head { display: flex; align-items: baseline; gap: .6rem; margin: 0 0 1.4rem; }
+    .section-head:not(:first-child) { margin-top: 3rem; }
+    .section-head .num { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); letter-spacing: .04em; }
+    .section-head h2 { font-family: var(--font-sans); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--ink); }
+    .section-head .fill { flex: 1; height: 1px; background: var(--line); }
+
+    /* ── Project grid ────────────────────────────────────────── */
+    .project-grid, .past-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.85rem 1.5rem; }
+
+    .project-card { display: flex; flex-direction: column; cursor: pointer; transition: opacity .15s; }
+    .project-card.hidden { display: none; }
+
+    .card-thumb {
+      width: 100%; aspect-ratio: 16 / 11; border-radius: var(--radius); overflow: hidden;
+      background: var(--paper-2); position: relative; margin-bottom: .65rem; border: 1px solid var(--line);
+    }
+    .card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.92); transition: transform .2s ease; }
+    .project-card:hover .card-thumb img { transform: scale(1.03); }
+
+    .award-ribbon { position: absolute; top: 0; left: 0; width: 64px; height: 64px; overflow: hidden; pointer-events: none; z-index: 2; }
+    .award-ribbon::before {
+      content: 'Award'; position: absolute; top: 14px; left: -18px; width: 72px; background: var(--ink);
+      color: var(--paper); font-family: var(--font-mono); font-size: 9px; font-weight: 500; text-align: center;
+      padding: 3px 0; transform: rotate(-45deg); letter-spacing: .04em; text-transform: uppercase;
+    }
+
+    .card-name { font-size: 14.5px; font-weight: 600; color: var(--ink); line-height: 1.35; margin-bottom: 3px; }
+    .card-name a { color: var(--ink); }
+    .project-card:hover .card-name a { color: var(--accent); text-decoration: none; }
+    .card-years { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-3); }
+
+    .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; }
+    .card-tag {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: .01em; padding: 2px 7px;
+      border-radius: var(--radius); border: 1px solid var(--line); color: var(--ink-3); background: var(--paper-2);
+    }
+
+    .no-results { display: none; grid-column: 1 / -1; text-align: center; padding: 3rem 0; font-size: 14px; color: var(--ink-3); }
+
+    /* ── Footer ──────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--line); padding: 1.4rem 0 2.5rem; margin-top: 1rem;
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: .02em; color: var(--ink-3);
+    }
+    footer a { color: var(--ink-3); }
+    footer a:hover { color: var(--accent); }
+
+    /* ── Responsive ──────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .project-grid, .past-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 720px) {
+      .research-layout { grid-template-columns: 1fr; }
+      .filter-sidebar { position: static; margin-bottom: 1.75rem; }
+    }
+    @media (max-width: 520px) {
+      nav a { margin-left: .9rem; font-size: 10.5px; }
+      .project-grid, .past-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 23px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="outer">
+
+  <header role="banner">
+    <div class="topbar">
+      <div class="wordmark">Hive Lab</div>
+      <nav aria-label="Primary navigation">
+           <a href="/">Home</a>
+        <a href="/people/">People</a>
+        <a href="/research/" class="active">Research</a>
+        <a href="/publications/">Publications</a>
+        <a href="/philosophy/">Philosophy</a>
+        <!-- <a href="news.html">News</a> -->
+        <a href="/join/">Join</a>
+      </nav>
+    </div>
+    <!-- <div class="rule-strong"></div> -->
+  </header>
+
+  <div class="page-intro">
+    <span class="eyebrow">Research</span>
+    <h1>Projects</h1>
+    <p class="page-sub">HIVE (<span style="color:#E67E22; font-weight:bold;">H</span>uman Signal in 
+<span style="color:#E67E22; font-weight:bold;">I</span>ntelligence, 
+<span style="color:#E67E22; font-weight:bold;">V</span>erification  &amp;
+<span style="color:#E67E22; font-weight:bold;">E</span>mpowerment) Lab's work spans visual privacy, voice AI, provenance and humanness, accessible security, computational governance, youth AI safety, and usable Web3 — filter by topic below.</p>
+  </div>
+
+  <div class="research-layout">
+
+    <aside class="filter-sidebar" aria-label="Filter by topic">
+      <div class="filter-label">Filter by topic</div>
+      <button class="filter-btn active" data-topic="all">All <span class="count" id="count-all"></span></button>
+      <button class="filter-btn" data-topic="provenance-human">Provenance &amp; Humanness <span class="count"></span></button>
+      <button class="filter-btn" data-topic="voice-ai">Voice AI <span class="count"></span></button>
+      <button class="filter-btn" data-topic="visual-privacy">Visual Privacy <span class="count"></span></button>
+      <button class="filter-btn" data-topic="accessible">Accessible Security <span class="count"></span></button>
+      <button class="filter-btn" data-topic="computational">Computational Governance <span class="count"></span></button>
+      <button class="filter-btn" data-topic="youth-ai">Youth AI Cross-Culture <span class="count"></span></button>
+      <button class="filter-btn" data-topic="crypto">Web3 &amp; Usable Crypto <span class="count"></span></button>
+      <button class="filter-btn" data-topic="sec">Security &amp; Privacy <span class="count"></span></button>
+      <button class="clear-btn hidden" id="clear-btn" aria-label="Clear filter"><i class="ti ti-x" aria-hidden="true"></i> Clear filter</button>
+    </aside>
+
+    <main class="research-content" id="main-content">
+
+      <div class="section-head"><span class="num">01</span><h2>Active Projects</h2><span class="fill"></span></div>
+
+      <div class="project-grid" id="active-grid" role="list">
+
+        <div class="project-card" data-topics="voice-ai" role="listitem">
+          <div class="card-thumb"><a href="/project/voice-project-page.html" target="_blank"><img src="/images/paper-2026-4.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="/project/voice-project-page.html" target="_blank">V.O.I.C.E: Risk Taxonomy of Voice Synthesis</a></div>
+          <div class="card-years">2025 – Present</div>
+          <div class="card-tags"><span class="card-tag">Systemization</span><span class="card-tag">Voice AI Risk</span><span class="card-tag">Framework</span></div>
+        </div>
+
+        <!-- <div class="project-card" data-topics="voice-ai" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/p3.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">Security Warning for Voice-Based Deception</a></div>
+          <div class="card-years">2025 – Present</div>
+          <div class="card-tags"><span class="card-tag">Voice Deception</span><span class="card-tag">Security Warning</span></div>
+        </div> -->
+
+        <div class="project-card" data-topics="visual-privacy" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/docu-pri-blv.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">MaskMyDoc: Document Privacy for Blind Users</a></div>
+          <div class="card-years">2025 – Present</div>
+          <div class="card-tags"><span class="card-tag">Document Privacy</span><span class="card-tag">Generative AI</span><span class="card-tag">Blind and Low Vision</span></div>
+        </div>
+
+        <div class="project-card" data-topics="visual-privacy" role="listitem">
+          <div class="card-thumb"><a href="/project/visual-priv-gov-service.html" target="_blank"><img src="/images/paper7.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="/project/visual-priv-gov-service.html" target="_blank">Physical and Digital Privacy in Government Verification Services</a></div>
+          <div class="card-years">2025 – Present</div>
+          <div class="card-tags"><span class="card-tag">Government System</span><span class="card-tag">Social Security</span><span class="card-tag">Blind and Low Vision</span></div>
+        </div>
+
+        <div class="project-card" data-topics="accessible" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/paper-2025-10.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">Accessibility, Security, and Privacy Nexus</a></div>
+          <div class="card-years">2025 – Present</div>
+          <div class="card-tags"><span class="card-tag">Security</span><span class="card-tag">Accessibility</span><span class="card-tag">Privacy</span></div>
+        </div>
+
+        <!-- <div class="project-card" data-topics="accessible" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/paper8.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">AILens: Accessible Provenance for AI-Generated Content</a></div>
+          <div class="card-years">2025 – Present</div>
+          <div class="card-tags"><span class="card-tag">Security</span><span class="card-tag">Accessibility</span><span class="card-tag">Tooling</span></div>
+        </div> -->
+
+        <div class="project-card" data-topics="provenance-human" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/paper8.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">AILens: Accessible Provenance for AI-Generated Content</a></div>
+          <div class="card-years">2025 – Present</div>
+          <div class="card-tags"><span class="card-tag">Provenance</span><span class="card-tag">Accessibility</span><span class="card-tag">Trust</span></div>
+        </div>
+
+        <div class="project-card" data-topics="provenance-human" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/p3.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">Security Warning for Voice-Based Deception</a></div>
+          <div class="card-years">2025 – Present</div>
+          <div class="card-tags"><span class="card-tag">Voice Deception</span><span class="card-tag">Security Warning</span><span class="card-tag">Provenance</span></div>
+        </div>
+
+        <div class="project-card" data-topics="provenance-human" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/c2pa1.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">Redesign and Evaluation of C2PA Design</a></div>
+          <div class="card-years">2025 – Present</div>
+          <div class="card-tags"><span class="card-tag">C2PA Redesign</span><span class="card-tag">AI Indicator</span><span class="card-tag">Provenance</span></div>
+        </div>
+
+        <div class="project-card" data-topics="provenance-human" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/paper9.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">Decentralized Trust: Online Survey Fraud</a></div>
+          <div class="card-years">2025 – Present</div>
+          <div class="card-tags"><span class="card-tag">Security</span><span class="card-tag">Data Quality</span><span class="card-tag">Trust</span></div>
+        </div>
+
+
+        <div class="project-card" data-topics="computational" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/research-gov-1.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">Organizational/Public Sector Decentralized AI Decisions</a></div>
+          <div class="card-years">2026 – Present</div>
+          <div class="card-tags"><span class="card-tag">AI Governance</span><span class="card-tag">Decision-Support</span><span class="card-tag">Public Sector</span></div>
+        </div>
+
+        <div class="project-card" data-topics="youth-ai" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/research-youth-1.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">Cross-Cultural Co-Design in Youth GenAI Safety</a></div>
+          <div class="card-years">2026 – Present</div>
+          <div class="card-tags"><span class="card-tag">Cross-Culture</span><span class="card-tag">GenAI</span><span class="card-tag">Safety</span></div>
+        </div>
+
+        <div class="project-card" data-topics="youth-ai" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/paper-2025-1.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="https://arxiv.org/abs/2604.26494" target="_blank">Culturally Situated Youth Safety in GenAI</a></div>
+          <div class="card-years">2026 – Present</div>
+          <div class="card-tags"><span class="card-tag">Global South</span><span class="card-tag">GenAI</span><span class="card-tag">Safety</span></div>
+        </div>
+
+        <div class="project-card" data-topics="crypto" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/research-crypto-1.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">Education and Design for ZKP Age Verification</a></div>
+          <div class="card-years">2026 – Present</div>
+          <div class="card-tags"><span class="card-tag">ZKP</span><span class="card-tag">Age Verification</span><span class="card-tag">Safety</span></div>
+        </div>
+
+        <div class="no-results" id="no-results-active" aria-live="polite">No active projects match this filter.</div>
+      </div>
+
+      <div class="section-head"><span class="num">02</span><h2>Past Projects</h2><span class="fill"></span></div>
+
+      <div class="past-grid" id="past-grid" role="list">
+
+        <div class="project-card" data-topics="provenance-human" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/paper-2025-11.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">Personhood Credentials Design</a></div>
+          <div class="card-years">2025 – 2026</div>
+          <div class="card-tags"><span class="card-tag">Security</span><span class="card-tag">Humanness</span><span class="card-tag">Verification</span></div>
+        </div>
+        <div class="project-card" data-topics="voice-ai" role="listitem">
+          <div class="card-thumb"><a href="/project/prac3-project-page.html" target="_blank"><img src="/images/paper-2025-8.jpeg" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="/project/prac3-project-page.html" target="_blank">PRAC³: Voice Actors in the AI Data Economy</a></div>
+          <div class="card-years">2025</div>
+          <div class="card-tags"><span class="card-tag">Voice AI</span><span class="card-tag">Voice Actor</span><span class="card-tag">Labor Economy</span></div>
+        </div>
+
+        <div class="project-card" data-topics="visual-privacy" role="listitem">
+          <div class="card-thumb"><a href="/project/blv-visual-privacy-page.html" target="_blank"><img src="/images/paper-2025-9.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="/project/blv-visual-privacy-page.html" target="_blank">Visual Privacy Management in GenAI</a></div>
+          <div class="card-years">2025</div>
+          <div class="card-tags"><span class="card-tag">Visual Privacy Management</span><span class="card-tag">Generative AI</span><span class="card-tag">Blind and Low Vision</span></div>
+        </div>
+
+        <div class="project-card" data-topics="visual-privacy" role="listitem">
+          <div class="card-thumb"><a href="/project/biv-priv-hit.html" target="_blank"><img src="/images/hit-project-1.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="/project/biv-priv-hit.html" target="_blank">BIVPriv-HIT: Privacy Preservation with Accessible Information in Videos</a></div>
+          <div class="card-years">2025 – May 2026</div>
+          <div class="card-tags"><span class="card-tag">Video Privacy</span><span class="card-tag">Computer Vision</span><span class="card-tag">Benchmark</span></div>
+        </div>
+
+        <div class="project-card" data-topics="visual-privacy" role="listitem">
+          <div class="card-thumb"><a href="/project/biv-priv-seg.html" target="_blank"><img src="/images/paper-2025-4.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="/project/biv-priv-seg.html" target="_blank">BIVPriv-Seg: Privacy Preservation with Accessible Information in Images</a></div>
+          <div class="card-years">2024 – May 2025</div>
+          <div class="card-tags"><span class="card-tag">Image Privacy</span><span class="card-tag">Computer Vision</span><span class="card-tag">Benchmark</span></div>
+        </div>
+
+        <div class="project-card" data-topics="visual-privacy" role="listitem">
+          <div class="card-thumb"><a href="/project/accessible-obfuscation.html" target="_blank"><img src="/images/paper-2024-4.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="/project/accessible-obfuscation.html" target="_blank">BiVPriv — Obfuscation Tool</a></div>
+          <div class="card-years">2024</div>
+          <div class="card-tags"><span class="card-tag">Obfuscation Tool</span><span class="card-tag">Computer Vision</span><span class="card-tag">Blind and Low Vision</span></div>
+        </div>
+
+        <div class="project-card" data-topics="visual-privacy" role="listitem">
+          <div class="card-thumb"><a href="/project/biv-priv.html" target="_blank"><img src="/images/paper-2023-1.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="/project/biv-priv.html" target="_blank">BiVPriv — Visual Dataset Production Method</a></div>
+          <div class="card-years">2023</div>
+          <div class="card-tags"><span class="card-tag">Dataset</span><span class="card-tag">Computer Vision</span><span class="card-tag">Blind and Low Vision</span></div>
+        </div>
+
+        <div class="project-card" data-topics="accessible" role="listitem">
+          <div class="card-thumb"><a href="/project/guardlens.html" target="_blank"><img src="/images/paper-2023-5.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="/project/guardlens.html" target="_blank">GuardLens — Safer Web Browsing</a></div>
+          <div class="card-years">2023</div>
+          <div class="card-tags"><span class="card-tag">Security</span><span class="card-tag">Accessibility</span><span class="card-tag">Blind and Low Vision</span></div>
+        </div>
+
+        <div class="project-card" data-topics="accessible" role="listitem">
+          <div class="card-thumb"><a href="/project/iwallet.html" target="_blank"><img src="/images/paper-2023-4.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="/project/iwallet.html" target="_blank">iWallet — Secure and Accessible Cryptocurrency Experience</a></div>
+          <div class="card-years">2023</div>
+          <div class="card-tags"><span class="card-tag">Security</span><span class="card-tag">Accessibility</span><span class="card-tag">Blind and Low Vision</span></div>
+        </div>
+
+        <div class="project-card" data-topics="computational" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/paper2.2.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="https://www.nature.com/articles/s41598-026-40180-8" target="_blank">Democratic and Decentralized AI</a></div>
+          <div class="card-years">2024 – 2026</div>
+          <div class="card-tags"><span class="card-tag">DAO</span><span class="card-tag">AI Governance</span><span class="card-tag">Decentralization</span></div>
+        </div>
+
+        <div class="project-card" data-topics="computational" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/paper3.1.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="https://dl.acm.org/doi/abs/10.1145/3796547" target="_blank">Decentralized Autonomous Organization</a></div>
+          <div class="card-years">2023 – 2025</div>
+          <div class="card-tags"><span class="card-tag">DAO</span><span class="card-tag">Voting Power</span><span class="card-tag">Voting Method</span></div>
+        </div>
+
+        <div class="project-card" data-topics="youth-ai" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/paper-2026-1.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="https://ieeexplore.ieee.org/abstract/document/11023500/" target="_blank">Parent–Children Perception of GenAI Safety</a></div>
+          <div class="card-years">2024 – 2025</div>
+          <div class="card-tags"><span class="card-tag">Youth</span><span class="card-tag">GenAI</span><span class="card-tag">Safety</span></div>
+        </div>
+
+        <div class="project-card" data-topics="crypto" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/paper-2024-2.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="https://dl.acm.org/doi/epdf/10.1145/3613904.3642464" target="_blank">Decentralized Auth: Multi-Factor Key Derivation Function</a></div>
+          <div class="card-years">2024</div>
+          <div class="card-tags"><span class="card-tag">Decentralized</span><span class="card-tag">Authentication</span><span class="card-tag">Security</span></div>
+        </div>
+
+        <div class="project-card" data-topics="crypto" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/research-crypto-2.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">Perception Towards Web3 and Cryptocurrency</a></div>
+          <div class="card-years">2024</div>
+          <div class="card-tags"><span class="card-tag">Web3</span><span class="card-tag">User Study</span><span class="card-tag">Security</span></div>
+        </div>
+
+        <div class="project-card" data-topics="crypto" role="listitem">
+          <div class="card-thumb"><a href="/project/iwallet.html" target="_blank"><img src="/images/paper-2023-4.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="/project/iwallet.html" target="_blank">iWallet — Secure and Accessible Cryptocurrency Experience</a></div>
+          <div class="card-years">2023</div>
+          <div class="card-tags"><span class="card-tag">Accessibility</span><span class="card-tag">Wallet</span><span class="card-tag">Design</span></div>
+        </div>
+
+        <div class="project-card" data-topics="crypto" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/paper-2023-3.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">Developer Security in Smart Contracts</a></div>
+          <div class="card-years">2023</div>
+          <div class="card-tags"><span class="card-tag">Code Security</span><span class="card-tag">Solidity</span><span class="card-tag">Developer</span></div>
+        </div>
+
+        <div class="project-card" data-topics="sec" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/paper-2023-6.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">Data Minimization</a></div>
+          <div class="card-years">2024</div>
+          <div class="card-tags"><span class="card-tag">Privacy</span><span class="card-tag">Google Search</span><span class="card-tag">Data Minimization</span></div>
+        </div>
+
+        <div class="project-card" data-topics="sec" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/paper-2023-2.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">Targeted Advertisement in Social Media</a></div>
+          <div class="card-years">2023</div>
+          <div class="card-tags"><span class="card-tag">Privacy</span><span class="card-tag">Social Media</span><span class="card-tag">Targeted Ads</span></div>
+        </div>
+
+        <div class="project-card" data-topics="sec" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/research-sec-1.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">PriView — Human-AI Organizational Privacy Review</a></div>
+          <div class="card-years">2022</div>
+          <div class="card-tags"><span class="card-tag">Privacy</span><span class="card-tag">Organization</span><span class="card-tag">Engineering</span></div>
+        </div>
+
+        <div class="project-card" data-topics="sec" role="listitem">
+          <div class="card-thumb"><a href="#" target="_blank"><img src="/images/paper-2023-9.png" alt="Paper thumbnail" /></a></div>
+          <div class="card-name"><a href="#" target="_blank">Developer Security</a></div>
+          <div class="card-years">2022</div>
+          <div class="card-tags"><span class="card-tag">Security</span><span class="card-tag">Organization</span><span class="card-tag">Developer</span></div>
+        </div>
+
+        <div class="no-results" id="no-results-past" aria-live="polite">No past projects match this filter.</div>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <a href="https://www.psu.edu/" target="_blank" rel="noopener">Penn State</a>
+  
+  </footer>
+
+</div><!-- /.outer -->
+
+<script>
+  (function () {
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.project-card'));
+    var buttons = Array.prototype.slice.call(document.querySelectorAll('.filter-btn'));
+    var clearBtn = document.getElementById('clear-btn');
+    var activeGrid = document.getElementById('active-grid');
+    var pastGrid = document.getElementById('past-grid');
+    var noResultsActive = document.getElementById('no-results-active');
+    var noResultsPast = document.getElementById('no-results-past');
+
+    // Compute live counts per topic from the actual cards on the page.
+    var counts = { all: cards.length };
+    cards.forEach(function (card) {
+      var topic = card.getAttribute('data-topics');
+      counts[topic] = (counts[topic] || 0) + 1;
+    });
+    buttons.forEach(function (btn) {
+      var topic = btn.getAttribute('data-topic');
+      var countEl = btn.querySelector('.count');
+      countEl.textContent = counts[topic] || 0;
+    });
+
+    function applyFilter(topic) {
+      var activeVisible = 0, pastVisible = 0;
+
+      cards.forEach(function (card) {
+        var match = topic === 'all' || card.getAttribute('data-topics') === topic;
+        card.classList.toggle('hidden', !match);
+        if (match) {
+          if (activeGrid.contains(card)) activeVisible++;
+          else pastVisible++;
+        }
+      });
+
+      noResultsActive.style.display = activeVisible === 0 ? 'block' : 'none';
+      noResultsPast.style.display = pastVisible === 0 ? 'block' : 'none';
+      clearBtn.classList.toggle('hidden', topic === 'all');
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        buttons.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        applyFilter(btn.getAttribute('data-topic'));
+      });
+    });
+
+    clearBtn.addEventListener('click', function () {
+      buttons.forEach(function (b) { b.classList.remove('active'); });
+      buttons[0].classList.add('active');
+      applyFilter('all');
+    });
+
+    applyFilter('all');
+  })();
+</script>
+
+</body>
+</html>
